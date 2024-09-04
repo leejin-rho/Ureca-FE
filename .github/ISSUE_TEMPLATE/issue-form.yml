@@ -1,7 +1,7 @@
 name: "issue for ureca"
 description: "Ureca FE Repo에 이슈를 생성하며, 생성된 이슈는 Jira와 연동됩니다."
 labels: [order]
-title: "이슈 이름을 작성해주세요"
+title: "[feat]"
 body:
   - type: input
     id: description
