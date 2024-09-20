@@ -1,9 +1,13 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { colors } from '../styles/colors';
+import { colors } from '@/styles/colors';
 
 const Home = () => {
-  return <MainContainer></MainContainer>;
+  return (
+    <MainContainer>
+      <DummyImg />
+    </MainContainer>
+  );
 };
 
 export default Home;
@@ -16,4 +20,10 @@ const MainContainer = styled.div`
   align-items: center;
 
   background-color: ${colors.background};
+`;
+
+const DummyImg = styled.div`
+  width: 100%;
+  height: 42.5rem;
+  background-color: #5e5a5a;
 `;
