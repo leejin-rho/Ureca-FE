@@ -3,13 +3,23 @@ import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import Section from '@components/home/Section';
 import { Flex } from '@components/global/Flex';
+import { Text } from '@components/global/Text';
 import UrecaImage from '@/assets/images/pngs/URECA.png';
 import UrecaMerit from '@/assets/images/pngs/ureca-merit.png';
+import InfoList from '../components/home/InfoList';
 
 const Home = () => {
   return (
     <MainContainer>
-      <DummyImg direction="column" height={42.5} />
+      <DummyImg direction="column">
+        <Text color={colors.white} variant="h2">
+          LG U+ 유레카 아카데미 2기
+        </Text>
+        <Text color={colors.white} variant="h4">
+          디지털 세상에서 일하는 방식을 체험하자
+        </Text>
+      </DummyImg>
+      <InfoList />
       <Flex direction="column">
         <Section
           title="교육 목표"
@@ -66,7 +76,7 @@ export default Home;
 
 const MainContainer = styled.div`
   display: flex;
-  width: 100%;
+  width: 100vw;
   height: 100%;
   flex-direction: column;
   align-items: center;
@@ -83,6 +93,8 @@ const MainContainer = styled.div`
 const DummyImg = styled(Flex)`
   flex-direction: column;
   background-color: #5e5a5a;
+  height: 600px;
+  gap: 0.625rem;
   flex-shrink: 0;
 `;
 

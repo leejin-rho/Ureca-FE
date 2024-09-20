@@ -40,8 +40,13 @@ const headingStyles = {
   `,
   h8: css`
     font-family: 'Pretendard';
+    font-size: 15px;
+    font-weight: 500;
+  `,
+  h9: css`
+    font-family: 'Pretendard';
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
   `,
 };
 
