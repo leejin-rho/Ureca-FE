@@ -8,8 +8,9 @@ export default Seperator;
 
 const SeperateLine = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
-  stroke-width: 1px;
-  stroke: #19191d;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  height: 2px;
+  background: radial-gradient(10deg, #19191d 100%, #dadae9 100%, #17171c 100%);
+  margin-bottom: 12.5rem;
 `;

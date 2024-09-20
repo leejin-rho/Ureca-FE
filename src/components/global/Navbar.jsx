@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import LogoImage from '@/assets/images/svgs/logo.svg';
 
 const Navbar = () => {
-  return <NavContainer></NavContainer>;
+  return <NavContainer>{/* <LogoImage height={45} /> */}</NavContainer>;
 };
 
 export default Navbar;

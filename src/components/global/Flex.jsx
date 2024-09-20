@@ -5,11 +5,11 @@ export const Flex = styled.div`
   flex-direction: ${({ direction }) => (direction ? `${direction}` : 'row')};
   justify-content: ${({ justify }) => (justify ? `${justify}` : 'center')};
   align-items: ${({ align }) => (align ? `${align}` : 'center')};
-  gap: ${({ webGap }) => (webGap ? `${webGap}px` : '0px')};
+  gap: ${({ webGap }) => (webGap ? `${webGap}rem` : '0rem')};
   width: ${({ width, widthPer }) =>
-    width ? `${width}px` : widthPer ? `${widthPer}%` : '100%'};
+    width ? `${width}rem` : widthPer ? `${widthPer}%` : '100%'};
   height: ${({ height, heightPer }) =>
-    height ? `${height}px` : heightPer ? `${heightPer}%` : '100%'};
+    height ? `${height}rem` : heightPer ? `${heightPer}%` : '100%'};
   margin: ${({ margin }) => (margin ? margin : '0')};
   padding: ${({ padding }) => (padding ? padding : '0')};
   box-sizing: border-box;
@@ -21,7 +21,7 @@ export const Flex = styled.div`
 
   /* 브라우저 크기에 따라 가로 크기 변경 */
   @media (max-width: 1023px) {
-    gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}px` : '0px')};
+    gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}px` : '0')};
   }
 `;
 
@@ -49,6 +49,6 @@ export const AbsoluteFlex = styled(Flex)`
 `;
 
 export const Space = styled.div`
-  height: ${({ height }) => (height ? `${height}px` : '')};
-  width: ${({ width }) => (width ? `${width}px` : '')};
+  height: ${({ height }) => (height ? `${height}rem` : '')};
+  width: ${({ width }) => (width ? `${width}rem` : '')};
 `;

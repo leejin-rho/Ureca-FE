@@ -54,4 +54,5 @@ export const Text = styled.div`
   ${({ variant }) => headingStyles[variant] || headingStyles.h5}
   line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : '150%')};
   white-space: pre-wrap;
+  width: fit-content;
 `;
