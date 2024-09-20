@@ -1,7 +1,19 @@
-import { FAQData } from '@assets/data/FAQ';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { colors } from '../styles/colors';
 
 const Home = () => {
-  <FAQData />;
+  return <MainContainer></MainContainer>;
 };
 
 export default Home;
+
+const MainContainer = styled.div`
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: ${colors.background};
+`;
