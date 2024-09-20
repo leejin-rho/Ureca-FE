@@ -1,11 +1,17 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
+import Section from '@components/home/Section';
 
 const Home = () => {
   return (
     <MainContainer>
       <DummyImg />
+      <Section
+        title="교육목표"
+        expl="이동통신 서비스 기업 LG U+가
+유레카 아카데미를 운영하는 이유"
+      />
     </MainContainer>
   );
 };
