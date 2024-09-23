@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import LogoImage from '@/assets/images/svgs/logo.svg';
+import LogoImage from '@/assets/images/svgs/Logo';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
 
@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <NavContainer>
-      {/* <LogoImage height={45} /> */}
+      <LogoImage height={45} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
         <NavBtn onClick={handleClick}>
@@ -59,9 +59,9 @@ const NavContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  padding: 0 3rem;
 
   background-color: black;
-  padding: 0 20rem;
 
   position: absolute;
   left: 0;

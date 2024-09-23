@@ -93,7 +93,7 @@ const MainContainer = styled.div`
 const DummyImg = styled(Flex)`
   flex-direction: column;
   background-color: #5e5a5a;
-  height: 600px;
+  height: 570px;
   gap: 0.625rem;
   flex-shrink: 0;
 `;
