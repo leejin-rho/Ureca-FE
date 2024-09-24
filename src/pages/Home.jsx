@@ -1,24 +1,23 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import Section from '@components/home/Section';
 import { Flex } from '@components/global/Flex';
-import { Text } from '@components/global/Text';
 import UrecaImage from '@/assets/images/pngs/URECA.png';
 import UrecaMerit from '@/assets/images/pngs/ureca-merit.png';
 import InfoList from '../components/home/InfoList';
+import { useEffect, useRef } from 'react';
+import Subheader from '../components/home/SubHeader';
 
 const Home = () => {
+  const sectionRefs = useRef([]);
+
+  const scrollToSection = (index) => {
+    sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <MainContainer>
-      <DummyImg direction="column">
-        <Text color={colors.white} variant="h2">
-          LG U+ 유레카 아카데미 2기
-        </Text>
-        <Text color={colors.white} variant="h4">
-          디지털 세상에서 일하는 방식을 체험하자
-        </Text>
-      </DummyImg>
+      <Subheader />
       <InfoList />
       <Flex direction="column">
         <Section
@@ -88,14 +87,6 @@ const MainContainer = styled.div`
       rgba(230, 0, 126, 0.1) 100%
     ),
     ${colors.background};
-`;
-
-const DummyImg = styled(Flex)`
-  flex-direction: column;
-  background-color: #5e5a5a;
-  height: 570px;
-  gap: 0.625rem;
-  flex-shrink: 0;
 `;
 
 const UrecaImg = styled.img`

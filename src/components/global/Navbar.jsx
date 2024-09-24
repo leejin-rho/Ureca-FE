@@ -19,7 +19,7 @@ const Navbar = () => {
         </NavBtn>
         <NavBtn onClick={handleClick}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
-            WHY
+            {`WHY `}
           </Text>
           <Text color={colors.primaryColor} variant="h8" lineHeight="130%">
             URECA
@@ -40,11 +40,7 @@ const Navbar = () => {
             FAQ
           </Text>
         </NavBtn>
-        <ApplyBtn>
-          <Text color={colors.black} variant="h9" lineHeight="100%">
-            지원하기
-          </Text>
-        </ApplyBtn>
+        <ApplyBtn>지원하기</ApplyBtn>
       </RowFlex>
     </NavContainer>
   );
@@ -62,8 +58,9 @@ const NavContainer = styled.div`
   padding: 0 3rem;
 
   background-color: black;
+  z-index: 999;
 
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
@@ -92,10 +89,18 @@ const ApplyBtn = styled.div`
   align-items: center;
 
   border-radius: 0.75rem;
-  background: ${colors.white};
+  background-color: ${colors.white};
 
   box-sizing: border-box;
   margin-left: 1.5rem;
 
-  cursor: pointer;
+  font-family: 'Pretendard';
+  font-size: 14px;
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${colors.primaryColor};
+    color: ${colors.white};
+  }
 `;
