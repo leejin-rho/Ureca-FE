@@ -40,7 +40,7 @@ export default Subheader;
 
 const BackImgDiv = styled(Flex)`
   flex-direction: column;
-  height: 570px;
+  height: 470px;
   gap: 0.625rem;
   flex-shrink: 0;
 `;

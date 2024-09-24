@@ -60,4 +60,5 @@ export const Text = styled.div`
   line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : '150%')};
   white-space: pre-wrap;
   width: fit-content;
+  flex-shrink: 0;
 `;

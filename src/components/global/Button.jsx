@@ -18,6 +18,7 @@ export const Button = styled.div`
 
   box-sizing: border-box;
   margin-left: 1.5rem;
+  flex-shrink: 0;
 
   font-family: 'Pretendard';
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '14px')};

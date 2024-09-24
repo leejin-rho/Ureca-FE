@@ -14,7 +14,7 @@ const Navbar = ({ scrollToSection }) => {
 
   return (
     <NavContainer>
-      <LogoImage height={45} />
+      <LogoImage height={45} style={{ flexShrink: 0 }} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
         <NavBtn onClick={scrollToTop}>
@@ -77,6 +77,7 @@ const NavContainer = styled.div`
 const NavBtn = styled.div`
   display: flex;
   width: fit-content;
+  flex-shrink: 0;
 
   &:hover {
     cursor: pointer;
@@ -90,4 +91,8 @@ const RowFlex = styled.div`
   flex-direction: row;
   gap: 1.875rem;
   box-sizing: border-box;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `;

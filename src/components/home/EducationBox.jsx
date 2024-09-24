@@ -27,8 +27,8 @@ export default EducationBox;
 
 const Wrapper = styled(Flex)`
   flex-direction: column;
-  width: 34rem;
-  height: 32rem;
+  width: 42rem;
+  height: 37rem;
   padding: 2.25rem 2.25rem;
 
   align-items: flex-start;

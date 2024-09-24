@@ -27,5 +27,5 @@ const ListContainer = styled(Flex)`
   height: fit-content;
   align-items: center;
   justify-content: center;
-  gap: 1.66rem;
+  gap: 2rem;
 `;

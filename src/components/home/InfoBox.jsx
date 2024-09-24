@@ -24,7 +24,7 @@ export default InfoBox;
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 19rem;
+  width: 20rem;
   height: 9.5rem;
   padding: 2.5rem 1.57rem;
   align-items: center;
