@@ -40,8 +40,13 @@ const headingStyles = {
   `,
   h8: css`
     font-family: 'Pretendard';
+    font-size: 15px;
+    font-weight: 500;
+  `,
+  h9: css`
+    font-family: 'Pretendard';
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 600;
   `,
 };
 
@@ -54,4 +59,5 @@ export const Text = styled.div`
   ${({ variant }) => headingStyles[variant] || headingStyles.h5}
   line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : '150%')};
   white-space: pre-wrap;
+  width: fit-content;
 `;

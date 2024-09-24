@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
 import Seperator from '@components/home/Seperator';
+import { Flex } from '@components/global/Flex';
 
-const Section = ({ title, expl }) => {
+const Section = ({ title, expl, subexpl, children }) => {
   return (
     <>
       <SectionContainer>
@@ -16,7 +17,11 @@ const Section = ({ title, expl }) => {
               {expl}
             </Text>
           </TitleBox>
+          <Text color={colors.white} variant="h5">
+            {subexpl}
+          </Text>
         </HeadBox>
+        {children}
       </SectionContainer>
       <Seperator />
     </>
@@ -25,29 +30,25 @@ const Section = ({ title, expl }) => {
 
 export default Section;
 
-const SectionContainer = styled.div`
-  display: flex;
+const SectionContainer = styled(Flex)`
   flex-direction: column;
-  width: 100%;
+  width: fit-content;
+  height: fit-content;
   padding: 6.25rem 8.125rem;
   align-items: center;
   justify-content: center;
-  gap: 3.125rem;
-  background-color: black;
+  gap: 5rem;
+  margin-bottom: 12.5rem;
 `;
 
-const HeadBox = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 64.5rem;
+const HeadBox = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
 `;
 
-const TitleBox = styled.div`
-  display: flex;
+const TitleBox = styled(Flex)`
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;

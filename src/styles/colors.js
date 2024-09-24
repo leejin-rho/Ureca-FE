@@ -8,4 +8,5 @@ export const colors = {
   mint: '#5BBAB5',
   grey100: '#787878',
   disabled: '#9EA1B0',
+  explText: '#AAAAAA',
 };
