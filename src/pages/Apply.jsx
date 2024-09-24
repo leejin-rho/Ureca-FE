@@ -7,9 +7,11 @@ import InputSection from '../components/apply/InputSection';
 import {
   TextField,
   Button,
-  SelectedField,
+  DropdownField,
 } from '../components/apply/ui/InputFieldUi';
-import { ButtonGroups, InputGroup } from '../components/apply/Groups';
+import { InputGroup } from '../components/apply/Groups';
+
+import dummeyData from '../assets/data/dummeyData';
 
 // Apply Page
 function Apply() {
@@ -146,13 +148,16 @@ function Apply() {
           </InputGroup>
 
           <InputGroup>
-            <SelectedField />
             <TextField
               type={'text'}
               title="adress"
               text="학과"
               maxWidth={'41.6rem'}
             />
+
+            {dummeyData.map((option, i) => {
+              return <DropdownField key={i} options={option} />;
+            })}
           </InputGroup>
 
           <InputGroup>
