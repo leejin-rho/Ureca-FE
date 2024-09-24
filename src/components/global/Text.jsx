@@ -54,7 +54,7 @@ export const Text = styled.div`
   color: ${({ color }) => (color ? color : colors.black)};
   display: flex;
   align-items: center;
-  text-align: center;
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
   margin: ${({ margin }) => (margin ? margin : '0')};
   ${({ variant }) => headingStyles[variant] || headingStyles.h5}
   line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : '150%')};

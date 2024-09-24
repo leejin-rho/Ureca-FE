@@ -1,13 +1,15 @@
+import { useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
-import Section from '@components/home/Section';
 import { Flex } from '@components/global/Flex';
 import UrecaImage from '@/assets/images/pngs/URECA.png';
 import UrecaMerit from '@/assets/images/pngs/ureca-merit.png';
-import InfoList from '../components/home/InfoList';
-import { useRef } from 'react';
+import UrecaOrder from '@/assets/images/pngs/recruit-order.png';
+import Section from '@components/home/Section';
+import InfoList from '@components/home/InfoList';
 import Subheader from '@components/home/SubHeader';
 import Navbar from '@components/global/Navbar';
+import Education from '@components/home/Education';
 
 const Home = () => {
   const sectionRefs = useRef([]);
@@ -59,7 +61,9 @@ const Home = () => {
             <Section
               title="교육안내"
               expl="필요한 것만 쏙쏙, 탄탄하게 준비했습니다"
-            ></Section>
+            >
+              <Education />
+            </Section>
           </div>
 
           <div ref={(el) => (sectionRefs.current[3] = el)}>
@@ -68,7 +72,9 @@ const Home = () => {
               expl="서류접수 이후 선발절차"
               subexpl="서류 접수부터 오리엔테이션까지 선발절차를 확인하세요.
 더 자세한 날짜는 서류 합격 이후 개별 연락드릴 예정입니다."
-            ></Section>
+            >
+              <UrecaImg src={UrecaOrder} height={'12rem'} />
+            </Section>
           </div>
           <div ref={(el) => (sectionRefs.current[4] = el)}>
             <Section

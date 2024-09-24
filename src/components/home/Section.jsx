@@ -37,7 +37,7 @@ const SectionContainer = styled(Flex)`
   padding: 6.25rem 8.125rem;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 6.25rem;
   margin-top: 12.5rem;
 `;
 

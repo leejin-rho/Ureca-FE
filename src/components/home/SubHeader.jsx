@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
-import Background from '@/assets/images/pngs/home_background.png';
+import Background from '@/assets/images/pngs/home-background.png';
 import { Button } from '@components/global/Button';
 
 const Subheader = () => {
