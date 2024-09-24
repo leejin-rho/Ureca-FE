@@ -87,6 +87,8 @@ const MainContainer = styled.div`
       rgba(230, 0, 126, 0.1) 100%
     ),
     ${colors.background};
+
+  margin-top: 72px;
 `;
 
 const UrecaImg = styled.img`

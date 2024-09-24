@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import LogoImage from '@/assets/images/svgs/Logo';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
+import { Button } from './Button';
 
 const Navbar = () => {
   const handleClick = () => {};
@@ -40,7 +41,7 @@ const Navbar = () => {
             FAQ
           </Text>
         </NavBtn>
-        <ApplyBtn>지원하기</ApplyBtn>
+        <Button>지원하기</Button>
       </RowFlex>
     </NavContainer>
   );
@@ -71,7 +72,10 @@ const NavBtn = styled.div`
   display: flex;
   width: fit-content;
 
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    color: ${colors.gray100};
+  }
 `;
 
 const RowFlex = styled.div`
@@ -80,27 +84,4 @@ const RowFlex = styled.div`
   flex-direction: row;
   gap: 1.875rem;
   box-sizing: border-box;
-`;
-
-const ApplyBtn = styled.div`
-  display: flex;
-  padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 0.75rem;
-  background-color: ${colors.white};
-
-  box-sizing: border-box;
-  margin-left: 1.5rem;
-
-  font-family: 'Pretendard';
-  font-size: 14px;
-  font-weight: 600;
-
-  &:hover {
-    cursor: pointer;
-    background-color: ${colors.primaryColor};
-    color: ${colors.white};
-  }
 `;

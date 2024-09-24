@@ -3,18 +3,32 @@ import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
 import Background from '@/assets/images/pngs/home_background.png';
+import { Button } from '@components/global/Button';
 
 const Subheader = () => {
   return (
     <BackImgDiv direction="column">
       <BackgroundImg src={Background} />
       <TopInfoDiv>
-        <Text color={colors.white} variant="h2">
-          LG U+ 유레카 아카데미 2기
-        </Text>
-        <Text color={colors.white} variant="h4">
-          디지털 세상에서 일하는 방식을 체험하자
-        </Text>
+        <Flex direction="column" height="fit-content">
+          <Text color={colors.white} variant="h1">
+            LG U+ 유레카 아카데미 2기
+          </Text>
+          <Text color={colors.white} variant="h4">
+            디지털 세상에서 일하는 방식을 체험하자
+          </Text>
+        </Flex>
+        <Button
+          bgi={colors.glass}
+          bg={colors.glass}
+          hbgi={colors.glassHover}
+          hoverBg={colors.glass}
+          isBorder={true}
+          fontColor={colors.white}
+          width="9rem"
+        >
+          지원하기
+        </Button>
       </TopInfoDiv>
     </BackImgDiv>
   );
@@ -32,6 +46,7 @@ const BackImgDiv = styled(Flex)`
 const TopInfoDiv = styled(Flex)`
   flex-direction: column;
   z-index: 1;
+  gap: 1.8rem;
 `;
 
 const BackgroundImg = styled.img`

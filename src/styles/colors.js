@@ -6,7 +6,12 @@ export const colors = {
   pink50: '#FFE3F3',
   pink100: '#DB95AC',
   mint: '#5BBAB5',
-  grey100: '#787878',
+  gray100: '#787878',
   disabled: '#9EA1B0',
   explText: '#AAAAAA',
+
+  glass:
+    'linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.10) 0.01%, rgba(255, 255, 255, 0.20) 100%)',
+  glassHover:
+    'linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%,rgba(255, 255, 255, 0.3) 100%)',
 };
