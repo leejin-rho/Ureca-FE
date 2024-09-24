@@ -7,10 +7,11 @@ import SvgKakaoTalkButtonDefault from '@assets/images/svgs/KakaoTalkButtonDefaul
 export const Layout = ({ children }) => {
   return (
     <Wrapper direction="column" align="center">
-      <Navbar />
       {children}
       <Footer />
-      <KaKaoTalkButton />
+      <a href="https://pf.kakao.com/_RxlNeG/chat">
+        <KaKaoTalkButton />
+      </a>
     </Wrapper>
   );
 };

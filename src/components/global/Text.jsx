@@ -5,7 +5,7 @@ import { colors } from '@/styles/colors';
 const headingStyles = {
   h1: css`
     font-family: 'Pretendard';
-    font-size: 40px;
+    font-size: 45px;
     font-weight: 700;
   `,
   h2: css`
@@ -15,7 +15,7 @@ const headingStyles = {
   `,
   h3: css`
     font-family: 'Pretendard';
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 800;
   `,
   h4: css`

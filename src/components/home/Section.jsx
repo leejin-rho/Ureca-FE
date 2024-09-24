@@ -38,7 +38,7 @@ const SectionContainer = styled(Flex)`
   align-items: center;
   justify-content: center;
   gap: 5rem;
-  margin-bottom: 12.5rem;
+  margin-top: 12.5rem;
 `;
 
 const HeadBox = styled(Flex)`

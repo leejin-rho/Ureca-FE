@@ -5,8 +5,9 @@ import { Flex } from '@components/global/Flex';
 import UrecaImage from '@/assets/images/pngs/URECA.png';
 import UrecaMerit from '@/assets/images/pngs/ureca-merit.png';
 import InfoList from '../components/home/InfoList';
-import { useEffect, useRef } from 'react';
-import Subheader from '../components/home/SubHeader';
+import { useRef } from 'react';
+import Subheader from '@components/home/SubHeader';
+import Navbar from '@components/global/Navbar';
 
 const Home = () => {
   const sectionRefs = useRef([]);
@@ -16,58 +17,70 @@ const Home = () => {
   };
 
   return (
-    <MainContainer>
-      <Subheader />
-      <InfoList />
-      <Flex direction="column">
-        <Section
-          title="교육 목표"
-          expl="이동통신 서비스 기업 LG U+가
+    <>
+      <Navbar scrollToSection={scrollToSection} />
+      <MainContainer>
+        <Subheader />
+        <InfoList />
+        <SectionList direction="column">
+          <div ref={(el) => (sectionRefs.current[0] = el)}>
+            <Section
+              title="교육 목표"
+              expl="이동통신 서비스 기업 LG U+가
 유레카 아카데미를 운영하는 이유"
-          subexpl="현업 수요에 따른 커리큘럼과, 융합 프로젝트를 통한 역량을 강화하고, 
+              subexpl="현업 수요에 따른 커리큘럼과, 융합 프로젝트를 통한 역량을 강화하고, 
 프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해 실무형 인재로 거듭날 수 있습니다."
-        >
-          <UrecaImg src={UrecaImage} />
-        </Section>
+            >
+              <UrecaImg src={UrecaImage} />
+            </Section>
+          </div>
 
-        <Section
-          title="WHY URECA?"
-          expl="LG U+ 유레카 아카데미만의 혜택"
-          subexpl="유레카는 LG유플러스가 원하는 IT 인재 육성을 위한 교육과정입니다.
+          <div ref={(el) => (sectionRefs.current[1] = el)}>
+            <Section
+              title="WHY URECA?"
+              expl="LG U+ 유레카 아카데미만의 혜택"
+              subexpl="유레카는 LG유플러스가 원하는 IT 인재 육성을 위한 교육과정입니다.
 수료생 전원 입사 지원 시 서류 전형, 코딩테스트를 면제합니다."
-        >
-          <UrecaImg src={UrecaMerit} height={'40rem'} />
-        </Section>
+            >
+              <UrecaImg src={UrecaMerit} height={'40rem'} />
+            </Section>
+          </div>
 
-        <Section
-          title="WHY URECA?"
-          expl="LG U+ 유레카 아카데미 프로젝트 소개"
-          subexpl="프론트엔드와 백엔드 팀 융합 프로젝트를 통해 소통 및 협업 능력을 키우고, LG 유플러스 현업 도구 
-및 현직자 참여 기반 프로젝트 진행을 통해 프로젝트 기획/분석/ 설계 능력을 익힐 수 있습니다."
-        >
-          <BackSquare />
-        </Section>
+          <Section
+            title="WHY URECA?"
+            expl="LG U+ 유레카 아카데미 프로젝트 소개"
+            subexpl="프론트엔드와 백엔드 팀 융합 프로젝트를 통해 소통 및 협업 능력을 키우고, LG 유플러스 현업 도구 및 
+현직자 참여 기반 프로젝트 진행을 통해 프로젝트 기획/분석/ 설계 능력을 익힐 수 있습니다."
+          >
+            <BackSquare />
+          </Section>
 
-        <Section
-          title="교육안내"
-          expl="필요한 것만 쏙쏙, 탄탄하게 준비했습니다"
-        ></Section>
+          <div ref={(el) => (sectionRefs.current[2] = el)}>
+            <Section
+              title="교육안내"
+              expl="필요한 것만 쏙쏙, 탄탄하게 준비했습니다"
+            ></Section>
+          </div>
 
-        <Section
-          title="선발절차"
-          expl="서류접수 이후 선발절차"
-          subexpl="서류 접수부터 오리엔테이션까지 선발절차를 확인하세요.
+          <div ref={(el) => (sectionRefs.current[3] = el)}>
+            <Section
+              title="선발절차"
+              expl="서류접수 이후 선발절차"
+              subexpl="서류 접수부터 오리엔테이션까지 선발절차를 확인하세요.
 더 자세한 날짜는 서류 합격 이후 개별 연락드릴 예정입니다."
-        ></Section>
-
-        <Section
-          title="자주 묻는 질문"
-          expl="궁금한 점이 있으신가요?"
-          subexpl="자주 묻는 질문은 아래의 링크를 확인해주시고
+            ></Section>
+          </div>
+          <div ref={(el) => (sectionRefs.current[4] = el)}>
+            <Section
+              title="자주 묻는 질문"
+              expl="궁금한 점이 있으신가요?"
+              subexpl="자주 묻는 질문은 아래의 링크를 확인해주시고
 문의 사항이 있다면 카카오톡으로 문의해주세요."
-        ></Section>
-      </Flex>
-    </MainContainer>
+            ></Section>
+          </div>
+        </SectionList>
+      </MainContainer>
+    </>
   );
 };
 
@@ -88,7 +101,7 @@ const MainContainer = styled.div`
     ),
     ${colors.background};
 
-  margin-top: 72px;
+  padding-top: 72px;
 `;
 
 const UrecaImg = styled.img`
@@ -111,4 +124,8 @@ const BackSquare = styled(Flex)`
     rgba(255, 255, 255, 0.21) 100%
   );
   backdrop-filter: blur(15px);
+`;
+
+const SectionList = styled(Flex)`
+  margin-bottom: 12.5rem;
 `;

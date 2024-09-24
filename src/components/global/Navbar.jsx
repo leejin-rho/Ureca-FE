@@ -1,24 +1,28 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import LogoImage from '@/assets/images/svgs/Logo';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
 import { Button } from './Button';
 
-const Navbar = () => {
-  const handleClick = () => {};
+const Navbar = ({ scrollToSection }) => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <NavContainer>
       <LogoImage height={45} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={scrollToTop}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             HOME
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(1)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             {`WHY `}
           </Text>
@@ -26,17 +30,17 @@ const Navbar = () => {
             URECA
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(2)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             교육안내
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(3)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             선발절차
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(4)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             FAQ
           </Text>
@@ -56,7 +60,7 @@ const NavContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 3rem;
+  padding: 0 4rem 0 3rem;
 
   background-color: black;
   z-index: 999;

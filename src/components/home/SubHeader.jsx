@@ -14,7 +14,7 @@ const Subheader = () => {
           <Text color={colors.white} variant="h1">
             LG U+ 유레카 아카데미 2기
           </Text>
-          <Text color={colors.white} variant="h4">
+          <Text color={colors.white} variant="h3">
             디지털 세상에서 일하는 방식을 체험하자
           </Text>
         </Flex>
@@ -24,8 +24,10 @@ const Subheader = () => {
           hbgi={colors.glassHover}
           hoverBg={colors.glass}
           isBorder={true}
+          fontSize="16px"
           fontColor={colors.white}
-          width="9rem"
+          width="10rem"
+          height="3.6rem"
         >
           지원하기
         </Button>

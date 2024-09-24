@@ -8,6 +8,7 @@ export const Button = styled.div`
   justify-content: center;
   align-items: center;
   width: ${({ width }) => (width ? width : 'fit-content')};
+  height: ${({ height }) => (height ? height : 'fit-content')};
 
   border-radius: 0.75rem;
   background-color: ${({ bg }) => (bg ? bg : colors.white)};
@@ -19,7 +20,7 @@ export const Button = styled.div`
   margin-left: 1.5rem;
 
   font-family: 'Pretendard';
-  font-size: 14px;
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : '14px')};
   font-weight: 600;
   color: ${({ fontColor }) => (fontColor ? fontColor : colors.primaryColor)};
 
