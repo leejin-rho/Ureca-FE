@@ -14,10 +14,10 @@ export const globalStyle = css`
   }
 
   body {
+    width: 100%;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
     margin: 0;
+    padding: 0;
     min-width: 320px;
     min-height: 100vh;
 
