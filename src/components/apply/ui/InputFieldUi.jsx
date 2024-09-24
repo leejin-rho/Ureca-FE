@@ -4,15 +4,17 @@ import styled from '@emotion/styled';
 import { colors } from '../../../styles/colors';
 import { ButtonGroups } from '../Groups';
 
-export function Input({ type, title, text, maxValue }) {
+// 일반 Text 필드
+export function TextField({ type, title, text, maxWidth }) {
   return (
-    <InputContainer maxValue={maxValue}>
+    <InputContainer maxWidth={maxWidth}>
       <InputLabelElement htmlFor={title}>{text}</InputLabelElement>
       <InputElement type={type} name={title} id={title} />
     </InputContainer>
   );
 }
 
+// 일반 Button
 export function Button({ title, type, buttons }) {
   return (
     <InputContainer>
@@ -29,11 +31,20 @@ export function Button({ title, type, buttons }) {
   );
 }
 
+// 커스텀 Select / Option
+export function SelectedField() {
+  return (
+    <InputContainer>
+      <InputLabelElement htmlFor="전공계열">전공계열</InputLabelElement>
+    </InputContainer>
+  );
+}
+
 const InputContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: ${({ maxValue }) => maxValue};
+  max-width: ${({ maxWidth }) => maxWidth};
   gap: 0.8rem;
 `;
 
@@ -58,6 +69,7 @@ const InputElement = styled.input`
   }
 `;
 
+// 버튼일 경우
 const ButtonElement = styled.button`
   flex-grow: 1;
   padding: 0.8rem 1.6rem;
