@@ -23,7 +23,6 @@ function InputSection({ title, children }) {
 
 const SectionContainer = styled.section`
   width: 85.6rem;
-  background-color: aqua;
   margin-bottom: 10rem;
 `;
 
