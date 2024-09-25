@@ -1,1 +1,7 @@
-export default [['Framer', 'Sketch', 'Invision Studio', 'Figma', 'AdobeXD']];
+export const options = [
+  'Framer',
+  'Sketch',
+  'Invision Studio',
+  'Figma',
+  'AdobeXD',
+];

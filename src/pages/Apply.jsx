@@ -11,8 +11,6 @@ import {
 } from '../components/apply/ui/InputFieldUi';
 import { InputGroup } from '../components/apply/Groups';
 
-import dummeyData from '../assets/data/dummeyData';
-
 // Apply Page
 function Apply() {
   return (
@@ -89,8 +87,8 @@ function Apply() {
               title="교육 방식"
               type="supportField"
               buttons={[
-                { id: 'front', value: 'true', text: '프론트엔드' },
-                { id: 'back', value: 'false', text: '백엔드' },
+                { id: 'visited', value: 'true', text: '대면' },
+                { id: 'nonVisited', value: 'false', text: '비대면' },
               ]}
             />
           </InputGroup>
@@ -100,8 +98,8 @@ function Apply() {
               title="전공 여부"
               type="supportField"
               buttons={[
-                { id: 'front', value: 'true', text: '프론트엔드' },
-                { id: 'back', value: 'false', text: '백엔드' },
+                { id: 'major', value: 'true', text: '전공자' },
+                { id: 'non-major', value: 'false', text: '비전공자' },
               ]}
             />
 
@@ -155,9 +153,7 @@ function Apply() {
               maxWidth={'41.6rem'}
             />
 
-            {dummeyData.map((option, i) => {
-              return <DropdownField key={i} options={option} />;
-            })}
+            <DropdownField label={'전공 계열'} />
           </InputGroup>
 
           <InputGroup>

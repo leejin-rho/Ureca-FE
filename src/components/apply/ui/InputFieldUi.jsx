@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '../../../styles/colors';
 import { ButtonGroups } from '../Groups';
+import { options } from '../../../assets/data/dummeyData';
 
 // 일반 Text 필드
 export function TextField({ type, title, text, maxWidth }) {
@@ -32,7 +33,6 @@ export function Button({ title, type, buttons }) {
 }
 
 // 커스텀 Dropdown Menu
-
 function Select({ menuShow, setMenuShow, selected }) {
   return (
     <SelectElement show={menuShow} onClick={() => setMenuShow(!menuShow)}>
@@ -42,7 +42,7 @@ function Select({ menuShow, setMenuShow, selected }) {
   );
 }
 
-export function DropdownField({ options }) {
+export function DropdownField({ label }) {
   const [menuShow, setMenuShow] = useState(false);
   const [selected, setSelected] = useState(options[0]);
 
@@ -53,7 +53,7 @@ export function DropdownField({ options }) {
 
   return (
     <InputContainer>
-      <InputLabelElement htmlFor="전공계열">전공계열</InputLabelElement>
+      <InputLabelElement>{label}</InputLabelElement>
       <DropdownElement>
         <Select
           menuShow={menuShow}
@@ -79,7 +79,7 @@ const InputContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: ${({ maxWidth }) => maxWidth};
+  max-width: 41.6rem;
   gap: 0.8rem;
 `;
 
@@ -122,19 +122,19 @@ const ButtonElement = styled.button`
 
 // Select
 const SelectElement = styled.div`
-  background-color: #2a2f3b;
-  color: #fff;
+  background-color: #f4f6f9;
+  /* color: #fff; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 2px solid ${({ show }) => (show ? '#26489a' : '#2a2f3b')};
-  border-radius: 0.5em;
-  padding: 1em;
+  border: 1px solid
+    ${({ show }) => (show ? colors.primaryColor : 'transparent')};
+  border-radius: 0.8rem;
+  padding: 0.8rem 1.6rem;
   cursor: pointer;
 
-  :hover {
-    background-color: #323741;
-  }
+  font-size: 13.3333px;
+  line-height: normal;
 `;
 
 const CaretIcon = styled.div`
@@ -142,7 +142,7 @@ const CaretIcon = styled.div`
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 6px solid #fff;
+  border-top: 6px solid #b0b5bd;
   transform: ${({ show }) => show && 'rotate(180deg)'};
 `;
 
@@ -150,7 +150,6 @@ const CaretIcon = styled.div`
 const DropdownElement = styled.div`
   min-width: 15em;
   position: relative;
-  margin: 2em;
 
   & > * {
     box-sizing: border-box;
@@ -160,15 +159,16 @@ const DropdownElement = styled.div`
 const DropdownMenu = styled.ul`
   list-style: none;
   padding: 0.2em 0.5em;
-  background-color: #323741;
-  border: 1px solid #363a43;
+  /* background-color: #f4f6f9; */
+  background-color: #fff;
+  border: 1px solid transparent;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
-  color: #9fa5b5;
+  color: #000;
   position: absolute;
-  top: 3em;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 4rem;
+  left: 0;
+  right: 0;
   opacity: ${({ open }) => (open ? 1 : 0)};
   display: ${({ open }) => (open ? 'block' : 'none')};
   transition: 0.2s;
@@ -182,27 +182,30 @@ const DropdownMenu = styled.ul`
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #2a2d35;
+    background-color: #ffffff;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: #555;
+    background-color: #d5d8dd;
     border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background-color: #26489a;
+    background-color: #acb0b6;
   }
 `;
 
 const DropdownMenuItem = styled.li`
-  padding: 0.7em 0.5em;
+  padding: 0.8rem 0.5rem;
   margin: 0.3em 0;
   border-radius: 0.5em;
   cursor: pointer;
   text-align: left;
 
+  font-size: 12px;
+  line-height: normal;
+
   :hover {
-    background-color: #2a2d35;
+    background-color: #b0b5bd1e;
   }
 `;
