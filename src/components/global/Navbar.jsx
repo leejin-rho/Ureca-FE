@@ -60,7 +60,7 @@ const NavContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 4rem 0 3rem;
+  padding: 0 6rem 0 5rem;
 
   background-color: black;
   z-index: 999;

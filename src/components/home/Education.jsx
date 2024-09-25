@@ -22,8 +22,12 @@ const Education = () => {
 
   return (
     <Wrapper>
-      <EducationBox title="프론트엔드 개발자" explList={FrontExpl} />
-      <EducationBox title="백엔드 개발자" explList={BackExpl} />
+      <EducationBox
+        title="프론트엔드 개발자"
+        explList={FrontExpl}
+        type="frontend"
+      />
+      <EducationBox title="백엔드 개발자" explList={BackExpl} type="backend" />
     </Wrapper>
   );
 };
@@ -32,11 +36,15 @@ export default Education;
 
 const Wrapper = styled.div`
   display: grid;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-  grid-template-columns: repeat(2, 1fr);
   flex-wrap: wrap;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 1023px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;

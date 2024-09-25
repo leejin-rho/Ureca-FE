@@ -1,4 +1,5 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
@@ -17,6 +18,45 @@ const Home = () => {
   const scrollToSection = (index) => {
     sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  //   const fadeIn = keyframes
+  //   from {
+  //     opacity: 0;
+  //     transform: translateY(20px);
+  //   }
+  //   to {
+  //     opacity: 1;
+  //     transform: translateY(0);
+  //   }
+  // `;
+
+  //   const animatedStyle = (isVisible) => css`
+  //     opacity: ${isVisible ? 1 : 0};
+  //     animation: ${isVisible ? `${fadeIn} 0.5s forwards` : 'none'};
+  //   `;
+
+  //   const [isVisible, setIsVisible] = useState(false);
+
+  //   useEffect(() => {
+  //     const observer = new IntersectionObserver((entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           setIsVisible(true);
+  //           observer.disconnect();
+  //         }
+  //       });
+  //     });
+
+  //     if (sectionRefs.current[3]) {
+  //       observer.observe(sectionRefs.current[3]); // 특정 요소 관찰
+  //     }
+
+  //     return () => {
+  //       if (sectionRefs.current[3]) {
+  //         observer.unobserve(sectionRefs.current[3]);
+  //       }
+  //     };
+  //   }, []);
 
   return (
     <>
@@ -61,6 +101,7 @@ const Home = () => {
             <Section
               title="교육안내"
               expl="필요한 것만 쏙쏙, 탄탄하게 준비했습니다"
+              subexpl="유플러스에서 직접 커리큘럼을 구성했습니다."
             >
               <Education />
             </Section>
@@ -73,7 +114,7 @@ const Home = () => {
               subexpl="서류 접수부터 오리엔테이션까지 선발절차를 확인하세요.
 더 자세한 날짜는 서류 합격 이후 개별 연락드릴 예정입니다."
             >
-              <UrecaImg src={UrecaOrder} height={'12rem'} />
+              <UrecaImg src={UrecaOrder} height={'14.5rem'} />
             </Section>
           </div>
           <div ref={(el) => (sectionRefs.current[4] = el)}>

@@ -2,11 +2,14 @@ import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
+import SendIcon from '@/assets/images/svgs/Send';
 
-const EducationBox = ({ title, explList }) => {
+const EducationBox = ({ title, explList, type }) => {
+  const eduUrl = 'https://lgupluskdt.recruiter.co.kr/career/' + type;
+
   return (
     <Wrapper>
-      <Text color={colors.white} variant="h7">
+      <Text color={colors.white} variant="h6" style={{ fontWeight: 700 }}>
         {title}
       </Text>
       <ExplBox>
@@ -19,6 +22,14 @@ const EducationBox = ({ title, explList }) => {
             </li>
           ))}
       </ExplBox>
+      <a href={eduUrl}>
+        <EduLink>
+          <Text color="#cecece" variant="h8">
+            커리큘럼 상세보기
+          </Text>
+          <SendIcon height="14px" />
+        </EduLink>
+      </a>
     </Wrapper>
   );
 };
@@ -26,16 +37,17 @@ const EducationBox = ({ title, explList }) => {
 export default EducationBox;
 
 const Wrapper = styled(Flex)`
+  position: relative;
   flex-direction: column;
   width: 42rem;
   height: 37rem;
-  padding: 2.25rem 2.25rem;
+  padding: 2.25rem;
 
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 2.25rem;
-  color: ${colors.white};
+  /* gap: 2.25rem; */
   border-radius: 1.875rem;
+  box-sizing: border-box;
 
   background: radial-gradient(
       107.22% 46.37% at 89.33% 77.98%,
@@ -50,4 +62,27 @@ const Wrapper = styled(Flex)`
     #262525;
 `;
 
-const ExplBox = styled.ul``;
+const ExplBox = styled.ul`
+  width: 100%;
+  color: ${colors.white};
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  line-height: 170%;
+  margin-top: 2.25rem;
+`;
+
+const EduLink = styled.div`
+  display: flex;
+  position: absolute;
+  width: 100%;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 125%;
+
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  right: 2.25rem;
+  bottom: 1.875rem;
+`;
