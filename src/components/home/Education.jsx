@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   height: fit-content;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 3rem;
   flex-wrap: wrap;
   grid-template-columns: repeat(2, 1fr);
 

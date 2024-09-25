@@ -3,7 +3,8 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
-import UrecaImage from '@/assets/images/pngs/URECA.png';
+import { GlassBox } from '@components/global/GlassBox';
+import { PNGImage } from '@components/global/PNGImage';
 import UrecaMerit from '@/assets/images/pngs/ureca-merit.png';
 import UrecaOrder from '@/assets/images/pngs/recruit-order.png';
 import Section from '@components/home/Section';
@@ -11,6 +12,7 @@ import InfoList from '@components/home/InfoList';
 import Subheader from '@components/home/SubHeader';
 import Navbar from '@components/global/Navbar';
 import Education from '@components/home/Education';
+import Goal from '@components/home/Goal';
 
 const Home = () => {
   const sectionRefs = useRef([]);
@@ -18,45 +20,6 @@ const Home = () => {
   const scrollToSection = (index) => {
     sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
   };
-
-  //   const fadeIn = keyframes
-  //   from {
-  //     opacity: 0;
-  //     transform: translateY(20px);
-  //   }
-  //   to {
-  //     opacity: 1;
-  //     transform: translateY(0);
-  //   }
-  // `;
-
-  //   const animatedStyle = (isVisible) => css`
-  //     opacity: ${isVisible ? 1 : 0};
-  //     animation: ${isVisible ? `${fadeIn} 0.5s forwards` : 'none'};
-  //   `;
-
-  //   const [isVisible, setIsVisible] = useState(false);
-
-  //   useEffect(() => {
-  //     const observer = new IntersectionObserver((entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           setIsVisible(true);
-  //           observer.disconnect();
-  //         }
-  //       });
-  //     });
-
-  //     if (sectionRefs.current[3]) {
-  //       observer.observe(sectionRefs.current[3]); // 특정 요소 관찰
-  //     }
-
-  //     return () => {
-  //       if (sectionRefs.current[3]) {
-  //         observer.unobserve(sectionRefs.current[3]);
-  //       }
-  //     };
-  //   }, []);
 
   return (
     <>
@@ -73,7 +36,7 @@ const Home = () => {
               subexpl="현업 수요에 따른 커리큘럼과, 융합 프로젝트를 통한 역량을 강화하고, 
 프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해 실무형 인재로 거듭날 수 있습니다."
             >
-              <UrecaImg src={UrecaImage} />
+              <Goal />
             </Section>
           </div>
 
@@ -84,7 +47,7 @@ const Home = () => {
               subexpl="유레카는 LG유플러스가 원하는 IT 인재 육성을 위한 교육과정입니다.
 수료생 전원 입사 지원 시 서류 전형, 코딩테스트를 면제합니다."
             >
-              <UrecaImg src={UrecaMerit} height={'40rem'} />
+              <PNGImage src={UrecaMerit} height={'45rem'} />
             </Section>
           </div>
 
@@ -94,7 +57,7 @@ const Home = () => {
             subexpl="프론트엔드와 백엔드 팀 융합 프로젝트를 통해 소통 및 협업 능력을 키우고, LG 유플러스 현업 도구 및 
 현직자 참여 기반 프로젝트 진행을 통해 프로젝트 기획/분석/ 설계 능력을 익힐 수 있습니다."
           >
-            <BackSquare />
+            <GlassBox />
           </Section>
 
           <div ref={(el) => (sectionRefs.current[2] = el)}>
@@ -114,7 +77,7 @@ const Home = () => {
               subexpl="서류 접수부터 오리엔테이션까지 선발절차를 확인하세요.
 더 자세한 날짜는 서류 합격 이후 개별 연락드릴 예정입니다."
             >
-              <UrecaImg src={UrecaOrder} height={'14.5rem'} />
+              <PNGImage src={UrecaOrder} height={'14.5rem'} />
             </Section>
           </div>
           <div ref={(el) => (sectionRefs.current[4] = el)}>
@@ -151,28 +114,6 @@ const MainContainer = styled.div`
   padding-top: 72px;
 `;
 
-const UrecaImg = styled.img`
-  height: ${({ height }) => (height ? height : '21.25rem')};
-`;
-
-const BackSquare = styled(Flex)`
-  padding: 4rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.625rem;
-
-  border-radius: 1rem;
-  border: 1px solid #e8eaff;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.34) 0%,
-    rgba(255, 255, 255, 0.11) 0.01%,
-    rgba(255, 255, 255, 0.21) 100%
-  );
-  backdrop-filter: blur(15px);
-`;
-
 const SectionList = styled(Flex)`
-  margin-bottom: 12.5rem;
+  margin-bottom: 8rem;
 `;

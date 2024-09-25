@@ -34,7 +34,7 @@ const InfoContainer = styled.div`
   border-radius: 1.25rem;
 
   border: 0.1rem solid rgba(255, 255, 255, 0.3);
-  background-image: linear-gradient(rgba(26, 26, 26, 1)),
+  background: linear-gradient(rgba(26, 26, 26, 1)),
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05));
 
   backdrop-filter: blur(30px);

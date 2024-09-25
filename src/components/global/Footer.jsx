@@ -15,8 +15,8 @@ const Footer = () => {
         프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해 실무형 인재로 거듭날
         수 있습니다.
         <Flex justify="flex-start">
-          <SupportImage1 height="3.5rem" />
-          <SupportImage2 height="3.5rem" />
+          <SupportImage1 height="3rem" />
+          <SupportImage2 height="3rem" />
         </Flex>
       </Wrapper>
     </FooterContainer>
@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   width: 810px;
-  gap: 4rem;
+  gap: 4.25rem;
 
   font-family: 'Pretendard';
   font-size: 14px;

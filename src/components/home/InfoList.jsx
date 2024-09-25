@@ -23,7 +23,7 @@ export default InfoList;
 const ListContainer = styled(Flex)`
   margin-top: 6.15rem;
   flex-direction: row;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   align-items: center;
   justify-content: center;

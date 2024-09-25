@@ -39,7 +39,7 @@ export default EducationBox;
 const Wrapper = styled(Flex)`
   position: relative;
   flex-direction: column;
-  width: 42rem;
+  width: 43rem;
   height: 37rem;
   padding: 2.25rem;
 
@@ -63,18 +63,23 @@ const Wrapper = styled(Flex)`
 `;
 
 const ExplBox = styled.ul`
+  display: flex;
+  flex-direction: column;
   width: 100%;
   color: ${colors.white};
   list-style-type: disc;
-  padding-left: 1.5rem;
+  padding: 0 1.5rem;
   line-height: 170%;
   margin-top: 2.25rem;
+  word-break: break-all;
+  box-sizing: border-box;
 `;
 
 const EduLink = styled.div`
   display: flex;
   position: absolute;
   width: 100%;
+
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
