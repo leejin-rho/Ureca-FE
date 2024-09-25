@@ -79,7 +79,7 @@ const NavContainer = styled.div`
   padding: 0 6rem 0 5rem;
 
   background-color: ${(props) =>
-    props.isTransparent ? 'rgba(160, 160, 160, 0.8)' : 'black'};
+    props.isTransparent ? 'rgba(12, 12, 12, 0.8)' : 'black'};
   transition: background-color 0.3s ease;
   z-index: 999;
 
