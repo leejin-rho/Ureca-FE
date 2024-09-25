@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Flex } from '@components/global/Flex';
+import Section from '@components/home/Section';
 import EducationBox from './EducationBox';
 
 const Education = () => {
@@ -21,14 +21,24 @@ const Education = () => {
   ];
 
   return (
-    <Wrapper>
-      <EducationBox
-        title="프론트엔드 개발자"
-        explList={FrontExpl}
-        type="frontend"
-      />
-      <EducationBox title="백엔드 개발자" explList={BackExpl} type="backend" />
-    </Wrapper>
+    <Section
+      title="교육안내"
+      expl="필요한 것만 쏙쏙, 탄탄하게 준비했습니다"
+      subexpl="유플러스에서 직접 커리큘럼을 구성했습니다."
+    >
+      <Wrapper>
+        <EducationBox
+          title="프론트엔드 개발자"
+          explList={FrontExpl}
+          type="frontend"
+        />
+        <EducationBox
+          title="백엔드 개발자"
+          explList={BackExpl}
+          type="backend"
+        />
+      </Wrapper>
+    </Section>
   );
 };
 
