@@ -61,6 +61,7 @@ export function DropdownField({ label }) {
           selected={selected}
         />
 
+        <DropdownMenuOuter show={menuShow} onClick={() => setMenuShow(false)} />
         <DropdownMenu open={menuShow}>
           {options.map((option, idx) => {
             return (
@@ -79,7 +80,7 @@ const InputContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: 41.6rem;
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '41.6rem')};
   gap: 0.8rem;
 `;
 
@@ -106,7 +107,7 @@ const InputElement = styled.input`
 
 // 버튼일 경우
 const ButtonElement = styled.button`
-  flex-grow: 1;
+  width: 100%;
   padding: 0.8rem 1.6rem;
   border-radius: 0.8rem;
   background-color: #f4f6f9;
@@ -193,6 +194,15 @@ const DropdownMenu = styled.ul`
   ::-webkit-scrollbar-thumb:hover {
     background-color: #acb0b6;
   }
+`;
+
+const DropdownMenuOuter = styled.div`
+  display: ${({ show }) => (show ? 'block' : 'none')};
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 `;
 
 const DropdownMenuItem = styled.li`

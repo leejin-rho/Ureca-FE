@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 import { colors } from '@/styles/colors';
@@ -10,9 +10,12 @@ import {
   DropdownField,
 } from '../components/apply/ui/InputFieldUi';
 import { InputGroup } from '../components/apply/Groups';
+import Modal from '../components/apply/ui/Modal';
 
 // Apply Page
 function Apply() {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       {/* 타이틀 */}
@@ -29,12 +32,7 @@ function Apply() {
       <InputSection>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
           <InputGroup>
-            <TextField
-              type="text"
-              title="name"
-              text={'이름'}
-              maxWidth={'41.6rem'}
-            />
+            <TextField type="text" title="name" text={'이름'} />
             <Button
               title="성별"
               type="gender"
@@ -103,12 +101,7 @@ function Apply() {
               ]}
             />
 
-            <TextField
-              type="text"
-              title="name"
-              text={'지원 경로'}
-              maxWidth={'41.6rem'}
-            />
+            <TextField type="text" title="name" text={'지원 경로'} />
           </InputGroup>
         </div>
       </InputSection>
@@ -117,7 +110,12 @@ function Apply() {
       <InputSection title={'인적 사항'}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
           <InputGroup>
-            <TextField type={'text'} title="adress" text="주소" />
+            <TextField
+              type={'text'}
+              title="adress"
+              text="주소"
+              maxWidth={'100%'}
+            />
           </InputGroup>
         </div>
       </InputSection>
@@ -146,12 +144,7 @@ function Apply() {
           </InputGroup>
 
           <InputGroup>
-            <TextField
-              type={'text'}
-              title="adress"
-              text="학과"
-              maxWidth={'41.6rem'}
-            />
+            <TextField type={'text'} title="adress" text="학과" />
 
             <DropdownField label={'전공 계열'} />
           </InputGroup>
@@ -168,6 +161,9 @@ function Apply() {
       {/* 경력 사항 Input Section */}
 
       {/* 자기소개서 Input Section */}
+
+      <button onClick={() => setOpen(true)}>클릭</button>
+      {open && <Modal />}
     </>
   );
 }
