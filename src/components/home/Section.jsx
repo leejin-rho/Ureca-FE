@@ -7,7 +7,7 @@ import { Flex } from '@components/global/Flex';
 const Section = ({ title, expl, subexpl, children }) => {
   return (
     <>
-      <SectionContainer>
+      <SectionContainer mobileGap="45">
         <HeadBox>
           <TitleBox>
             <Text color={colors.primaryColor} variant="h4" lineHeight="120%">
