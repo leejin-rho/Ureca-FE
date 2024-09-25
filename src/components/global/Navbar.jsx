@@ -61,7 +61,7 @@ const Navbar = ({ scrollToSection }) => {
             FAQ
           </Text>
         </NavBtn>
-        <Button>지원하기</Button>
+        <Button style={{ marginLeft: 15 }}>지원하기</Button>
       </RowFlex>
     </NavContainer>
   );

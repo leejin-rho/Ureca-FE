@@ -17,7 +17,6 @@ export const Button = styled.div`
     isBorder ? '1px solid rgba(255, 255, 255, 0.5)' : 'none'};
 
   box-sizing: border-box;
-  margin-left: 1.5rem;
   flex-shrink: 0;
 
   font-family: 'Pretendard';
