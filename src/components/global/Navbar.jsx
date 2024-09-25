@@ -3,8 +3,24 @@ import LogoImage from '@/assets/images/svgs/Logo';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
 import { Button } from './Button';
+import { useEffect, useState } from 'react';
 
 const Navbar = ({ scrollToSection }) => {
+  const [isTransparent, setIsTransparent] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 449) {
+      setIsTransparent(true);
+    } else {
+      setIsTransparent(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -13,7 +29,7 @@ const Navbar = ({ scrollToSection }) => {
   };
 
   return (
-    <NavContainer>
+    <NavContainer isTransparent={isTransparent}>
       <LogoImage height={45} style={{ flexShrink: 0 }} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
@@ -62,7 +78,9 @@ const NavContainer = styled.div`
   box-sizing: border-box;
   padding: 0 6rem 0 5rem;
 
-  background-color: black;
+  background-color: ${(props) =>
+    props.isTransparent ? 'rgba(160, 160, 160, 0.8)' : 'black'};
+  transition: background-color 0.3s ease;
   z-index: 999;
 
   position: fixed;

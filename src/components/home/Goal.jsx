@@ -101,10 +101,10 @@ const ExplList = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-left: 1rem;
 
   color: ${colors.white};
   list-style-type: disc;
+  padding-left: 1rem;
 
   word-break: break-all;
   box-sizing: border-box;
