@@ -1,13 +1,15 @@
 export const options = {
-  status: ['졸업', '수료', '졸업 예정', '중퇴'],
-  scroeList: ['4.0', '4.3', '4.5'],
-  highschoolType: [
-    '인문계',
-    '상업계',
-    '공업계',
-    '특수목적고',
-    '특성화고',
-    '자율형고',
+  status: ['선택해주세요', '졸업', '수료', '졸업 예정', '중퇴'],
+  scroeList: ['선택해주세요', '4.0', '4.3', '4.5'],
+  universityType: [
+    '선택해주세요',
+    '교육계열',
+    '의약계열',
+    '예체능계열',
+    '공학계열',
+    '사회계열',
+    '인문계열',
+    '자연계열',
   ],
   dummey: ['Framer', 'Sketch', 'Invision Studio', 'Figma', 'AdobeXD'],
 };

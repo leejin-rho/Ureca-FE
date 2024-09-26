@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { Text } from '../../global/Text';
 
@@ -11,7 +11,17 @@ import { colors } from '../../../styles/colors';
 import { TextFieldAndIcons } from './InputFieldUi';
 import axios from 'axios';
 
-function Modal({ open, setOpen, gubun, setName, setLocation, setType }) {
+function Modal({
+  title,
+  info,
+  open,
+  setOpen,
+  gubun,
+  setName,
+  setLocation,
+  setType,
+  listData,
+}) {
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
 
@@ -19,29 +29,56 @@ function Modal({ open, setOpen, gubun, setName, setLocation, setType }) {
     setOpen(false);
   };
 
-  // 학교 검색 후 결과
+  // 학교 검색 후 결과 반환
   const onSubmitHandler = async (event) => {
     event.preventDefault();
 
-    if (search.length < 2) alert('두 글자 이상 입력해 주세요.');
+    if (gubun && search.length < 2) alert('두 글자 이상 입력해 주세요.');
     else {
-      await axios
-        .get(
-          `https://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=${
-            import.meta.env.VITE_SCHOOL_INFO_API
-          }&svcType=api&svcCode=SCHOOL&contentType=json&gubun=${gubun}&searchSchulNm=${search}`,
-        )
-        .then((res) => res.data.dataSearch.content)
-        .then((data) => {
-          setData(data);
+      if (gubun) {
+        await axios
+          .get(
+            `https://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=${
+              import.meta.env.VITE_SCHOOL_INFO_API
+            }&svcType=api&svcCode=SCHOOL&contentType=json&gubun=${gubun}&searchSchulNm=${search}`,
+          )
+          .then((res) => res.data.dataSearch.content)
+          .then((data) => {
+            setData(data);
+          });
+      } else {
+        if (search.length === 0) {
+          setData(listData);
+          return;
+        }
+
+        const temp = [];
+
+        listData.forEach((data) => {
+          if (data.includes(search)) {
+            temp.push(data);
+          }
         });
+
+        setData(temp);
+      }
     }
   };
 
-  const selectedSchoolInfo = (school, adress, gubun) => {
-    setName(school);
-    setLocation(adress);
-    setType(gubun);
+  useEffect(() => {
+    if (!gubun) {
+      setData(listData);
+    }
+  }, []);
+
+  const selectedSchoolInfo = (name, location, type) => {
+    if (gubun === 'high_list') {
+      setType(type);
+    }
+
+    setName(name);
+    setLocation(location);
+
     onCloseModal();
   };
 
@@ -51,17 +88,26 @@ function Modal({ open, setOpen, gubun, setName, setLocation, setType }) {
         <ModalHeader>
           {/* <HeaderTitle>국적 검색</HeaderTitle> */}
           <Text color={colors.primaryColor} variant="h4">
-            학교 검색
+            {title || '학교 검색'}
           </Text>
           <StyledCloseIcon onClick={onCloseModal} />
         </ModalHeader>
         <ModalContent>
           <div>
             <Explanation>
-              <p>
-                <AiFillExclamationCircle />
-                검색 버튼을 눌러 학교명을 선택하여 주시기 바랍니다.
-              </p>
+              {info.length > 0 ? (
+                info.map((message, idx) => (
+                  <p key={idx}>
+                    <AiFillExclamationCircle />
+                    {message}
+                  </p>
+                ))
+              ) : (
+                <p>
+                  <AiFillExclamationCircle />
+                  검색 버튼을 눌러 학교명을 선택하여 주시기 바랍니다.
+                </p>
+              )}
             </Explanation>
 
             <form onSubmit={onSubmitHandler} style={{ marginBottom: 10 }}>
@@ -76,23 +122,30 @@ function Modal({ open, setOpen, gubun, setName, setLocation, setType }) {
 
             <div>
               {data.length > 0 &&
-                data.map((element) => (
-                  <DataItem
-                    key={element.seq}
-                    onClick={() =>
-                      selectedSchoolInfo(
-                        element.schoolName,
-                        element.adres.split(',')[0].split('(')[0],
-                        element.schoolGubun,
-                      )
-                    }
-                  >
-                    <DataText size={'14px'}>{element.schoolName}</DataText>
-                    <DataText>
-                      {element.adres.split(',')[0].split('(')[0]}
-                    </DataText>
-                  </DataItem>
-                ))}
+                data.map((element, idx) =>
+                  gubun ? (
+                    <DataItem
+                      key={element.seq}
+                      onClick={() =>
+                        selectedSchoolInfo(
+                          element.schoolName,
+                          element.adres.split(',')[0].split('(')[0],
+                          element.schoolGubun,
+                        )
+                      }
+                    >
+                      <DataText size={'14px'}>{element.schoolName}</DataText>
+                      <DataText>
+                        {element.adres.split(',')[0].split('(')[0]}
+                      </DataText>
+                    </DataItem>
+                  ) : (
+                    <DataItem key={idx}>
+                      <DataText size={'14px'}>{element}</DataText>
+                      <DataText></DataText>
+                    </DataItem>
+                  ),
+                )}
             </div>
           </div>
         </ModalContent>
@@ -127,6 +180,9 @@ const ModalContainer = styled.div`
 `;
 
 const Explanation = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin: 1rem 0;
 
   p {
@@ -192,7 +248,7 @@ const DataText = styled.span`
     margin-right: 10px;
   }
 
-  :last-child {
+  :last-of-type {
     color: #a6a6a6;
     font-size: 10px;
   }

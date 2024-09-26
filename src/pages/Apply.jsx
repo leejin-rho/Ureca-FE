@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
+import axios from 'axios';
+
 import { colors } from '@/styles/colors';
 import { Text } from '../components/global/Text';
 import InputSection from '../components/apply/InputSection';
@@ -14,6 +16,7 @@ import {
 import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
 import { AiOutlineSearch } from 'react-icons/ai';
+import { options } from '../assets/data/selectData';
 
 // Apply Page
 function Apply() {
@@ -35,11 +38,47 @@ function Apply() {
   const [highSchoolLocation, setHighSchoolLocation] = useState('');
   const [highSchoolType, setHighSchoolType] = useState('');
 
+  // 대학교 정보
+  const [university, setUniversity] = useState('');
+  const [universityLocation, setUniversityLocation] = useState('');
+  const [universityeDpartment, setUniversityeDpartment] = useState('');
+
+  const [majorDataList, setMajorDataList] = useState({});
+
   // 모달창 오픈 state 변수
   const [highschoolModal, setHighschoolModal] = useState(false);
   const [universityModal, setUniversityModal] = useState(false);
+  const [universityMajorModal, setUniversityMajorModal] = useState(false);
 
-  const clickFunc = () => {};
+  useEffect(() => {
+    async function fetchData() {
+      const major = {};
+
+      await axios
+        .get(
+          `https://www.career.go.kr/cnet/openapi/getOpenApi?apiKey=${
+            import.meta.env.VITE_SCHOOL_INFO_API
+          }&svcType=api&svcCode=MAJOR&contentType=json&gubun=univ_list&univSe=univ&perPage=500`,
+        )
+        .then((res) => res.data.dataSearch.content)
+        .then((data) => {
+          data.forEach((item) => {
+            if (!major[item.lClass])
+              major[item.lClass] = [...item.facilName.split(',')];
+            else {
+              major[item.lClass] = [
+                ...major[item.lClass],
+                ...item.facilName.split(','),
+              ];
+            }
+          });
+        });
+
+      setMajorDataList(major);
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -135,8 +174,6 @@ function Apply() {
               }
             />
           </InputGroup>
-
-          <button onClick={clickFunc}>클릭</button>
         </div>
       </InputSection>
 
@@ -215,7 +252,7 @@ function Apply() {
             {/* <TextField type={'text'} title="adress" text="학교명" /> */}
             <TextField
               type={'text'}
-              target="adress"
+              target="highSchoolLocation"
               label="소재지"
               value={highSchoolLocation}
               disabled={true}
@@ -230,7 +267,7 @@ function Apply() {
               value={highSchoolType}
               disabled={true}
             />
-            <DropdownField label={'졸업구분'} target="status" />
+            <DropdownField label={'졸업구분'} data={options.status} />
           </InputGroup>
         </div>
       </InputSection>
@@ -246,29 +283,46 @@ function Apply() {
               disabled={true}
               icons={<AiOutlineSearch />}
               modalOpenFunc={() => setUniversityModal(true)}
+              value={university}
             />
 
-            <TextField type={'text'} target="adress" label="소재지" />
+            <TextField
+              type={'text'}
+              target="universityLocation"
+              label="소재지"
+              value={universityLocation}
+              disabled={true}
+            />
           </InputGroup>
 
           <InputGroup>
+            <DropdownField
+              label={'전공 계열'}
+              data={options.universityType}
+              setSelectValue={setUniversityeDpartment}
+            />
+
             <TextFieldAndIcons
               type={'text'}
               target={'universityeMajor'}
               label="학과"
               disabled={true}
               icons={<AiOutlineSearch />}
-              // modalOpenFunc={() => setHighschoolModal(true)}
+              modalOpenFunc={() => {
+                if (universityeDpartment) {
+                  setUniversityMajorModal(true);
+                } else {
+                  alert('전공 계열을 먼저 선택해주세요.');
+                }
+              }}
             />
 
             {/* <TextField type={'text'} target="adress" label="학과" /> */}
-
-            <DropdownField label={'전공 계열'} target="dummey" />
           </InputGroup>
 
           <InputGroup>
             <CombInputField label={'전체평점'} />
-            <DropdownField label={'졸업구분'} target="status" />
+            <DropdownField label={'졸업구분'} data={options.status} />
           </InputGroup>
         </div>
       </InputSection>
@@ -289,7 +343,26 @@ function Apply() {
           setType={setHighSchoolType}
         />
       )}
-      {universityModal && <Modal setOpen={setUniversityModal} />}
+      {universityModal && (
+        <Modal
+          setOpen={setUniversityModal}
+          gubun={'univ_list'}
+          setName={setUniversity}
+          setLocation={setUniversityLocation}
+        />
+      )}
+
+      {universityMajorModal && (
+        <Modal
+          title={'학과 검색'}
+          info={[
+            '검색 버튼을 눌러 지원자님의 전공을 선택하여 주시기 바랍니다.',
+            '또는 직접 스크롤을 내려 전공을 선택하여 주시기 바랍니다.',
+          ]}
+          setOpen={setUniversityMajorModal}
+          listData={majorDataList[universityeDpartment]}
+        />
+      )}
     </>
   );
 }

@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '../../../styles/colors';
 import { ButtonGroups, InputGroup } from '../Groups';
-import { status } from '../../../assets/data/dummeyData';
 import { options } from '../../../assets/data/selectData';
 
 // 일반 Text 필드
@@ -58,7 +57,6 @@ export function TextFieldAndIcons({
           type={type}
           name={target}
           id={target}
-          onClick={disabled && modalOpenFunc}
           placeholder={placeholder}
           readOnly={disabled}
           value={value}
@@ -97,12 +95,16 @@ function Select({ menuShow, setMenuShow, selected }) {
   );
 }
 
-export function DropdownField({ label, target, group }) {
+export function DropdownField({ label, group, data, setSelectValue }) {
   const [menuShow, setMenuShow] = useState(false);
-  const [selected, setSelected] = useState(options[target][0]);
+  const [selected, setSelected] = useState(data[0]);
 
   const selectOption = (event) => {
-    setSelected(event.target.textContent);
+    if (event.target.id.at(-1) !== '0') {
+      setSelected(event.target.textContent); // 화면에 노출되는 상태 변환 함수
+      setSelectValue(event.target.textContent); // props로 전달된 상태 변환 함수
+    }
+
     setMenuShow(!menuShow);
   };
 
@@ -118,9 +120,13 @@ export function DropdownField({ label, target, group }) {
 
         <DropdownMenuOuter show={menuShow} onClick={() => setMenuShow(false)} />
         <DropdownMenu open={menuShow}>
-          {options[target].map((option, idx) => {
+          {data.map((option, idx) => {
             return (
-              <DropdownMenuItem key={idx} onClick={selectOption}>
+              <DropdownMenuItem
+                key={idx}
+                id={option + '-' + idx}
+                onClick={selectOption}
+              >
                 {option}
               </DropdownMenuItem>
             );
@@ -140,7 +146,11 @@ export function CombInputField({ label }) {
       <InputGroup>
         <TextField group={true} />
         <span style={{ fontSize: 14 }}>/</span>
-        <DropdownField target={'scroeList'} group={true} />
+        <DropdownField
+          target={'scroeList'}
+          group={true}
+          data={options.scroeList}
+        />
       </InputGroup>
     </InputContainer>
   );
