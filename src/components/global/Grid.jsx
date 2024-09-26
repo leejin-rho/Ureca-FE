@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 
-export const Flex = styled.div`
-  display: flex;
-  flex-direction: ${({ direction }) => (direction ? `${direction}` : 'row')};
-  justify-content: ${({ justify }) => (justify ? `${justify}` : 'center')};
-  align-items: ${({ align }) => (align ? `${align}` : 'center')};
+export const Grid = styled.div`
+  display: grid;
+  align-items: center;
+  justify-content: center;
   gap: ${({ webGap }) => (webGap ? `${webGap}rem` : '0rem')};
   width: ${({ width, widthPer }) =>
     width ? `${width}rem` : widthPer ? `${widthPer}%` : '100%'};
@@ -19,36 +18,13 @@ export const Flex = styled.div`
   background-color: ${({ backgroundColor }) =>
     backgroundColor ? backgroundColor : `transparent`};
 
+  grid-template-columns: ${({ gridCol }) =>
+    gridCol ? `repeat(${gridCol}, 1fr)` : 'repeat(2, 1fr)'};
+
   /* 브라우저 크기에 따라 가로 크기 변경 */
   @media (max-width: 1023px) {
     gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}rem` : '0')};
+    grid-template-columns: repeat(1, 1fr);
+    display: grid;
   }
-`;
-
-export const RelativeContainer = styled(Flex)`
-  position: relative;
-
-  .is-hover {
-    display: none;
-  }
-  :hover {
-    .is-hover {
-      display: flex;
-    }
-  }
-`;
-
-export const AbsoluteFlex = styled(Flex)`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  &.is-hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-`;
-
-export const Space = styled.div`
-  height: ${({ height }) => (height ? `${height}rem` : '')};
-  width: ${({ width }) => (width ? `${width}rem` : '')};
 `;

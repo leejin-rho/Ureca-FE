@@ -7,7 +7,7 @@ import { Flex } from '@components/global/Flex';
 const Section = ({ title, expl, subexpl, children }) => {
   return (
     <>
-      <SectionContainer>
+      <SectionContainer mobileGap="45">
         <HeadBox>
           <TitleBox>
             <Text color={colors.primaryColor} variant="h4" lineHeight="120%">
@@ -37,8 +37,8 @@ const SectionContainer = styled(Flex)`
   padding: 6.25rem 8.125rem;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
-  margin-bottom: 12.5rem;
+  gap: 6.25rem;
+  margin-top: 8rem;
 `;
 
 const HeadBox = styled(Flex)`

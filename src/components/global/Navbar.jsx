@@ -1,50 +1,68 @@
-import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import LogoImage from '@/assets/images/svgs/Logo';
-import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
+import LogoImage from '@assets/images/svgs/NavLogo';
+import { Text } from '@components/global/Text';
+import { Button } from '@components/global/Button';
+import { useEffect, useState } from 'react';
 
-const Navbar = () => {
-  const handleClick = () => {};
+const Navbar = ({ scrollToSection }) => {
+  const [isTransparent, setIsTransparent] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 449) {
+      setIsTransparent(true);
+    } else {
+      setIsTransparent(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  //스크롤을 맨 위로
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
-    <NavContainer>
-      <LogoImage height={45} />
+    <NavContainer isTransparent={isTransparent}>
+      <LogoImage height={30} style={{ flexShrink: 0 }} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={scrollToTop}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             HOME
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(1)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
-            WHY
+            {`WHY `}
           </Text>
           <Text color={colors.primaryColor} variant="h8" lineHeight="130%">
             URECA
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(2)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             교육안내
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(3)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             선발절차
           </Text>
         </NavBtn>
-        <NavBtn onClick={handleClick}>
+        <NavBtn onClick={() => scrollToSection(4)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             FAQ
           </Text>
         </NavBtn>
-        <ApplyBtn>
-          <Text color={colors.black} variant="h9" lineHeight="100%">
-            지원하기
-          </Text>
-        </ApplyBtn>
+        <Button style={{ marginLeft: 15 }}>지원하기</Button>
       </RowFlex>
     </NavContainer>
   );
@@ -59,22 +77,31 @@ const NavContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 3rem;
+  padding: 0 6rem 0 5rem;
 
-  background-color: black;
+  background-color: ${(props) =>
+    props.isTransparent ? 'rgba(12, 12, 12, 0.8)' : 'black'};
+  transition: background-color 0.3s ease;
+  z-index: 999;
 
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
+
+  flex-shrink: 0;
 `;
 
 const NavBtn = styled.div`
   display: flex;
   width: fit-content;
+  flex-shrink: 0;
 
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+    color: ${colors.gray100};
+  }
 `;
 
 const RowFlex = styled.div`
@@ -83,19 +110,8 @@ const RowFlex = styled.div`
   flex-direction: row;
   gap: 1.875rem;
   box-sizing: border-box;
-`;
 
-const ApplyBtn = styled.div`
-  display: flex;
-  padding: 8px 16px;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 0.75rem;
-  background: ${colors.white};
-
-  box-sizing: border-box;
-  margin-left: 1.5rem;
-
-  cursor: pointer;
+  @media (max-width: 1023px) {
+    display: none;
+  }
 `;

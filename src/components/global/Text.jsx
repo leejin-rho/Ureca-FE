@@ -5,8 +5,8 @@ import { colors } from '@/styles/colors';
 const headingStyles = {
   h1: css`
     font-family: 'Pretendard';
-    font-size: 48px;
-    font-weight: 800;
+    font-size: 45px;
+    font-weight: 700;
   `,
   h2: css`
     font-family: 'Pretendard';
@@ -15,7 +15,7 @@ const headingStyles = {
   `,
   h3: css`
     font-family: 'Pretendard';
-    font-size: 27px;
+    font-size: 24px;
     font-weight: 800;
   `,
   h4: css`
@@ -54,10 +54,12 @@ export const Text = styled.div`
   color: ${({ color }) => (color ? color : colors.black)};
   display: flex;
   align-items: center;
-  text-align: center;
+  text-align: ${({ textAlign }) => (textAlign ? textAlign : 'center')};
   margin: ${({ margin }) => (margin ? margin : '0')};
   ${({ variant }) => headingStyles[variant] || headingStyles.h5}
   line-height: ${({ lineHeight }) => (lineHeight ? lineHeight : '150%')};
   white-space: pre-wrap;
+  word-break: break-all;
   width: fit-content;
+  flex-shrink: 0;
 `;

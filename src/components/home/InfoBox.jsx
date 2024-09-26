@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
-import { Flex } from '@components/global/Flex';
 
 const InfoBox = ({ title, ans, expl }) => {
   return (
@@ -24,7 +23,7 @@ export default InfoBox;
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 19rem;
+  width: 20rem;
   height: 9.5rem;
   padding: 2.5rem 1.57rem;
   align-items: center;
@@ -34,7 +33,7 @@ const InfoContainer = styled.div`
   border-radius: 1.25rem;
 
   border: 0.1rem solid rgba(255, 255, 255, 0.3);
-  background-image: linear-gradient(rgba(26, 26, 26, 1)),
+  background: linear-gradient(rgba(26, 26, 26, 1)),
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.05));
 
   backdrop-filter: blur(30px);

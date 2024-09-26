@@ -11,6 +11,7 @@ const SeperateLine = styled.div`
   flex-direction: column;
   width: 100%;
   height: 2px;
-  background: radial-gradient(10deg, #19191d 100%, #dadae9 100%, #17171c 100%);
-  margin-bottom: 12.5rem;
+
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  margin-top: 6rem;
 `;
