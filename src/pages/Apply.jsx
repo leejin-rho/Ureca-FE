@@ -17,13 +17,16 @@ import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { options } from '../assets/data/selectData';
-import EtcList from '../components/apply/ui/EtcList';
+import EtcListSection from '../components/apply/ui/EtcListSection';
 
 // Apply Page
 function Apply() {
   // 지원자 정보
   const [name, setName] = useState('');
+
   const [gender, setGender] = useState(false);
+  const [genderActiveBtn, setGenderActiveBtn] = useState(null);
+
   const [birth, setBirth] = useState('');
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNummber] = useState('');
@@ -52,6 +55,12 @@ function Apply() {
   const [highschoolModal, setHighschoolModal] = useState(false);
   const [universityModal, setUniversityModal] = useState(false);
   const [universityMajorModal, setUniversityMajorModal] = useState(false);
+
+  const handleClick = (event, id) => {
+    setGenderActiveBtn(id);
+    console.log(JSON.parse(event.target.value));
+    setGender(JSON.parse(event.target.value));
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -114,6 +123,8 @@ function Apply() {
                 { id: 'male', value: true, text: '남성' },
                 { id: 'female', value: false, text: '여성' },
               ]}
+              onClickFunc={handleClick}
+              activeButton={genderActiveBtn}
             />
           </InputGroup>
 
@@ -338,13 +349,13 @@ function Apply() {
             style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}
           >
             {/* 자격증 */}
-            <EtcList />
+            <EtcListSection header="자격증" />
 
             {/* 수상 경력 */}
-            <EtcList />
+            <EtcListSection header="수상경력" />
 
             {/* 학내외활동 */}
-            <EtcList />
+            <EtcListSection header="학내외활동" />
           </div>
         </div>
       </InputSection>

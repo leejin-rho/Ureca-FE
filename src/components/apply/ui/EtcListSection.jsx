@@ -6,12 +6,12 @@ import { AiOutlinePlus } from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
 import { TextField } from './InputFieldUi';
 
-export default function EtcList() {
+export default function EtcListSection({ header }) {
   return (
     <EtcListContainer>
       {/* 헤더 영역 */}
       <EtcListHeader>
-        <EtcListHeaderTitle>자격증</EtcListHeaderTitle>
+        <EtcListHeaderTitle>{header}</EtcListHeaderTitle>
         <EtcListHeaderAddBtn>
           <AiOutlinePlus />
           <span>추가</span>

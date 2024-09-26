@@ -69,14 +69,20 @@ export function TextFieldAndIcons({
 }
 
 // 일반 Button
-export function Button({ title, type, buttons }) {
+export function Button({ title, type, buttons, onClickFunc, activeButton }) {
   return (
     <InputContainer>
       <InputLabelElement htmlFor={type}>{title}</InputLabelElement>
       <ButtonGroups>
         {buttons.length > 0 &&
           buttons.map((element) => (
-            <ButtonElement key={element.id} value={element.value} id={type}>
+            <ButtonElement
+              key={element.id}
+              value={element.value}
+              id={type}
+              onClick={(event) => onClickFunc(event, element.id)}
+              className={activeButton === element.id ? 'active' : ''}
+            >
               {element.text}
             </ButtonElement>
           ))}
@@ -233,6 +239,13 @@ const ButtonElement = styled.button`
   :hover {
     border: 1px solid ${colors.primaryColor};
     background-color: rgba(241, 134, 181, 0.1);
+  }
+
+  &.active {
+    background-color: ${colors.primaryColor};
+    color: #fff;
+    box-shadow: 0 0.4rem 0.4rem rgba(211, 59, 77, 0.2);
+    font-weight: 600;
   }
 `;
 
