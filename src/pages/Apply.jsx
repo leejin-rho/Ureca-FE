@@ -339,8 +339,12 @@ function Apply() {
           >
             {/* 자격증 */}
             <EtcList />
+
             {/* 수상 경력 */}
+            <EtcList />
+
             {/* 학내외활동 */}
+            <EtcList />
           </div>
         </div>
       </InputSection>
