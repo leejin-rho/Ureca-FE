@@ -12,6 +12,7 @@ export function ButtonGroups({ children }) {
 const InputGroupContainer = styled.div`
   display: flex;
   gap: 24px;
+  align-items: center;
 `;
 
 const ButtonGroupContainer = styled.div`

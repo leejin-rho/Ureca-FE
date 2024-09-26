@@ -2,15 +2,70 @@ import React, { useState } from 'react';
 
 import styled from '@emotion/styled';
 import { colors } from '../../../styles/colors';
-import { ButtonGroups } from '../Groups';
-import { options } from '../../../assets/data/dummeyData';
+import { ButtonGroups, InputGroup } from '../Groups';
+import { status } from '../../../assets/data/dummeyData';
+import { options } from '../../../assets/data/selectData';
 
 // 일반 Text 필드
-export function TextField({ type, title, text, maxWidth }) {
+export function TextField({
+  maxWidth,
+  type,
+  target,
+  label,
+  disabled,
+  placeholder,
+  value,
+  changeEventFunc,
+  group,
+}) {
+  return (
+    <InputContainer maxWidth={maxWidth} group={group}>
+      {!group && (
+        <InputLabelElement htmlFor={target}>{label}</InputLabelElement>
+      )}
+      <InputElement
+        type={type}
+        name={target}
+        id={target}
+        placeholder={placeholder}
+        disabled={disabled}
+        value={value}
+        onChange={changeEventFunc}
+      />
+    </InputContainer>
+  );
+}
+
+// 아이콘 Text 필드
+export function TextFieldAndIcons({
+  maxWidth,
+  type,
+  target,
+  label,
+  disabled,
+  icons,
+  modalOpenFunc,
+  placeholder,
+  value,
+  onChange,
+}) {
   return (
     <InputContainer maxWidth={maxWidth}>
-      <InputLabelElement htmlFor={title}>{text}</InputLabelElement>
-      <InputElement type={type} name={title} id={title} />
+      <InputLabelElement htmlFor={target}>{label}</InputLabelElement>
+
+      <InputIconElement disabled={disabled} onClick={modalOpenFunc}>
+        <InputElement
+          type={type}
+          name={target}
+          id={target}
+          onClick={disabled && modalOpenFunc}
+          placeholder={placeholder}
+          readOnly={disabled}
+          value={value}
+          onChange={onChange}
+        />
+        <button>{icons}</button>
+      </InputIconElement>
     </InputContainer>
   );
 }
@@ -42,9 +97,9 @@ function Select({ menuShow, setMenuShow, selected }) {
   );
 }
 
-export function DropdownField({ label }) {
+export function DropdownField({ label, target, group }) {
   const [menuShow, setMenuShow] = useState(false);
-  const [selected, setSelected] = useState(options[0]);
+  const [selected, setSelected] = useState(options[target][0]);
 
   const selectOption = (event) => {
     setSelected(event.target.textContent);
@@ -52,8 +107,8 @@ export function DropdownField({ label }) {
   };
 
   return (
-    <InputContainer>
-      <InputLabelElement>{label}</InputLabelElement>
+    <InputContainer group={group}>
+      {!group && <InputLabelElement>{label}</InputLabelElement>}
       <DropdownElement>
         <Select
           menuShow={menuShow}
@@ -63,7 +118,7 @@ export function DropdownField({ label }) {
 
         <DropdownMenuOuter show={menuShow} onClick={() => setMenuShow(false)} />
         <DropdownMenu open={menuShow}>
-          {options.map((option, idx) => {
+          {options[target].map((option, idx) => {
             return (
               <DropdownMenuItem key={idx} onClick={selectOption}>
                 {option}
@@ -76,19 +131,69 @@ export function DropdownField({ label }) {
   );
 }
 
+// 조합 index Field
+export function CombInputField({ label }) {
+  return (
+    <InputContainer>
+      <InputLabelElement>{label}</InputLabelElement>
+
+      <InputGroup>
+        <TextField group={true} />
+        <span style={{ fontSize: 14 }}>/</span>
+        <DropdownField target={'scroeList'} group={true} />
+      </InputGroup>
+    </InputContainer>
+  );
+}
+
 const InputContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '41.6rem')};
-  gap: 0.8rem;
+  gap: ${({ group }) => (group ? 0 : '0.8rem')};
 `;
 
+// input 태그 label
 const InputLabelElement = styled.label`
   font-size: 1.4rem;
   font-weight: 600;
   line-height: 150%;
   color: #232527;
+`;
+
+// input, icons 그룹
+const InputIconElement = styled.div`
+  /* padding: 0.8rem 1.6rem; */
+  display: flex;
+  align-items: center;
+  background-color: #f4f6f9;
+  border-radius: 0.8rem;
+  border: 1px solid transparent;
+  overflow: hidden;
+  /* cursor: pointer; */
+
+  input {
+    flex-grow: 1;
+    cursor: ${({ disabled }) => disabled && 'pointer'};
+  }
+
+  input:focus {
+    border: 1px solid transparent;
+  }
+
+  button {
+    width: 50px;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #b0b5bd;
+    cursor: pointer;
+  }
 `;
 
 // Input 타입이 Button이 아닐 경우
