@@ -15,6 +15,7 @@ import ArrowTop from '@/assets/images/svgs/ArrowTop';
 import ArrowLeft from '@/assets/images/svgs/ArrowLeft';
 import ArrowRight from '@/assets/images/svgs/ArrowRight';
 import ArrowBottom from '@/assets/images/svgs/ArrowBottom';
+import { Grid } from '../global/Grid';
 
 const IntroPJT = () => {
   return (
@@ -25,7 +26,7 @@ const IntroPJT = () => {
 현직자 참여 기반 프로젝트 진행을 통해 프로젝트 기획/분석/ 설계 능력을 익힐 수 있습니다."
     >
       <GlassBox>
-        <Flex webGap="8" mobileGap="2.5">
+        <Grid webGap="5" mobileGap="2.5" gridCol="3">
           <Flex webGap="1" style={{ flex: 1 }}>
             <PJTImage src={FEBasic} alt="FEBasic" height="24rem" />
             <PJTImage src={FEDeep} alt="FEDeep" height="24rem" />
@@ -34,8 +35,8 @@ const IntroPJT = () => {
             <ArrowTop height="16rem" />
           </ArrowDiv>
           <PJTImage src={BEPJT} alt="BEPJT" height="24rem" />
-        </Flex>
-        <Flex webGap="8" mobileGap="2.5" height="22">
+        </Grid>
+        <Grid webGap="5" mobileGap="2.5" height="16" gridCol="3">
           <ArrowDiv>
             <ArrowLeft height="10rem" />
           </ArrowDiv>
@@ -43,8 +44,8 @@ const IntroPJT = () => {
           <ArrowDiv>
             <ArrowRight height="10rem" />
           </ArrowDiv>
-        </Flex>
-        <Flex webGap="8" mobileGap="2.5">
+        </Grid>
+        <Grid webGap="5" mobileGap="2.5" gridCol="3">
           <PJTImage src={FEPJT} alt="BEPJT" height="24rem" />
           <ArrowDiv margin="0 3.5rem 0 0">
             <ArrowBottom height="16rem" />
@@ -53,7 +54,7 @@ const IntroPJT = () => {
             <PJTImage src={BEBasic} alt="FEBasic" height="24rem" />
             <PJTImage src={BEDeep} alt="FEDeep" height="24rem" />
           </Flex>
-        </Flex>
+        </Grid>
       </GlassBox>
     </Section>
   );
