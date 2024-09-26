@@ -1,8 +1,8 @@
-export { default as Arrow1 } from './Arrow1';
-export { default as Arrow2 } from './Arrow2';
-export { default as Arrow3 } from './Arrow3';
-export { default as Arrow4 } from './Arrow4';
 export { default as FooterLogo } from './FooterLogo';
+export { default as ArrowBottom } from './ArrowBottom';
+export { default as ArrowLeft } from './ArrowLeft';
+export { default as ArrowRight } from './ArrowRight';
+export { default as ArrowTop } from './ArrowTop';
 export { default as CloseArrow } from './CloseArrow';
 export { default as KakaoTalkButtonDefault } from './KakaoTalkButtonDefault';
 export { default as Logo } from './Logo';

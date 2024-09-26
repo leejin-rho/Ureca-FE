@@ -8,7 +8,7 @@ import { Button } from '@components/global/Button';
 const Subheader = () => {
   return (
     <BackImgDiv direction="column">
-      <BackgroundImg src={Background} />
+      <BackgroundImg src={Background} alt="ureca-background" />
       <TopInfoDiv>
         <Flex direction="column" height="fit-content">
           <Text color={colors.white} variant="h1">

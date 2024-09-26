@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
+import { useState } from 'react';
 import Section from '@components/home/Section';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
+import { Button } from '@components/global/Button';
 import OpenArrow from '@/assets/images/svgs/OpenArrow';
 import CloseArrow from '@/assets/images/svgs/CloseArrow';
 import Information from '@/assets/data/Information.json';
-import { useState } from 'react';
-import { Button } from '../global/Button';
 
 const FAQ = () => {
   const [isOpened, setIsOpened] = useState([false, false, false, false, false]);

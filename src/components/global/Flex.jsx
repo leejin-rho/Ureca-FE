@@ -21,7 +21,7 @@ export const Flex = styled.div`
 
   /* 브라우저 크기에 따라 가로 크기 변경 */
   @media (max-width: 1023px) {
-    gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}px` : '0')};
+    gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}rem` : '0')};
   }
 `;
 

@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import Navbar from '@components/global/Navbar';
-
 import Subheader from '@components/home/SubHeader';
 import InfoList from '@components/home/InfoList';
 
@@ -12,7 +11,7 @@ import InfoList from '@components/home/InfoList';
 import Goal from '@components/home/Goal';
 import Education from '@components/home/Education';
 import Benefit from '@components/home/Benefit';
-import ProjectIntro from '@components/home/ProjectIntro';
+import IntroPJT from '@components/home/IntroPJT';
 import Order from '@components/home/Order';
 import FAQ from '@components/home/FAQ';
 
@@ -34,10 +33,10 @@ const Home = () => {
             <Goal />
           </div>
 
-          <div ref={(el) => (sectionRefs.current[1] = el)}>
+          <Flex direction="column" ref={(el) => (sectionRefs.current[1] = el)}>
             <Benefit />
-            <ProjectIntro />
-          </div>
+            <IntroPJT />
+          </Flex>
 
           <div ref={(el) => (sectionRefs.current[2] = el)}>
             <Education />

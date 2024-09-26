@@ -10,7 +10,7 @@ const Order = () => {
       subexpl="서류 접수부터 오리엔테이션까지 선발절차를 확인하세요.
 더 자세한 날짜는 서류 합격 이후 개별 연락드릴 예정입니다."
     >
-      <PNGImage src={UrecaOrder} height={'14.5rem'} />
+      <PNGImage src={UrecaOrder} height={'14.5rem'} alt="ureca-order" />
     </Section>
   );
 };

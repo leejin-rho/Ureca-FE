@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
-import { Flex } from '@components/global/Flex';
 
 const InfoBox = ({ title, ans, expl }) => {
   return (
