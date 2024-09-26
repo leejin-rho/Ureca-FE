@@ -21,6 +21,8 @@ function Modal({
   setLocation,
   setType,
   listData,
+  setMajor,
+  placeholder,
 }) {
   const [search, setSearch] = useState('');
   const [data, setData] = useState([]);
@@ -86,7 +88,6 @@ function Modal({
     <ModalExternalArea>
       <ModalContainer>
         <ModalHeader>
-          {/* <HeaderTitle>국적 검색</HeaderTitle> */}
           <Text color={colors.primaryColor} variant="h4">
             {title || '학교 검색'}
           </Text>
@@ -114,7 +115,7 @@ function Modal({
               <TextFieldAndIcons
                 type={'text'}
                 icons={<AiOutlineSearch />}
-                placeholder="두 글자 이상 입력해 주세요."
+                placeholder={placeholder || '두 글자 이상 입력해 주세요.'}
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
               />
@@ -140,7 +141,13 @@ function Modal({
                       </DataText>
                     </DataItem>
                   ) : (
-                    <DataItem key={idx}>
+                    <DataItem
+                      key={idx}
+                      onClick={() => {
+                        setMajor(element);
+                        onCloseModal();
+                      }}
+                    >
                       <DataText size={'14px'}>{element}</DataText>
                       <DataText></DataText>
                     </DataItem>

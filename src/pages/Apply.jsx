@@ -17,6 +17,7 @@ import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { options } from '../assets/data/selectData';
+import EtcList from '../components/apply/ui/EtcList';
 
 // Apply Page
 function Apply() {
@@ -42,7 +43,9 @@ function Apply() {
   const [university, setUniversity] = useState('');
   const [universityLocation, setUniversityLocation] = useState('');
   const [universityeDpartment, setUniversityeDpartment] = useState('');
+  const [universityMajor, setUniversityMajor] = useState('');
 
+  // 선택한 전공 계열에 속한 학과 목록
   const [majorDataList, setMajorDataList] = useState({});
 
   // 모달창 오픈 state 변수
@@ -308,6 +311,7 @@ function Apply() {
               label="학과"
               disabled={true}
               icons={<AiOutlineSearch />}
+              value={universityMajor}
               modalOpenFunc={() => {
                 if (universityeDpartment) {
                   setUniversityMajorModal(true);
@@ -328,6 +332,18 @@ function Apply() {
       </InputSection>
 
       {/* 어학 / 자격 / 기타 Input Section */}
+      <InputSection title={'어학 / 자격 / 기타'}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}
+          >
+            {/* 자격증 */}
+            <EtcList />
+            {/* 수상 경력 */}
+            {/* 학내외활동 */}
+          </div>
+        </div>
+      </InputSection>
 
       {/* 경력 사항 Input Section */}
 
@@ -356,11 +372,13 @@ function Apply() {
         <Modal
           title={'학과 검색'}
           info={[
-            '검색 버튼을 눌러 지원자님의 전공을 선택하여 주시기 바랍니다.',
-            '또는 직접 스크롤을 내려 전공을 선택하여 주시기 바랍니다.',
+            '검색 버튼을 눌러 지원자님의 학과를 선택하여 주시기 바랍니다.',
+            '또는 직접 스크롤하여 학과를 선택하여 주시기 바랍니다.',
           ]}
-          setOpen={setUniversityMajorModal}
           listData={majorDataList[universityeDpartment]}
+          setOpen={setUniversityMajorModal}
+          setMajor={setUniversityMajor}
+          placeholder={'학과를 입력해 주세요.'}
         />
       )}
     </>
