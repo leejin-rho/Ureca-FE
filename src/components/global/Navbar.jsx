@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import LogoImage from '@/assets/images/svgs/Logo';
-import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
-import { Button } from './Button';
+import LogoImage from '@assets/images/svgs/NavLogo';
+import { Text } from '@components/global/Text';
+import { Button } from '@components/global/Button';
 import { useEffect, useState } from 'react';
 
 const Navbar = ({ scrollToSection }) => {
@@ -21,6 +21,7 @@ const Navbar = ({ scrollToSection }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  //스크롤을 맨 위로
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -30,7 +31,7 @@ const Navbar = ({ scrollToSection }) => {
 
   return (
     <NavContainer isTransparent={isTransparent}>
-      <LogoImage height={45} style={{ flexShrink: 0 }} />
+      <LogoImage height={30} style={{ flexShrink: 0 }} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
         <NavBtn onClick={scrollToTop}>

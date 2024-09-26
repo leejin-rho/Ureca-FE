@@ -3,15 +3,18 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
-import InfoList from '@components/home/InfoList';
-import Subheader from '@components/home/SubHeader';
 import Navbar from '@components/global/Navbar';
-import Education from '@components/home/Education';
+
+import Subheader from '@components/home/SubHeader';
+import InfoList from '@components/home/InfoList';
+
+//section 목록
 import Goal from '@components/home/Goal';
-import FAQ from '@components/home/FAQ';
+import Education from '@components/home/Education';
 import Benefit from '@components/home/Benefit';
-import Order from '@components/home/Order';
 import ProjectIntro from '@components/home/ProjectIntro';
+import Order from '@components/home/Order';
+import FAQ from '@components/home/FAQ';
 
 const Home = () => {
   const sectionRefs = useRef([]);

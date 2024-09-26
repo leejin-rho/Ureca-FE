@@ -5,8 +5,8 @@ import { Text } from '@components/global/Text';
 import Section from '@components/home/Section';
 import { PNGImage } from '@components/global/PNGImage';
 import { GlassBox } from '@components/global/GlassBox';
-import UrecaImage from '@/assets/images/pngs/URECA.png';
-import Information from '@/assets/data/Information.json';
+import UrecaImage from '@assets/images/pngs/URECA.png';
+import Information from '@assets/data/Information.json';
 
 const Goal = () => {
   return (
@@ -21,7 +21,7 @@ const Goal = () => {
         <PNGImage src={UrecaImage} />
         <GoalList>
           {Information.GoalData.map((item) => (
-            <GoalBox key={item.id} padding="2.5rem" width="28">
+            <GoalBox key={item.id} padding="2.5rem" width="30">
               <TextList>
                 <Text
                   color={item.id == 0 ? colors.primaryColor : colors.white}
@@ -47,7 +47,7 @@ const Goal = () => {
                   <li key={index}>
                     <Text
                       color={colors.white}
-                      variant="h8"
+                      variant="h9"
                       textAlign="flex-start"
                       lineHeight="150%"
                     >
