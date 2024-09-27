@@ -46,6 +46,6 @@ const InfoContainer = styled.div`
 
   @media (max-width: 1023px) {
     gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}rem` : '0')};
-    height: 12rem;
+    height: 1rem;
   }
 `;

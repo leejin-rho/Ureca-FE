@@ -27,23 +27,26 @@ const Goal = () => {
         />
         <GoalList>
           {Information.GoalData.map((item) => (
-            <GoalBox key={item.id} padding="2.5rem" width="30">
+            <GoalBox key={item.id} padding="2.5rem" width="30" mobileGap="0.25">
               <TextList>
                 <Text
                   color={item.id == 0 ? colors.primaryColor : colors.white}
                   variant="h7"
+                  mobileTypo="h9"
                 >
                   유
                 </Text>
                 <Text
                   color={item.id == 1 ? colors.primaryColor : colors.white}
                   variant="h7"
+                  mobileTypo="h9"
                 >
                   레
                 </Text>
                 <Text
                   color={item.id == 2 ? colors.primaryColor : colors.white}
                   variant="h7"
+                  mobileTypo="h9"
                 >
                   카
                 </Text>
@@ -56,6 +59,7 @@ const Goal = () => {
                       variant="h9"
                       textAlign="flex-start"
                       lineHeight="150%"
+                      mobileTypo="h10"
                     >
                       {e}
                     </Text>
@@ -94,6 +98,7 @@ const GoalList = styled.div`
 
   @media (max-width: 1023px) {
     grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
   }
 `;
 
