@@ -2,17 +2,28 @@ import React from 'react';
 import styled from '@emotion/styled';
 
 // React Icons
-import { AiOutlinePlus } from 'react-icons/ai';
+import {
+  AiOutlineCalendar,
+  AiOutlineDelete,
+  AiOutlinePlus,
+} from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
 import { TextField } from './InputFieldUi';
 
-export default function EtcListSection({ header }) {
+export default function EtcListSection({
+  header,
+  listTitle,
+  listItems,
+  addListItem,
+  handleInputChange,
+  deleteListItems,
+}) {
   return (
     <EtcListContainer>
       {/* 헤더 영역 */}
       <EtcListHeader>
         <EtcListHeaderTitle>{header}</EtcListHeaderTitle>
-        <EtcListHeaderAddBtn>
+        <EtcListHeaderAddBtn onClick={addListItem}>
           <AiOutlinePlus />
           <span>추가</span>
         </EtcListHeaderAddBtn>
@@ -22,22 +33,51 @@ export default function EtcListSection({ header }) {
       <EtcListContent>
         {/* 콘텐츠 영역 - title */}
         <EtcListTitleContainer>
-          <h2>자격증명</h2>
-          <h2>자격등급</h2>
-          <h2>취득일자</h2>
-          <h2>인증기관</h2>
+          {listTitle &&
+            listTitle.map((element, idx) => <h2 key={idx}>{element}</h2>)}
         </EtcListTitleContainer>
 
         {/* 콘텐츠 영역 - input */}
-        <EtcListItemContainer>
-          <EtcListItmes>
-            <TextField />
-            <TextField />
-            <TextField />
-            <TextField />
-          </EtcListItmes>
-          <EtcListBorderLine />
-        </EtcListItemContainer>
+
+        {listItems.map((item) => {
+          return (
+            <EtcListItemContainer key={item.id}>
+              <EtcListItmes>
+                {item.inputs.map((input, idx) => {
+                  return (
+                    <EtcListItme key={idx} readonly={input.disabled}>
+                      <input
+                        type={input.type}
+                        placeholder={input.placeholder}
+                        value={input.value}
+                        name={input.name}
+                        readOnly={input.disabled}
+                        onChange={(event) =>
+                          handleInputChange(
+                            item.id,
+                            input.name,
+                            event.target.value,
+                          )
+                        }
+                      />
+
+                      {input.icons && <button>{input.icons}</button>}
+                    </EtcListItme>
+                  );
+                })}
+
+                <button
+                  className="deleteBtnIcon"
+                  onClick={() => deleteListItems(item.id)}
+                >
+                  <AiOutlineDelete />
+                </button>
+              </EtcListItmes>
+
+              <EtcListBorderLine />
+            </EtcListItemContainer>
+          );
+        })}
       </EtcListContent>
     </EtcListContainer>
   );
@@ -100,10 +140,10 @@ const EtcListContent = styled.div`
 
 const EtcListTitleContainer = styled.div`
   display: flex;
-  gap: 1.9rem;
+  gap: 0.8rem;
 
   h2 {
-    width: calc(100% / 4);
+    width: 19.975rem;
     color: #232527;
     font-size: 1.4rem;
     font-weight: 600;
@@ -115,7 +155,54 @@ const EtcListItemContainer = styled.div``;
 
 const EtcListItmes = styled.div`
   display: flex;
-  gap: 1.9rem;
+  gap: 1rem;
+
+  .deleteBtnIcon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #b0b5bd;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+
+    :hover {
+      color: red;
+    }
+  }
+`;
+
+const EtcListItme = styled.div`
+  width: 19.975rem;
+  background-color: #f4f6f9;
+  border-radius: 0.8rem;
+  border: 1px solid transparent;
+  display: flex;
+  position: relative;
+
+  input {
+    padding: 0.8rem 1.6rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    cursor: ${({ readonly }) => readonly && 'pointer'};
+  }
+
+  button {
+    flex-grow: 1;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: #b0b5bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    cursor: ${({ readonly }) => readonly && 'pointer'};
+  }
 `;
 
 const EtcListBorderLine = styled.div`

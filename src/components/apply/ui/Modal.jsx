@@ -96,7 +96,7 @@ function Modal({
         <ModalContent>
           <div>
             <Explanation>
-              {info.length > 0 ? (
+              {info ? (
                 info.map((message, idx) => (
                   <p key={idx}>
                     <AiFillExclamationCircle />

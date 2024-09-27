@@ -15,7 +15,7 @@ import {
 } from '../components/apply/ui/InputFieldUi';
 import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlineSearch } from 'react-icons/ai';
 import { options } from '../assets/data/selectData';
 import EtcListSection from '../components/apply/ui/EtcListSection';
 
@@ -51,15 +51,215 @@ function Apply() {
   // 선택한 전공 계열에 속한 학과 목록
   const [majorDataList, setMajorDataList] = useState({});
 
+  // 어학 / 자격 / 기타 관련 state 변수
+  const [certificateListItems, setCertificateListItems] = useState([
+    {
+      id: 1,
+      inputs: [
+        {
+          type: 'text',
+          placeholder: '자격증명을 입력해주세요.',
+          value: '',
+          name: 'certificateName',
+        },
+        {
+          type: 'text',
+          placeholder: '자격증 등급을 입력해주세요.',
+          value: '',
+          name: 'certificateGrade',
+        },
+        {
+          type: 'text',
+          placeholder: '취득일자를 선택해주세요.',
+          value: '',
+          name: 'certificateDateAcquired',
+          disabled: true,
+          icons: <AiOutlineCalendar />,
+        },
+        {
+          type: 'text',
+          placeholder: '인증기관을 입력해주세요.',
+          value: '',
+          name: 'issuingOrganization',
+        },
+      ],
+    },
+  ]);
+
+  const [awardListItems, setAwardListItems] = useState([
+    {
+      id: 1,
+      inputs: [
+        {
+          type: 'text',
+          placeholder: '대회명을 입력해주세요.',
+          value: '',
+          name: 'awardName',
+        },
+        {
+          type: 'text',
+          placeholder: '수상내역을 입력해주세요.',
+          value: '',
+          name: 'awardDetails',
+        },
+        {
+          type: 'text',
+          placeholder: '수상일자를 선택해주세요.',
+          value: '',
+          name: 'awardDate',
+          disabled: true,
+          icons: <AiOutlineCalendar />,
+        },
+        {
+          type: 'text',
+          placeholder: '수상기관을 입력해주세요.',
+          value: '',
+          name: 'awardIssuer',
+        },
+      ],
+    },
+  ]);
+
+  const [activity, setActivity] = useState([]);
+
   // 모달창 오픈 state 변수
   const [highschoolModal, setHighschoolModal] = useState(false);
   const [universityModal, setUniversityModal] = useState(false);
   const [universityMajorModal, setUniversityMajorModal] = useState(false);
 
+  // Btn Active 효과 적용 Function
   const handleClick = (event, id) => {
     setGenderActiveBtn(id);
-    console.log(JSON.parse(event.target.value));
     setGender(JSON.parse(event.target.value));
+  };
+
+  // 자격증 추가 버튼 클릭 시 컴포넌트 추가 Function
+  const addCertificateListItems = () => {
+    if (certificateListItems.length >= 5) {
+      alert('총 5개까지만 작성할 수 있습니다.');
+      return;
+    }
+
+    setCertificateListItems([
+      ...certificateListItems,
+      {
+        id: certificateListItems.length + 1,
+        inputs: [
+          {
+            type: 'text',
+            placeholder: '자격증명을 입력해주세요.',
+            value: '',
+            name: 'certificateName',
+          },
+          {
+            type: 'text',
+            placeholder: '자격증 등급을 입력해주세요.',
+            value: '',
+            name: 'certificateGrade',
+          },
+          {
+            type: 'text',
+            placeholder: '취득일자를 선택해주세요.',
+            value: '',
+            name: 'certificateDateAcquired',
+            disabled: true,
+            icons: <AiOutlineCalendar />,
+          },
+          {
+            type: 'text',
+            placeholder: '인증기관을 입력해주세요.',
+            value: '',
+            name: 'issuingOrganization',
+          },
+        ],
+      },
+    ]);
+  };
+
+  const addAwardsListItems = () => {
+    if (awardListItems.length >= 5) {
+      alert('총 5개까지만 작성할 수 있습니다.');
+      return;
+    }
+
+    setAwardListItems([
+      ...awardListItems,
+      {
+        id: awardListItems.length + 1,
+        inputs: [
+          {
+            type: 'text',
+            placeholder: '대회명을 입력해주세요.',
+            value: '',
+            name: 'awardName',
+          },
+          {
+            type: 'text',
+            placeholder: '수상내역을 입력해주세요.',
+            value: '',
+            name: 'awardDetails',
+          },
+          {
+            type: 'text',
+            placeholder: '수상일자를 선택해주세요.',
+            value: '',
+            name: 'awardDate',
+            disabled: true,
+            icons: <AiOutlineCalendar />,
+          },
+          {
+            type: 'text',
+            placeholder: '수상기관을 입력해주세요.',
+            value: '',
+            name: 'awardIssuer',
+          },
+        ],
+      },
+    ]);
+  };
+
+  const handleCertificateInputChange = (itemId, inputName, value) => {
+    const updatedItems = certificateListItems.map((item) => {
+      if (item.id === itemId) {
+        const updatedInputs = item.inputs.map((input) => {
+          if (input.name === inputName) {
+            return { ...input, value };
+          }
+          return input;
+        });
+        return { ...item, inputs: updatedInputs };
+      }
+      return item;
+    });
+    setCertificateListItems(updatedItems);
+  };
+
+  const handleAwardInputChange = (itemId, inputName, value) => {
+    const updatedItems = awardListItems.map((item) => {
+      if (item.id === itemId) {
+        const updatedInputs = item.inputs.map((input) => {
+          if (input.name === inputName) {
+            return { ...input, value };
+          }
+          return input;
+        });
+        return { ...item, inputs: updatedInputs };
+      }
+      return item;
+    });
+    setAwardListItems(updatedItems);
+  };
+
+  const deleteCertificateListItem = (itemId) => {
+    const updatedItems = certificateListItems.filter(
+      (item) => item.id !== itemId,
+    );
+    setCertificateListItems(updatedItems);
+  };
+
+  const deleteAwardListItem = (itemId) => {
+    const updatedItems = awardListItems.filter((item) => item.id !== itemId);
+    setAwardListItems(updatedItems);
   };
 
   useEffect(() => {
@@ -349,13 +549,30 @@ function Apply() {
             style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}
           >
             {/* 자격증 */}
-            <EtcListSection header="자격증" />
+            <EtcListSection
+              header="자격증"
+              listTitle={['자격증명', '자격등급', '취득일자', '인증기관']}
+              listItems={certificateListItems}
+              addListItem={addCertificateListItems}
+              handleInputChange={handleCertificateInputChange}
+              deleteListItems={deleteCertificateListItem}
+            />
 
             {/* 수상 경력 */}
-            <EtcListSection header="수상경력" />
+            <EtcListSection
+              header="수상경력"
+              listTitle={['대회명', '수상내역', '수상일자', '수상기관']}
+              listItems={awardListItems}
+              addListItem={addAwardsListItems}
+              handleInputChange={handleAwardInputChange}
+              deleteListItems={deleteAwardListItem}
+            />
 
             {/* 학내외활동 */}
-            <EtcListSection header="학내외활동" />
+            {/* <EtcListSection
+              header="학내외활동"
+              listTitle={['활동내용', '직위 또는 역할', '활동기간']}
+            /> */}
           </div>
         </div>
       </InputSection>
