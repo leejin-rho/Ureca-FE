@@ -48,6 +48,16 @@ const headingStyles = {
     font-size: 14px;
     font-weight: 600;
   `,
+  h10: css`
+    font-family: 'Pretendard';
+    font-size: 12px;
+    font-weight: 600;
+  `,
+  h11: css`
+    font-family: 'Pretendard';
+    font-size: 10px;
+    font-weight: 500;
+  `,
 };
 
 export const Text = styled.div`
@@ -61,4 +71,9 @@ export const Text = styled.div`
   white-space: pre-wrap;
   word-break: break-all;
   width: fit-content;
+
+  @media (max-width: 1023px) {
+    ${({ mobileTypo, variant }) =>
+      mobileTypo ? headingStyles[mobileTypo] : headingStyles[variant]};
+  }
 `;

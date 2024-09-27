@@ -7,17 +7,17 @@ import { Flex } from '@components/global/Flex';
 const Section = ({ title, expl, subexpl, children }) => {
   return (
     <>
-      <SectionContainer mobileGap="45">
-        <HeadBox>
-          <TitleBox>
-            <Text color={colors.primaryColor} variant="h4" lineHeight="120%">
+      <SectionContainer mobileGap="5">
+        <HeadBox mobileGap="1">
+          <TitleBox mobileGap="1">
+            <Text color={colors.primaryColor} variant="h6" lineHeight="120%">
               {title}
             </Text>
-            <Text color={colors.white} variant="h2">
+            <Text color={colors.white} variant="h2" mobileTypo="h4">
               {expl}
             </Text>
           </TitleBox>
-          <Text color={colors.white} variant="h5">
+          <Text color={colors.white} variant="h5" mobileTypo="h10">
             {subexpl}
           </Text>
         </HeadBox>
@@ -39,6 +39,10 @@ const SectionContainer = styled(Flex)`
   justify-content: center;
   gap: 6.25rem;
   margin-top: 8rem;
+
+  @media (max-width: 1023px) {
+    margin-top: 4rem;
+  }
 `;
 
 const HeadBox = styled(Flex)`

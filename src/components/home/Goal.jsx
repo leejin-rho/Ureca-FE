@@ -18,7 +18,13 @@ const Goal = () => {
 프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해 실무형 인재로 거듭날 수 있습니다."
     >
       <Wrapper direction="column">
-        <PNGImage src={UrecaImage} alt="ureca" height="36rem" />
+        <PNGImage
+          src={UrecaImage}
+          alt="ureca"
+          height="36rem"
+          widthMobile="100%"
+          heightMobile="fit-content"
+        />
         <GoalList>
           {Information.GoalData.map((item) => (
             <GoalBox key={item.id} padding="2.5rem" width="30">

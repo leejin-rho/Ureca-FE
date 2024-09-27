@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Grid = styled.div`
   display: grid;
-  align-items: center;
+  justify-items: center;
   justify-content: center;
   gap: ${({ webGap }) => (webGap ? `${webGap}rem` : '0rem')};
   width: ${({ width, widthPer }) =>

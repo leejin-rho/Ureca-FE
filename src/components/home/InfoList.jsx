@@ -5,7 +5,7 @@ import Information from '@/assets/data/Information.json';
 
 const InfoList = () => {
   return (
-    <ListContainer>
+    <ListContainer mobileGap="0.5">
       {Information.InfoData.map((item) => (
         <InfoBox
           key={item.id}
@@ -21,7 +21,7 @@ const InfoList = () => {
 export default InfoList;
 
 const ListContainer = styled(Flex)`
-  margin-top: 6.15rem;
+  margin: 6.15rem;
   flex-direction: row;
   width: 100%;
   height: fit-content;

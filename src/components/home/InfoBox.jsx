@@ -4,14 +4,19 @@ import { colors } from '@/styles/colors';
 
 const InfoBox = ({ title, ans, expl }) => {
   return (
-    <InfoContainer>
-      <Text color={colors.white} variant="h9">
+    <InfoContainer mobileGap="0.25">
+      <Text color={colors.white} variant="h9" mobileTypo="h11">
         {title}
       </Text>
-      <Text color={colors.white} variant="h8">
+      <Text color={colors.white} variant="h8" mobileTypo="h10">
         {ans}
       </Text>
-      <Text color={colors.explText} variant="h9" lineHeight="150%">
+      <Text
+        color={colors.explText}
+        variant="h9"
+        lineHeight="150%"
+        mobileTypo="h11"
+      >
         {expl}
       </Text>
     </InfoContainer>
@@ -38,4 +43,9 @@ const InfoContainer = styled.div`
 
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
+
+  @media (max-width: 1023px) {
+    gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}rem` : '0')};
+    height: 12rem;
+  }
 `;

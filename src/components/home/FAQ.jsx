@@ -84,7 +84,7 @@ const FAQ = () => {
         fontColor={colors.white}
         onClick={onFAQBtn}
       >
-        자주 묻는 질문 {'>'}
+        더 많은 질문 보기 {'>'}
       </Button>
     </Section>
   );

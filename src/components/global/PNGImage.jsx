@@ -7,6 +7,14 @@ export const PNGImage = styled.img`
   flex-shrink: 0;
 
   @media (max-width: 1023px) {
+    height: ${({ heightMobile }) =>
+      heightMobile
+        ? `${heightMobile}`
+        : ({ height }) => (height ? `${height}` : 'fit-content')};
+    width: ${({ widthMobile }) =>
+      widthMobile
+        ? `${widthMobile}`
+        : ({ width }) => (width ? `${width}` : 'fit-content')};
     gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}rem` : '0')};
   }
 `;

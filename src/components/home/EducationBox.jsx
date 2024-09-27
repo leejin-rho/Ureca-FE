@@ -60,6 +60,11 @@ const Wrapper = styled(Flex)`
       rgba(219, 149, 172, 0) 100%
     ),
     #262525;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+    height: fit-content;
+  }
 `;
 
 const ExplBox = styled.ul`
