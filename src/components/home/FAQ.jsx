@@ -34,7 +34,12 @@ const FAQ = () => {
         {Information.FAQData.slice(0, 5).map((item) => (
           <QNABox direction="column" key={item.id}>
             <Question>
-              <Text color={colors.white} variant="h7" textAlign="flex-start">
+              <Text
+                color={colors.white}
+                variant="h7"
+                mobileTypo="h9"
+                textAlign="flex-start"
+              >
                 {item.q}
               </Text>
               <div onClick={() => handleOpen(item.id)}>
@@ -62,6 +67,7 @@ const FAQ = () => {
                     color={colors.white}
                     variant="h8"
                     textAlign="flex-start"
+                    mobileTypo="h9"
                   >
                     {item.a}
                   </Text>

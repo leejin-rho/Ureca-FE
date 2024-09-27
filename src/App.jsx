@@ -9,8 +9,8 @@ function App() {
   return (
     <Layout>
       <Global styles={globalStyle} />
-      {/* <Home /> */}
-      <Curriculum />
+      <Home />
+      {/* <Curriculum /> */}
     </Layout>
   );
 }
