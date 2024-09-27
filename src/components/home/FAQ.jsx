@@ -30,11 +30,11 @@ const FAQ = () => {
       subexpl="자주 묻는 질문은 아래의 글과 링크를 확인해주시고
 문의 사항이 있다면 카카오톡으로 문의해주세요."
     >
-      <FAQContainer direction="column">
+      <FAQContainer direction="column" mobileGap="1">
         {Information.FAQData.slice(0, 5).map((item) => (
           <QNABox direction="column" key={item.id}>
             <Question>
-              <Text color={colors.white} variant="h7">
+              <Text color={colors.white} variant="h7" textAlign="flex-start">
                 {item.q}
               </Text>
               <div onClick={() => handleOpen(item.id)}>

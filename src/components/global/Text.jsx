@@ -61,5 +61,4 @@ export const Text = styled.div`
   white-space: pre-wrap;
   word-break: break-all;
   width: fit-content;
-  flex-shrink: 0;
 `;
