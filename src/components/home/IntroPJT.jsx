@@ -26,7 +26,7 @@ const IntroPJT = () => {
 현직자 참여 기반 프로젝트 진행을 통해 프로젝트 기획/분석/ 설계 능력을 익힐 수 있습니다."
     >
       <GlassBox width="fit-content" mobileGap="3">
-        <Grid webGap="5" mobileGap="2.5" gridCol="3">
+        <Grid mobileGap="2.5" gridCol="3">
           <Flex webGap="1" mobileGap="0.25">
             <PJTImage
               src={FEBasic}
@@ -51,7 +51,7 @@ const IntroPJT = () => {
             heightMobile="20rem"
           />
         </Grid>
-        <Grid webGap="5" mobileGap="2.5" height="18" gridCol="3">
+        <Grid mobileGap="2.5" height="18" gridCol="3">
           <ArrowDiv>
             <ArrowLeft height="10rem" />
           </ArrowDiv>
@@ -62,7 +62,7 @@ const IntroPJT = () => {
             <ArrowRight height="10rem" />
           </ArrowDiv>
         </Grid>
-        <Grid webGap="5" mobileGap="2.5" gridCol="3">
+        <Grid mobileGap="2.5" gridCol="3">
           <PJTImage
             src={FEPJT}
             alt="BEPJT"
