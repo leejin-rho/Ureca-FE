@@ -159,6 +159,56 @@ function Apply() {
     },
   ]);
 
+  // 직장 경력 state 변수
+  const [careerListItem, setCareerListItem] = useState([
+    {
+      id: 1,
+      inputs: [
+        {
+          type: 'text',
+          placeholder: '직장명을 입력해주세요.',
+          value: '',
+          name: 'careerName',
+        },
+        {
+          type: 'select',
+          value: '',
+          name: 'careerType',
+        },
+        {
+          type: 'text',
+          placeholder: '직급을 입력해주세요.',
+          value: '',
+          name: 'careerRank',
+        },
+        {
+          type: 'text',
+          placeholder: '0000.00.00',
+          value: '',
+          name: 'careerStartDate',
+          disabled: true,
+          icons: <AiOutlineCalendar />,
+        },
+        {
+          type: 'text',
+          placeholder: '0000.00.00',
+          value: '',
+          name: 'careerEndDate',
+          disabled: true,
+          icons: <AiOutlineCalendar />,
+        },
+        {
+          type: 'textarea',
+          placeholder: '어떠한 업무를 진행하셨나요?',
+          value: '',
+          name: 'careerDescription',
+        },
+      ],
+    },
+  ]);
+
+  const [itLearning, setItLearning] = useState('');
+
   // 모달창 오픈 state 변수
   const [highschoolModal, setHighschoolModal] = useState(false);
   const [universityModal, setUniversityModal] = useState(false);
@@ -303,8 +353,6 @@ function Apply() {
   };
 
   const handleCertificateInputChange = (itemId, inputName, value) => {
-    console.log(value);
-
     const updatedItems = certificateListItems.map((item) => {
       if (item.id === itemId) {
         const updatedInputs = item.inputs.map((input) => {
@@ -676,21 +724,41 @@ function Apply() {
             />
 
             {/* 학내외활동 */}
-            {/* <EtcListSection
+            <EtcListSection
               header="학내외활동"
               listTitle={['활동내용', '직위 또는 역할', '활동기간']}
               listItems={activityListItem}
               addListItem={addActiviteListItems}
               handleInputChange={handleActivityInputChange}
               deleteListItems={deleteActivityListItem}
-            /> */}
+            />
           </div>
         </div>
       </InputSection>
 
       {/* 경력 사항 Input Section */}
+      <InputSection title={'경력사항'}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '36px' }}>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}
+          >
+            {/* 자격증 */}
+            <EtcListSection
+              header="자격증"
+              listTitle={['자격증명', '자격등급', '취득일자', '인증기관']}
+              listItems={certificateListItems}
+              addListItem={addCertificateListItems}
+              handleInputChange={handleCertificateInputChange}
+              deleteListItems={deleteCertificateListItem}
+            />
+          </div>
+        </div>
+      </InputSection>
 
       {/* 자기소개서 Input Section */}
+      <InputSection title={'자기소개서'}>
+        <h2>Hello</h2>
+      </InputSection>
 
       {/* Modal */}
       {highschoolModal && (
