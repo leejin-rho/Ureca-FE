@@ -23,7 +23,20 @@ export default function EtcListSection({
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [year, setYear] = useState(selectedDate.getFullYear());
   const [month, setMonth] = useState(selectedDate.getMonth());
-  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
+
+  // 각 listItem에 대해 DatePicker 상태를 관리하는 배열로 상태를 만듦
+  const [datePickerVisibility, setDatePickerVisibility] = useState([]);
+
+  // DatePicker 토글 함수
+  const toggleDatePicker = (id) => {
+    setDatePickerVisibility((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? { ...item, showDatePicker: !item.showDatePicker }
+          : item,
+      ),
+    );
+  };
 
   const updateYearMonth = () => {
     setYear(selectedDate.getFullYear());
@@ -96,6 +109,10 @@ export default function EtcListSection({
     updateYearMonth();
   }, [selectedDate]);
 
+  useEffect(() => {
+    setDatePickerVisibility(listItems);
+  }, [listItems]);
+
   return (
     <EtcListContainer>
       {/* 헤더 영역 */}
@@ -133,81 +150,106 @@ export default function EtcListSection({
                             value={input.value}
                             name={input.name}
                             readOnly
-                            onClick={() =>
-                              setIsDatePickerVisible(!isDatePickerVisible)
-                            }
+                            onClick={() => toggleDatePicker(item.id)}
                           />
 
                           <button
                             className="iconBtn"
-                            onClick={() =>
-                              setIsDatePickerVisible(!isDatePickerVisible)
-                            }
+                            onClick={() => toggleDatePicker(item.id)}
                           >
                             {input.icons}
                           </button>
 
-                          <DatePicker show={isDatePickerVisible}>
-                            <DatePickerHeader>
-                              <button
-                                className="prevBtn"
-                                onClick={() => {
-                                  if (month === 0) setYear(year - 1);
-                                  setMonth((month - 1 + 12) % 12);
-                                }}
-                              >
-                                <AiOutlineLeft />
-                              </button>
+                          {/* 각 ListItem 별로 개별 DatePicker 관리 */}
+                          {datePickerVisibility[itemIdx]?.showDatePicker && (
+                            <>
+                              <DatePicker show={true}>
+                                <DatePickerHeader>
+                                  <button
+                                    className="prevBtn"
+                                    onClick={() => {
+                                      if (month === 0) setYear(year - 1);
+                                      setMonth((month - 1 + 12) % 12);
+                                    }}
+                                  >
+                                    <AiOutlineLeft />
+                                  </button>
 
-                              <input
-                                type="number"
-                                className="year-input"
-                                value={year}
-                                onChange={(event) =>
-                                  setYear(Number(event.target.value))
-                                }
-                              />
+                                  <input
+                                    type="number"
+                                    className="year-input"
+                                    value={year}
+                                    onChange={(event) =>
+                                      setYear(Number(event.target.value))
+                                    }
+                                  />
 
-                              <div>
-                                <select
-                                  value={month}
-                                  onChange={(event) =>
-                                    setMonth(Number(event.target.value))
-                                  }
-                                >
-                                  {Array.from({ length: 12 }, (_, idx) => {
-                                    return (
-                                      <option key={idx} value={idx}>
-                                        {idx + 1}월
-                                      </option>
+                                  <div>
+                                    <select
+                                      value={month}
+                                      onChange={(event) =>
+                                        setMonth(Number(event.target.value))
+                                      }
+                                    >
+                                      {Array.from({ length: 12 }, (_, idx) => {
+                                        return (
+                                          <option key={idx} value={idx}>
+                                            {idx + 1}월
+                                          </option>
+                                        );
+                                      })}
+                                    </select>
+                                  </div>
+
+                                  <button
+                                    className="nextBtn"
+                                    onClick={() => {
+                                      if (month === 11) setYear(year + 1);
+                                      setMonth((month + 1) % 12);
+                                    }}
+                                  >
+                                    <AiOutlineRight />
+                                  </button>
+                                </DatePickerHeader>
+
+                                <div className="days">
+                                  {'일월화수목금토'
+                                    .split('')
+                                    .map((day, idx) => {
+                                      return <span key={idx}>{day}</span>;
+                                    })}
+                                </div>
+
+                                <div
+                                  className="dates"
+                                  onClick={(event) => {
+                                    handleInputChange(
+                                      item.id,
+                                      input.name,
+                                      `${year.toString().padStart(4, '0')}.${(
+                                        month + 1
+                                      )
+                                        .toString()
+                                        .padStart(
+                                          2,
+                                          '0',
+                                        )}.${event.target.textContent.padStart(
+                                        2,
+                                        '0',
+                                      )}`,
                                     );
-                                  })}
-                                </select>
-                              </div>
+                                  }}
+                                >
+                                  {displayDates()}
+                                </div>
+                              </DatePicker>
 
-                              <button
-                                className="nextBtn"
-                                onClick={() => {
-                                  if (month === 11) setYear(year + 1);
-                                  setMonth((month + 1) % 12);
-                                }}
-                              >
-                                <AiOutlineRight />
-                              </button>
-                            </DatePickerHeader>
-
-                            <div className="days">
-                              {'일월화수목금토'.split('').map((day) => {
-                                return <span>{day}</span>;
-                              })}
-                            </div>
-
-                            <div className="dates">{displayDates()}</div>
-                          </DatePicker>
-                          <DatePickerContainer
-                            show={isDatePickerVisible}
-                            onClick={() => setIsDatePickerVisible(false)}
-                          />
+                              <DatePickerContainer
+                                show={true}
+                                onClick={() => toggleDatePicker(item.id)}
+                              />
+                            </>
+                          )}
                         </>
                       ) : (
                         <input
