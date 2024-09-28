@@ -162,16 +162,54 @@ export function CombInputField({ label }) {
   );
 }
 
+export function TextAreaField({
+  margin,
+  maxWidth,
+  label,
+  elements,
+  name,
+  value,
+  placeholder,
+  areaHeight,
+  onChange,
+}) {
+  console.log(areaHeight);
+
+  return (
+    <InputContainer margin={margin} maxWidth={maxWidth}>
+      <InputLabelElement flex={elements}>
+        {label ||
+          elements.map((element, idx) => (
+            <span key={idx} style={{ color: element.color }}>
+              {element.message}
+            </span>
+          ))}
+      </InputLabelElement>
+
+      <TextArea
+        areaHeight={areaHeight}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
+    </InputContainer>
+  );
+}
+
 const InputContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '41.6rem')};
   gap: ${({ group }) => (group ? 0 : '0.8rem')};
+  margin: ${({ margin }) => (margin ? margin : '0')};
 `;
 
 // input 태그 label
 const InputLabelElement = styled.label`
+  display: ${({ flex }) => (flex ? 'flex' : 'block')};
+  justify-content: ${({ flex }) => (flex ? 'space-between' : '')};
   font-size: 1.4rem;
   font-weight: 600;
   line-height: 150%;
@@ -346,5 +384,20 @@ const DropdownMenuItem = styled.li`
 
   :hover {
     background-color: #b0b5bd1e;
+  }
+`;
+
+const TextArea = styled.textarea`
+  padding: 1.2rem 1.8rem;
+  height: ${({ areaHeight }) => areaHeight || '24rem'};
+  resize: none;
+  background-color: #f4f6f9;
+  border: 1px solid transparent;
+  outline: none;
+  border-radius: 0.8rem;
+  transition: 0.4s;
+
+  :focus {
+    border: 1px solid ${colors.primaryColor};
   }
 `;

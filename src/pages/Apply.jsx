@@ -12,6 +12,7 @@ import {
   DropdownField,
   TextFieldAndIcons,
   CombInputField,
+  TextAreaField,
 } from '../components/apply/ui/InputFieldUi';
 import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
@@ -752,6 +753,39 @@ function Apply() {
               deleteListItems={deleteCertificateListItem}
             />
           </div>
+
+          <CreerEtcContainer>
+            <CareerEtcHeader>
+              <h4>추가질문</h4>
+            </CareerEtcHeader>
+
+            <TextAreaField
+              elements={[
+                {
+                  message:
+                    '질문) IT와 관련된 교육을 수강해 본 이력이 있다면 기술해주십시오.',
+                },
+                {
+                  message: `글자수 ${
+                    itLearning.length <= 200 ? itLearning.length : '200'
+                  } / 200자`,
+                  color: '#888',
+                },
+              ]}
+              margin={'3.6rem 0 0 0 '}
+              maxWidth={'100%'}
+              areaHeight={'13rem'}
+              placeholder={'IT 수강 경험을 기술해주십시오.'}
+              name="it_learning"
+              value={itLearning}
+              onChange={(event) => {
+                if (itLearning.length <= 200) setItLearning(event.target.value);
+                else {
+                  setItLearning(itLearning.slice(0, 200));
+                }
+              }}
+            />
+          </CreerEtcContainer>
         </div>
       </InputSection>
 
@@ -798,3 +832,35 @@ function Apply() {
 }
 
 export default Apply;
+
+const CreerEtcContainer = styled.div`
+  font-family: 'Pretendard', sans-serif;
+
+  & > * {
+    box-sizing: border-box;
+  }
+`;
+
+const CareerEtcHeader = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  ::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1.2rem;
+    display: block;
+    height: 2px;
+    background-color: #888;
+    width: 100%;
+    border-radius: 1px;
+  }
+
+  h4 {
+    font-size: 18px;
+    font-weight: 600;
+  }
+`;
