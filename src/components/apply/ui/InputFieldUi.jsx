@@ -173,14 +173,12 @@ export function TextAreaField({
   areaHeight,
   onChange,
 }) {
-  console.log(areaHeight);
-
   return (
     <InputContainer margin={margin} maxWidth={maxWidth}>
       <InputLabelElement flex={elements}>
         {label ||
           elements.map((element, idx) => (
-            <span key={idx} style={{ color: element.color }}>
+            <span key={idx} style={element.style}>
               {element.message}
             </span>
           ))}
@@ -210,6 +208,7 @@ const InputContainer = styled.div`
 const InputLabelElement = styled.label`
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
   justify-content: ${({ flex }) => (flex ? 'space-between' : '')};
+  align-items: ${({ flex }) => (flex ? 'end' : '')};
   font-size: 1.4rem;
   font-weight: 600;
   line-height: 150%;
