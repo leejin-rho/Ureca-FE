@@ -301,7 +301,7 @@ const DropdownMenu = styled.ul`
   opacity: ${({ open }) => (open ? 1 : 0)};
   display: ${({ open }) => (open ? 'block' : 'none')};
   transition: 0.2s;
-  z-index: 1;
+  z-index: 1001;
   max-height: 13em;
   overflow-y: scroll;
 
@@ -331,6 +331,7 @@ const DropdownMenuOuter = styled.div`
   height: 100vh;
   top: 0;
   left: 0;
+  z-index: 1000;
 `;
 
 const DropdownMenuItem = styled.li`

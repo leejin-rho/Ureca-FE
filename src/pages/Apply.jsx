@@ -17,7 +17,7 @@ import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
 import { AiOutlineCalendar, AiOutlineSearch } from 'react-icons/ai';
 import { options } from '../assets/data/selectData';
-import EtcListSection from '../components/apply/ui/EtcListSection';
+import EtcListSection from '../components/apply/Section/EtcListSection';
 
 // Apply Page
 function Apply() {
@@ -70,7 +70,7 @@ function Apply() {
         },
         {
           type: 'text',
-          placeholder: '취득일자를 선택해주세요.',
+          placeholder: '0000.00.00',
           value: '',
           name: 'certificateDateAcquired',
           disabled: true,
@@ -104,7 +104,7 @@ function Apply() {
         },
         {
           type: 'text',
-          placeholder: '수상일자를 선택해주세요.',
+          placeholder: '0000.00.00',
           value: '',
           name: 'awardDate',
           disabled: true,
@@ -120,7 +120,41 @@ function Apply() {
     },
   ]);
 
-  const [activity, setActivity] = useState([]);
+  const [activityListItem, setActivityListItem] = useState([
+    {
+      id: 1,
+      inputs: [
+        {
+          type: 'text',
+          placeholder: '활동 내용을 입력해주세요.',
+          value: '',
+          name: 'activityDescription',
+        },
+        {
+          type: 'text',
+          placeholder: '수상내역을 입력해주세요.',
+          value: '',
+          name: 'activityRole',
+        },
+        {
+          type: 'text',
+          placeholder: '시작 날짜를 선택해주세요.',
+          value: '',
+          name: 'activityStartDate',
+          disabled: true,
+          icons: <AiOutlineCalendar />,
+        },
+        {
+          type: 'text',
+          placeholder: '종료 날짜를 선택해주세요.',
+          value: '',
+          name: 'activityEndDate',
+          disabled: true,
+          icons: <AiOutlineCalendar />,
+        },
+      ],
+    },
+  ]);
 
   // 모달창 오픈 state 변수
   const [highschoolModal, setHighschoolModal] = useState(false);
@@ -159,7 +193,7 @@ function Apply() {
           },
           {
             type: 'text',
-            placeholder: '취득일자를 선택해주세요.',
+            placeholder: '0000.00.00',
             value: '',
             name: 'certificateDateAcquired',
             disabled: true,
@@ -218,6 +252,50 @@ function Apply() {
     ]);
   };
 
+  const addActiviteListItems = () => {
+    if (activityListItem.length >= 5) {
+      alert('총 5개까지만 작성할 수 있습니다.');
+      return;
+    }
+
+    setActivityListItem([
+      ...activityListItem,
+      {
+        id: activityListItem.length + 1,
+        inputs: [
+          {
+            type: 'text',
+            placeholder: '활동 내용을 입력해주세요.',
+            value: '',
+            name: 'activityDescription',
+          },
+          {
+            type: 'text',
+            placeholder: '수상내역을 입력해주세요.',
+            value: '',
+            name: 'activityRole',
+          },
+          {
+            type: 'text',
+            placeholder: '시작 날짜를 선택해주세요.',
+            value: '',
+            name: 'activityStartDate',
+            disabled: true,
+            icons: <AiOutlineCalendar />,
+          },
+          {
+            type: 'text',
+            placeholder: '종료 날짜를 선택해주세요.',
+            value: '',
+            name: 'activityEndDate',
+            disabled: true,
+            icons: <AiOutlineCalendar />,
+          },
+        ],
+      },
+    ]);
+  };
+
   const handleCertificateInputChange = (itemId, inputName, value) => {
     const updatedItems = certificateListItems.map((item) => {
       if (item.id === itemId) {
@@ -250,6 +328,22 @@ function Apply() {
     setAwardListItems(updatedItems);
   };
 
+  const handleActivityInputChange = (itemId, inputName, value) => {
+    const updatedItems = activityListItem.map((item) => {
+      if (item.id === itemId) {
+        const updatedInputs = item.inputs.map((input) => {
+          if (input.name === inputName) {
+            return { ...input, value };
+          }
+          return input;
+        });
+        return { ...item, inputs: updatedInputs };
+      }
+      return item;
+    });
+    setActivityListItem(updatedItems);
+  };
+
   const deleteCertificateListItem = (itemId) => {
     const updatedItems = certificateListItems.filter(
       (item) => item.id !== itemId,
@@ -260,6 +354,11 @@ function Apply() {
   const deleteAwardListItem = (itemId) => {
     const updatedItems = awardListItems.filter((item) => item.id !== itemId);
     setAwardListItems(updatedItems);
+  };
+
+  const deleteActivityListItem = (itemId) => {
+    const updatedItems = activityListItem.filter((item) => item.id !== itemId);
+    setActivityListItem(updatedItems);
   };
 
   useEffect(() => {
@@ -298,7 +397,7 @@ function Apply() {
       <Text
         color={colors.primaryColor}
         variant="h2"
-        margin="100px 0 63px 0"
+        margin="10rem 0 6.3rem 0"
         lineHeight="120%"
       >
         LG U+ URECA 지원
@@ -559,19 +658,23 @@ function Apply() {
             />
 
             {/* 수상 경력 */}
-            <EtcListSection
+            {/* <EtcListSection
               header="수상경력"
               listTitle={['대회명', '수상내역', '수상일자', '수상기관']}
               listItems={awardListItems}
               addListItem={addAwardsListItems}
               handleInputChange={handleAwardInputChange}
               deleteListItems={deleteAwardListItem}
-            />
+            /> */}
 
             {/* 학내외활동 */}
             {/* <EtcListSection
               header="학내외활동"
               listTitle={['활동내용', '직위 또는 역할', '활동기간']}
+              listItems={activityListItem}
+              addListItem={addActiviteListItems}
+              handleInputChange={handleActivityInputChange}
+              deleteListItems={deleteActivityListItem}
             /> */}
           </div>
         </div>
@@ -591,6 +694,7 @@ function Apply() {
           setType={setHighSchoolType}
         />
       )}
+
       {universityModal && (
         <Modal
           setOpen={setUniversityModal}
