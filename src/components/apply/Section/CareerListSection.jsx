@@ -10,6 +10,7 @@ function CareerListSection({
   header,
   listItems,
   addListItem,
+  handleInputChange,
   deleteListItems,
 }) {
   const [test, setTest] = useState('');
@@ -46,12 +47,23 @@ function CareerListSection({
                       <TextField
                         label={input.label}
                         placeholder={input.placeholder}
+                        value={input.value}
+                        target={input.name + '-' + item.id}
+                        changeEventFunc={(event) =>
+                          handleInputChange(
+                            item.id,
+                            input.name,
+                            event.target.value,
+                          )
+                        }
                       />
                     )}
                     {input.type === 'select' && (
                       <DropdownField
                         label={input.label}
                         data={options.careerType}
+                        changeFunc={[handleInputChange, item.id, input.name]}
+                        // setSelectValueㅌ
                       />
                     )}
                   </div>
@@ -66,6 +78,15 @@ function CareerListSection({
                 <TextField
                   label={item.inputs[2].label}
                   placeholder={item.inputs[2].placeholder}
+                  value={item.inputs[2].value}
+                  target={item.inputs[2].name + '-' + item.id}
+                  changeEventFunc={(event) =>
+                    handleInputChange(
+                      item.id,
+                      item.inputs[2].name,
+                      event.target.value,
+                    )
+                  }
                 />
               </div>
 
@@ -117,7 +138,9 @@ function CareerListSection({
                   },
                   {
                     message: `글자수 ${
-                      test.length <= 500 ? test.length : '500'
+                      item.inputs[5].value.length <= 500
+                        ? item.inputs[5].value.length
+                        : '500'
                     } / 500자`,
                     style: {
                       width: '12rem',
@@ -126,11 +149,25 @@ function CareerListSection({
                     },
                   },
                 ]}
-                value={test}
+                value={item.inputs[5].value}
                 onChange={(event) => {
-                  if (test.length <= 500) setTest(event.target.value);
+                  if (item.inputs[5].value.length <= 500)
+                    handleInputChange(
+                      item.id,
+                      item.inputs[5].name,
+                      event.target.value,
+                    );
                   else {
-                    setTest(test.slice(0, 500));
+                    handleInputChange(
+                      item.id,
+                      item.inputs[5].name,
+                      event.target.value,
+                    );
+                    handleInputChange(
+                      item.id,
+                      item.inputs[5].name,
+                      item.inputs[5].value.slice(0, 500),
+                    );
                   }
                 }}
                 placeholder={'귀하의 담당 업무 내용을 입력해주세요.'}

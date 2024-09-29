@@ -1052,6 +1052,8 @@ function Apply() {
           placeholder={'학과를 입력해 주세요.'}
         />
       )}
+
+      <button onClick={() => console.log(careerListItem)}>제출</button>
     </>
   );
 }

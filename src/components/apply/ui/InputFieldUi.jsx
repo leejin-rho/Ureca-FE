@@ -101,14 +101,25 @@ function Select({ menuShow, setMenuShow, selected }) {
   );
 }
 
-export function DropdownField({ label, group, data, setSelectValue }) {
+export function DropdownField({
+  label,
+  group,
+  data,
+  setSelectValue,
+  changeFunc,
+}) {
   const [menuShow, setMenuShow] = useState(false);
   const [selected, setSelected] = useState(data[0]);
 
   const selectOption = (event) => {
     if (event.target.id.at(-1) !== '0') {
       setSelected(event.target.textContent); // 화면에 노출되는 상태 변환 함수
-      setSelectValue(event.target.textContent); // props로 전달된 상태 변환 함수
+
+      if (changeFunc) {
+        changeFunc[0](changeFunc[1], changeFunc[2], event.target.textContent);
+      } else {
+        setSelectValue(event.target.textContent); // props로 전달된 상태 변환 함수
+      }
     }
 
     setMenuShow(!menuShow);
