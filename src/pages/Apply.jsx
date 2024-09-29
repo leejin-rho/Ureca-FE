@@ -19,6 +19,7 @@ import Modal from '../components/apply/ui/Modal';
 import { AiOutlineCalendar, AiOutlineSearch } from 'react-icons/ai';
 import { options } from '../assets/data/selectData';
 import EtcListSection from '../components/apply/Section/EtcListSection';
+import CareerListSection from '../components/apply/Section/CareerListSection';
 
 // Apply Page
 function Apply() {
@@ -748,15 +749,17 @@ function Apply() {
           <div
             style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}
           >
+            <CareerListSection />
+
             {/* 자격증 */}
-            <EtcListSection
+            {/* <EtcListSection
               header="자격증"
               listTitle={['자격증명', '자격등급', '취득일자', '인증기관']}
               listItems={certificateListItems}
               addListItem={addCertificateListItems}
               handleInputChange={handleCertificateInputChange}
               deleteListItems={deleteCertificateListItem}
-            />
+            /> */}
           </div>
 
           <CreerEtcContainer>
