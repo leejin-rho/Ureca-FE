@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 

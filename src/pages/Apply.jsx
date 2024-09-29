@@ -193,6 +193,7 @@ function Apply() {
           name: 'careerStartDate',
           disabled: true,
           icons: <AiOutlineCalendar />,
+          showDatePicker: false,
         },
         {
           type: 'calendar',
@@ -201,6 +202,7 @@ function Apply() {
           name: 'careerEndDate',
           disabled: true,
           icons: <AiOutlineCalendar />,
+          showDatePicker: false,
         },
         {
           type: 'textarea',

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineCalendar, AiOutlinePlus } from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
 import { TextAreaField, TextField, DropdownField } from '../ui/InputFieldUi';
 import { options } from '../../../assets/data/selectData';
+import Calendar from '../ui/Calendar';
 
 function CareerListSection({
   header,
@@ -13,7 +14,39 @@ function CareerListSection({
   handleInputChange,
   deleteListItems,
 }) {
-  const [test, setTest] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [year, setYear] = useState(selectedDate.getFullYear());
+  const [month, setMonth] = useState(selectedDate.getMonth());
+
+  // 각 listItem에 대해 DatePicker 상태를 관리하는 배열로 상태를 만듦
+  const [datePickerVisibility, setDatePickerVisibility] = useState([]);
+
+  // DatePicker 토글 함수
+  const toggleDatePicker = (itemId, inputIdx) => {
+    setDatePickerVisibility((prevItems) =>
+      prevItems.map((item) => {
+        if (item.id === itemId) {
+          return {
+            ...item,
+            inputs: item.inputs.map((input, idx) => {
+              if (idx === inputIdx) {
+                return {
+                  ...input,
+                  showDatePicker: !input.showDatePicker,
+                };
+              }
+              return input;
+            }),
+          };
+        }
+        return item;
+      }),
+    );
+  };
+
+  useEffect(() => {
+    setDatePickerVisibility(listItems);
+  }, [listItems]);
 
   return (
     <CareerListContainer>
@@ -93,8 +126,10 @@ function CareerListSection({
               <div
                 style={{
                   width: '100%',
+                  maxWidth: '41.6rem',
                   display: 'flex',
                   flexDirection: 'column',
+                  gap: '0.8rem',
                 }}
               >
                 <label
@@ -112,7 +147,42 @@ function CareerListSection({
                   {item.inputs.slice(3, 5).map((input, idx) => {
                     return (
                       <React.Fragment key={idx}>
-                        <TextField label={input.label} />
+                        {/* <TextFieldAndIcons icons={<AiOutlineCalendar />} /> */}
+                        <CareerListtItme>
+                          <input
+                            className="text-input"
+                            placeholder={input.placeholder}
+                            value={input.value}
+                            name={input.name}
+                            readOnly
+                            onClick={() => toggleDatePicker(item.id, idx + 3)}
+                          />
+
+                          <button
+                            className="iconBtn"
+                            onClick={() => toggleDatePicker(item.id, idx)}
+                          >
+                            <AiOutlineCalendar />
+                          </button>
+
+                          {datePickerVisibility[itemIdx]?.inputs[idx + 3]
+                            .showDatePicker && (
+                            <Calendar
+                              changeValue={[
+                                handleInputChange,
+                                item.id,
+                                input.name,
+                              ]}
+                              toggle={[toggleDatePicker, item.id, idx + 3]}
+                              selectedDate={selectedDate}
+                              setSelectedDate={setSelectedDate}
+                              year={year}
+                              setYear={setYear}
+                              month={month}
+                              setMonth={setMonth}
+                            />
+                          )}
+                        </CareerListtItme>
                         {idx === 0 && (
                           <span style={{ margin: '0 0.9rem', fontSize: 14 }}>
                             ~
@@ -265,6 +335,39 @@ const CareerListItemDeleteBtnContainer = styled.div`
     border: 1px solid #aeaeae;
     cursor: pointer;
     background-color: transparent;
+  }
+`;
+
+const CareerListtItme = styled.div`
+  position: relative;
+  width: 19.975rem;
+  background-color: #f4f6f9;
+  border-radius: 0.8rem;
+  border: 1px solid transparent;
+  display: flex;
+
+  .text-input {
+    padding: 0.8rem 1.6rem;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    flex-grow: 1;
+    cursor: pointer;
+  }
+
+  .iconBtn {
+    flex-grow: 1;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    color: #b0b5bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
   }
 `;
 

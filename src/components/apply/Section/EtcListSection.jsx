@@ -2,13 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 // React Icons
-import {
-  AiOutlineCalendar,
-  AiOutlineDelete,
-  AiOutlineLeft,
-  AiOutlinePlus,
-  AiOutlineRight,
-} from 'react-icons/ai';
+import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
 import { TextField } from '../ui/InputFieldUi';
 import Calendar from '../ui/Calendar';
