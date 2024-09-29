@@ -10,9 +10,7 @@ function App() {
   return (
     <Layout>
       <Global styles={globalStyle} />
-      {/* <Home /> */}
-      {/* <FrontendCur /> */}
-      <BackendCur />
+      <Home />
     </Layout>
   );
 }
