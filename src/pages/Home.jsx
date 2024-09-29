@@ -72,7 +72,11 @@ const MainContainer = styled.div`
     ),
     ${colors.background};
 
-  padding-top: 72px;
+  padding: 72px;
+
+  @media (max-width: 1023px) {
+    padding: 62px;
+  }
 `;
 
 const SectionList = styled(Flex)`

@@ -18,13 +18,13 @@ export const Grid = styled.div`
   background-color: ${({ backgroundColor }) =>
     backgroundColor ? backgroundColor : `transparent`};
 
-  grid-template-columns: ${({ gridCol }) =>
-    gridCol ? `repeat(${gridCol}, 1fr)` : 'repeat(2, 1fr)'};
+  grid-template-columns: ${({ repeat }) =>
+    repeat ? `repeat(${repeat}, 1fr)` : 'repeat(2, 1fr)'};
 
   /* 브라우저 크기에 따라 가로 크기 변경 */
   @media (max-width: 1023px) {
     gap: ${({ mobileGap }) => (mobileGap ? `${mobileGap}rem` : '0')};
-    grid-template-columns: repeat(1, 1fr);
-    display: grid;
+    grid-template-columns: ${({ repeatMobile }) =>
+      repeatMobile ? `repeat(${repeatMobile}, 1fr)` : 'repeat(1, 1fr)'};
   }
 `;

@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import { Flex } from '@components/global/Flex';
+import { Grid } from '@components/global/Grid';
 import InfoBox from './InfoBox';
 import Information from '@/assets/data/Information.json';
 
 const InfoList = () => {
   return (
-    <ListContainer mobileGap="0.5">
+    <ListContainer mobileGap="1" repeat="4" repeatMobile="2">
       {Information.InfoData.map((item) => (
         <InfoBox
           key={item.id}
@@ -20,12 +20,12 @@ const InfoList = () => {
 
 export default InfoList;
 
-const ListContainer = styled(Flex)`
-  margin: 6.15rem;
+const ListContainer = styled(Grid)`
+  margin: 3rem;
   flex-direction: row;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 `;

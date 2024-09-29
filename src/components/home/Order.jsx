@@ -12,7 +12,7 @@ const Order = () => {
     >
       <PNGImage
         src={UrecaOrder}
-        height={'16rem'}
+        height={'10rem'}
         alt="ureca-order"
         widthMobile="100vw"
         heightMobile="fit-content"

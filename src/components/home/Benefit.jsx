@@ -15,7 +15,7 @@ const Benefit = () => {
       <WebImg
         src={UrecaMerit}
         alt="유레카 혜택"
-        height="55rem"
+        height="34rem"
         widthMobile="100vw"
       />
       <MobileImg src={UrecaMeritMobile} widthMobile="100%"></MobileImg>

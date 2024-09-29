@@ -7,9 +7,9 @@ import { Flex } from '@components/global/Flex';
 const Section = ({ title, expl, subexpl, children }) => {
   return (
     <>
-      <SectionContainer mobileGap="5">
-        <HeadBox mobileGap="1">
-          <TitleBox mobileGap="1">
+      <SectionContainer mobileGap="2">
+        <HeadBox mobileGap="0.5">
+          <TitleBox mobileGap="0.5">
             <Text color={colors.primaryColor} variant="h6" lineHeight="120%">
               {title}
             </Text>
@@ -32,16 +32,17 @@ export default Section;
 
 const SectionContainer = styled(Flex)`
   flex-direction: column;
-  width: fit-content;
+  width: 100%;
   height: fit-content;
   padding: 6.25rem 8.125rem;
   align-items: center;
   justify-content: center;
-  gap: 6.25rem;
-  margin-top: 8rem;
+  gap: 4rem;
+  margin-top: 4rem;
 
   @media (max-width: 1023px) {
-    margin-top: 4rem;
+    margin-top: 2.5rem;
+    min-width: 550px;
   }
 `;
 

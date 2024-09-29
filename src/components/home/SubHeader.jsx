@@ -26,8 +26,8 @@ const Subheader = () => {
           isBorder={true}
           fontSize="16px"
           fontColor={colors.white}
-          width="10rem"
-          height="3.6rem"
+          width="8rem"
+          height="2.5rem"
         >
           지원하기
         </Button>

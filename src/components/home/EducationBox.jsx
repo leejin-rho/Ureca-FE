@@ -16,7 +16,12 @@ const EducationBox = ({ title, explList, type }) => {
         {explList &&
           explList.map((expl, index) => (
             <li key={index}>
-              <Text color={colors.white} variant="h8" textAlign="start">
+              <Text
+                color={colors.white}
+                variant="h8"
+                textAlign="start"
+                mobileTypo="h9"
+              >
                 {expl}
               </Text>
             </li>
@@ -39,14 +44,13 @@ export default EducationBox;
 const Wrapper = styled(Flex)`
   position: relative;
   flex-direction: column;
-  width: 43rem;
-  height: 37rem;
-  padding: 2.25rem;
+  width: 28rem;
+  height: 24rem;
+  padding: 1.75rem;
 
   align-items: flex-start;
   justify-content: flex-start;
-  /* gap: 2.25rem; */
-  border-radius: 1.875rem;
+  border-radius: 1.25rem;
   box-sizing: border-box;
 
   background: radial-gradient(
@@ -64,6 +68,7 @@ const Wrapper = styled(Flex)`
   @media (max-width: 1023px) {
     width: 100%;
     height: fit-content;
+    padding-bottom: 85px;
   }
 `;
 
@@ -73,11 +78,12 @@ const ExplBox = styled.ul`
   width: 100%;
   color: ${colors.white};
   list-style-type: disc;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   line-height: 170%;
-  margin-top: 2.25rem;
+  margin-top: 1rem;
   word-break: break-all;
   box-sizing: border-box;
+  gap: 0.25rem;
 `;
 
 const EduLink = styled.div`
@@ -85,10 +91,10 @@ const EduLink = styled.div`
   position: absolute;
   width: 100%;
 
-  font-size: 16px;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 400;
-  line-height: 125%;
+  line-height: 140%;
 
   align-items: center;
   justify-content: flex-end;

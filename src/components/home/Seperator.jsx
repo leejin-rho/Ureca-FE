@@ -13,7 +13,7 @@ const SeperateLine = styled.div`
   height: 2px;
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-  margin-top: 6rem;
+  margin-top: 4rem;
 
   @media (max-width: 1023px) {
     margin-top: 0rem;
