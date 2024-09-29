@@ -11,5 +11,6 @@ export const options = {
     '인문계열',
     '자연계열',
   ],
+  careerType: ['선택해주세요', '아르바이트', '인턴', '정규직'],
   dummey: ['Framer', 'Sketch', 'Invision Studio', 'Figma', 'AdobeXD'],
 };

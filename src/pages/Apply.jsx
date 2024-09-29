@@ -168,23 +168,26 @@ function Apply() {
       inputs: [
         {
           type: 'text',
+          label: '직장명',
           placeholder: '직장명을 입력해주세요.',
           value: '',
           name: 'careerName',
         },
         {
           type: 'select',
+          label: '직장유형',
           value: '',
           name: 'careerType',
         },
         {
           type: 'text',
+          label: '직급',
           placeholder: '직급을 입력해주세요.',
           value: '',
           name: 'careerRank',
         },
         {
-          type: 'text',
+          type: 'calendar',
           placeholder: '0000.00.00',
           value: '',
           name: 'careerStartDate',
@@ -192,7 +195,7 @@ function Apply() {
           icons: <AiOutlineCalendar />,
         },
         {
-          type: 'text',
+          type: 'calendar',
           placeholder: '0000.00.00',
           value: '',
           name: 'careerEndDate',
@@ -201,7 +204,8 @@ function Apply() {
         },
         {
           type: 'textarea',
-          placeholder: '어떠한 업무를 진행하셨나요?',
+          label: '담당업무',
+          placeholder: '귀하의 담당 업무 내용을 입력해주세요.',
           value: '',
           name: 'careerDescription',
         },
@@ -227,7 +231,7 @@ function Apply() {
     setGender(JSON.parse(event.target.value));
   };
 
-  // 자격증 추가 버튼 클릭 시 컴포넌트 추가 Function
+  // 어학 / 자격 / 기타 추가 버튼 클릭 이벤트 핸들러
   const addCertificateListItems = () => {
     if (certificateListItems.length >= 5) {
       alert('총 5개까지만 작성할 수 있습니다.');
@@ -359,6 +363,7 @@ function Apply() {
     ]);
   };
 
+  // 어학 / 자격 / 기타 input 값 변경 이벤트 핸들러
   const handleCertificateInputChange = (itemId, inputName, value) => {
     const updatedItems = certificateListItems.map((item) => {
       if (item.id === itemId) {
@@ -407,6 +412,7 @@ function Apply() {
     setActivityListItem(updatedItems);
   };
 
+  // 어학 / 자격 / 기타 Section 삭제 이벤트 핸들러
   const deleteCertificateListItem = (itemId) => {
     const updatedItems = certificateListItems.filter(
       (item) => item.id !== itemId,
@@ -424,6 +430,86 @@ function Apply() {
     setActivityListItem(updatedItems);
   };
 
+  // 경력사항 추가 버튼 클릭 이벤트 핸들러
+  const addCareerListItems = () => {
+    if (careerListItem.length >= 5) {
+      alert('총 5개까지만 작성할 수 있습니다.');
+      return;
+    }
+
+    setCareerListItem([
+      ...careerListItem,
+      {
+        id: careerListItem.length + 1,
+        showDatePicker: false,
+        inputs: [
+          {
+            type: 'text',
+            placeholder: '직장명을 입력해주세요.',
+            value: '',
+            name: 'careerName',
+          },
+          {
+            type: 'select',
+            value: '',
+            name: 'careerType',
+          },
+          {
+            type: 'text',
+            placeholder: '직급을 입력해주세요.',
+            value: '',
+            name: 'careerRank',
+          },
+          {
+            type: 'text',
+            placeholder: '0000.00.00',
+            value: '',
+            name: 'careerStartDate',
+            disabled: true,
+            icons: <AiOutlineCalendar />,
+          },
+          {
+            type: 'text',
+            placeholder: '0000.00.00',
+            value: '',
+            name: 'careerEndDate',
+            disabled: true,
+            icons: <AiOutlineCalendar />,
+          },
+          {
+            type: 'textarea',
+            placeholder: '귀하의 담당 업무 내용을 입력해주세요.',
+            value: '',
+            name: 'careerDescription',
+          },
+        ],
+      },
+    ]);
+  };
+
+  // 경력사항 input 값 변경 이벤트 핸들러
+  const handleCareerInputChange = (itemId, inputName, value) => {
+    const updatedItems = careerListItem.map((item) => {
+      if (item.id === itemId) {
+        const updatedInputs = item.inputs.map((input) => {
+          if (input.name === inputName) {
+            return { ...input, value };
+          }
+          return input;
+        });
+        return { ...item, inputs: updatedInputs };
+      }
+      return item;
+    });
+    setCareerListItem(updatedItems);
+  };
+
+  const deleteCareerListItem = (itemId) => {
+    const updatedItems = careerListItem.filter((item) => item.id !== itemId);
+    setCareerListItem(updatedItems);
+  };
+
+  // OpenAPI 전국 대학교 학과 데이터 가져오는 로직
   useEffect(() => {
     async function fetchData() {
       const major = {};
@@ -749,7 +835,13 @@ function Apply() {
           <div
             style={{ display: 'flex', flexDirection: 'column', gap: '60px' }}
           >
-            <CareerListSection />
+            <CareerListSection
+              header={'직장경력'}
+              listItems={careerListItem}
+              addListItem={addCareerListItems}
+              handleInputChange={handleCareerInputChange}
+              deleteListItems={deleteCareerListItem}
+            />
 
             {/* 자격증 */}
             {/* <EtcListSection
