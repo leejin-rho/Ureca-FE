@@ -445,23 +445,26 @@ function Apply() {
         inputs: [
           {
             type: 'text',
+            label: '직장명',
             placeholder: '직장명을 입력해주세요.',
             value: '',
             name: 'careerName',
           },
           {
             type: 'select',
+            label: '직장유형',
             value: '',
             name: 'careerType',
           },
           {
             type: 'text',
+            label: '직급',
             placeholder: '직급을 입력해주세요.',
             value: '',
             name: 'careerRank',
           },
           {
-            type: 'text',
+            type: 'calendar',
             placeholder: '0000.00.00',
             value: '',
             name: 'careerStartDate',
@@ -469,7 +472,7 @@ function Apply() {
             icons: <AiOutlineCalendar />,
           },
           {
-            type: 'text',
+            type: 'calendar',
             placeholder: '0000.00.00',
             value: '',
             name: 'careerEndDate',
@@ -478,6 +481,7 @@ function Apply() {
           },
           {
             type: 'textarea',
+            label: '담당업무',
             placeholder: '귀하의 담당 업무 내용을 입력해주세요.',
             value: '',
             name: 'careerDescription',
@@ -504,6 +508,7 @@ function Apply() {
     setCareerListItem(updatedItems);
   };
 
+  // 경력사항 삭제 버튼 클릭 이벤트 핸들러
   const deleteCareerListItem = (itemId) => {
     const updatedItems = careerListItem.filter((item) => item.id !== itemId);
     setCareerListItem(updatedItems);

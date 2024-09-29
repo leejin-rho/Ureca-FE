@@ -6,7 +6,12 @@ import { colors } from '../../../styles/colors';
 import { TextAreaField, TextField, DropdownField } from '../ui/InputFieldUi';
 import { options } from '../../../assets/data/selectData';
 
-function CareerListSection({ header, listItems, addListItem }) {
+function CareerListSection({
+  header,
+  listItems,
+  addListItem,
+  deleteListItems,
+}) {
   const [test, setTest] = useState('');
 
   return (
@@ -25,7 +30,15 @@ function CareerListSection({ header, listItems, addListItem }) {
       <CareerListContent>
         {listItems.map((item, itemIdx) => (
           <CareerListItemContainer key={item.id}>
-            <div style={{ display: 'flex', gap: '2.6rem' }}>
+            {itemIdx > 0 && (
+              <CareerListItemDeleteBtnContainer>
+                <button onClick={() => deleteListItems(item.id)}>X</button>
+              </CareerListItemDeleteBtnContainer>
+            )}
+
+            <div
+              style={{ display: 'flex', gap: '2.6rem', marginBottom: '3.6rem' }}
+            >
               {item.inputs.slice(0, 2).map((input, idx) => {
                 return (
                   <div key={idx} style={{ width: '100%' }}>
@@ -46,7 +59,9 @@ function CareerListSection({ header, listItems, addListItem }) {
               })}
             </div>
 
-            <div style={{ display: 'flex', gap: '2.6rem' }}>
+            <div
+              style={{ display: 'flex', gap: '2.6rem', marginBottom: '3.6rem' }}
+            >
               <div style={{ width: '100%' }}>
                 <TextField
                   label={item.inputs[2].label}
@@ -125,26 +140,6 @@ function CareerListSection({ header, listItems, addListItem }) {
             </div>
           </CareerListItemContainer>
         ))}
-        {/* <CareerListItemContainer>
-          <div style={{ display: 'flex', gap: '2.6rem' }}>
-            <TextField
-              label={'직장명'}
-              placeholder={'직장명을 입력해주세요.'}
-            />
-            <DropdownField label={'직장유형'} data={options.careerType} />
-          </div>
-
-          <div style={{ display: 'flex', gap: '2.6rem' }}>
-            <TextField label={'직급'} placeholder={'직급을 입력해주세요.'} />
-            <TextField label={'업무기간'} />
-          </div>
-
-          <div style={{ display: 'flex', gap: '2.6rem' }}>
-            
-          </div>
-
-          <CareerListBorderLine />
-        </CareerListItemContainer> */}
       </CareerListContent>
     </CareerListContainer>
   );
@@ -208,7 +203,6 @@ const CareerListContent = styled.div`
 const CareerListItemContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 3rem;
 `;
 
 const CareerListBorderLine = styled.div`
@@ -217,6 +211,24 @@ const CareerListBorderLine = styled.div`
   width: 100%;
   border-radius: 0.1rem;
   margin: 2.4rem 0;
+`;
+
+const CareerListItemDeleteBtnContainer = styled.div`
+  margin-bottom: 1.8rem;
+  display: flex;
+  justify-content: end;
+
+  & > button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 0.3rem;
+    border: 1px solid #aeaeae;
+    cursor: pointer;
+    background-color: transparent;
+  }
 `;
 
 export default CareerListSection;
