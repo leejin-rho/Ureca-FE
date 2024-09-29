@@ -28,13 +28,16 @@ export default function EtcListSection({
   const [datePickerVisibility, setDatePickerVisibility] = useState([]);
 
   // DatePicker 토글 함수
-  const toggleDatePicker = (id) => {
+  const toggleDatePicker = (itemId, inputIdx) => {
     setDatePickerVisibility((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? { ...item, showDatePicker: !item.showDatePicker }
-          : item,
-      ),
+      prevItems.map((item) => {
+        if (item.id === itemId) {
+          item.inputs[inputIdx].showDatePicker =
+            !item.inputs[inputIdx].showDatePicker;
+        }
+
+        return item;
+      }),
     );
   };
 
@@ -150,18 +153,26 @@ export default function EtcListSection({
                             value={input.value}
                             name={input.name}
                             readOnly
-                            onClick={() => toggleDatePicker(item.id)}
+                            onClick={() => toggleDatePicker(item.id, idx)}
                           />
 
                           <button
                             className="iconBtn"
-                            onClick={() => toggleDatePicker(item.id)}
+                            onClick={() =>
+                              console.log(
+                                datePickerVisibility[itemIdx].inputs[idx],
+                              )
+                            }
                           >
                             {input.icons}
                           </button>
 
                           {/* 각 ListItem 별로 개별 DatePicker 관리 */}
-                          {datePickerVisibility[itemIdx]?.showDatePicker && (
+                          {datePickerVisibility.length > 0 &&
+                            datePickerVisibility[itemIdx].inputs[idx]
+                              .showDatePicker && <h2>Hello</h2>}
+
+                          {/* {datePickerVisibility[itemIdx]?.showDatePicker && (
                             <>
                               <DatePicker show={true}>
                                 <DatePickerHeader>
@@ -249,7 +260,7 @@ export default function EtcListSection({
                                 onClick={() => toggleDatePicker(item.id)}
                               />
                             </>
-                          )}
+                          )} */}
                         </>
                       ) : (
                         <input

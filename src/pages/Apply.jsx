@@ -57,7 +57,6 @@ function Apply() {
   const [certificateListItems, setCertificateListItems] = useState([
     {
       id: 1,
-      showDatePicker: false,
       inputs: [
         {
           type: 'text',
@@ -78,6 +77,7 @@ function Apply() {
           name: 'certificateDateAcquired',
           disabled: true,
           icons: <AiOutlineCalendar />,
+          showDatePicker: false,
         },
         {
           type: 'text',
@@ -242,7 +242,7 @@ function Apply() {
       ...certificateListItems,
       {
         id: certificateListItems.length + 1,
-        showDatePicker: false,
+
         inputs: [
           {
             type: 'text',
@@ -263,6 +263,7 @@ function Apply() {
             name: 'certificateDateAcquired',
             disabled: true,
             icons: <AiOutlineCalendar />,
+            showDatePicker: false,
           },
           {
             type: 'text',
@@ -812,24 +813,24 @@ function Apply() {
             />
 
             {/* 수상 경력 */}
-            <EtcListSection
+            {/* <EtcListSection
               header="수상경력"
               listTitle={['대회명', '수상내역', '수상일자', '수상기관']}
               listItems={awardListItems}
               addListItem={addAwardsListItems}
               handleInputChange={handleAwardInputChange}
               deleteListItems={deleteAwardListItem}
-            />
+            /> */}
 
             {/* 학내외활동 */}
-            <EtcListSection
+            {/* <EtcListSection
               header="학내외활동"
               listTitle={['활동내용', '직위 또는 역할', '활동기간']}
               listItems={activityListItem}
               addListItem={addActiviteListItems}
               handleInputChange={handleActivityInputChange}
               deleteListItems={deleteActivityListItem}
-            />
+            /> */}
           </div>
         </div>
       </InputSection>
@@ -1053,7 +1054,7 @@ function Apply() {
         />
       )}
 
-      <button onClick={() => console.log(careerListItem)}>제출</button>
+      <button onClick={() => console.log(certificateListItems)}>제출</button>
     </>
   );
 }
