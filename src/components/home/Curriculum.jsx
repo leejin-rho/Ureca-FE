@@ -4,7 +4,7 @@ import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
 import Curriculums from '@assets/data/Curriculums.json';
 
-const Curriculum = (title) => {
+const Curriculum = ({ title, data }) => {
   const groupByMonth = (data) => {
     return data.reduce((acc, item) => {
       const { month } = item;
@@ -16,11 +16,11 @@ const Curriculum = (title) => {
     }, {});
   };
 
-  const groupedData = groupByMonth(Curriculums.FrontData);
+  const groupedData = groupByMonth(data);
 
   return (
     <Container>
-      <Text variant="h2">프론트엔드 커리큘럼 안내</Text>
+      <Text variant="h2">{title} 커리큘럼 안내</Text>
       <Table>
         <thead>
           <tr>

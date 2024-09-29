@@ -41,6 +41,10 @@ const FooterContainer = styled.div`
   gap: 2.7rem;
   background-color: black;
   box-sizing: border-box;
+
+  @media (max-width: 1023px) {
+    padding: 2.5rem 2rem;
+  }
 `;
 
 const Wrapper = styled.div`
