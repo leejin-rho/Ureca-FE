@@ -813,24 +813,24 @@ function Apply() {
             />
 
             {/* 수상 경력 */}
-            {/* <EtcListSection
+            <EtcListSection
               header="수상경력"
               listTitle={['대회명', '수상내역', '수상일자', '수상기관']}
               listItems={awardListItems}
               addListItem={addAwardsListItems}
               handleInputChange={handleAwardInputChange}
               deleteListItems={deleteAwardListItem}
-            /> */}
+            />
 
             {/* 학내외활동 */}
-            {/* <EtcListSection
+            <EtcListSection
               header="학내외활동"
               listTitle={['활동내용', '직위 또는 역할', '활동기간']}
               listItems={activityListItem}
               addListItem={addActiviteListItems}
               handleInputChange={handleActivityInputChange}
               deleteListItems={deleteActivityListItem}
-            /> */}
+            />
           </div>
         </div>
       </InputSection>

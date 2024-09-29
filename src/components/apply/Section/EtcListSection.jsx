@@ -11,6 +11,7 @@ import {
 } from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
 import { TextField } from '../ui/InputFieldUi';
+import Calendar from '../ui/Calendar';
 
 export default function EtcListSection({
   header,
@@ -32,85 +33,23 @@ export default function EtcListSection({
     setDatePickerVisibility((prevItems) =>
       prevItems.map((item) => {
         if (item.id === itemId) {
-          item.inputs[inputIdx].showDatePicker =
-            !item.inputs[inputIdx].showDatePicker;
+          return {
+            ...item,
+            inputs: item.inputs.map((input, idx) => {
+              if (idx === inputIdx) {
+                return {
+                  ...input,
+                  showDatePicker: !input.showDatePicker,
+                };
+              }
+              return input;
+            }),
+          };
         }
-
         return item;
       }),
     );
   };
-
-  const updateYearMonth = () => {
-    setYear(selectedDate.getFullYear());
-    setMonth(selectedDate.getMonth());
-  };
-
-  const handleDateClick = (date) => {
-    setSelectedDate(date);
-  };
-
-  const displayDates = () => {
-    const dates = []; // 매번 새로 렌더링될 때 초기화
-
-    // 1. 이전 달의 마지막 날짜와 요일
-    const lastOfPrevMonth = new Date(year, month, 0); // 이전 달의 마지막 날
-    const firstDayOfMonth = new Date(year, month, 1).getDay(); // 현재 달 첫 번째 날의 요일
-
-    // 2. 현재 달의 마지막 날짜
-    const lastOfMonth = new Date(year, month + 1, 0); // 현재 달의 마지막 날
-    const totalDaysInMonth = lastOfMonth.getDate();
-
-    // 3. 다음 달의 첫 번째 날
-    const remainingDaysInWeek = 7 - ((firstDayOfMonth + totalDaysInMonth) % 7);
-
-    // 1. 이전 달 마지막 주 렌더링
-    for (let i = firstDayOfMonth - 1; i >= 0; i--) {
-      const day = lastOfPrevMonth.getDate() - i;
-      dates.push(createButton(day, true, -1)); // 이전 달 날짜 표시 (비활성화)
-    }
-
-    // 2. 현재 달의 날짜 렌더링
-    for (let i = 1; i <= totalDaysInMonth; i++) {
-      dates.push(createButton(i, false)); // 현재 달 날짜 표시 (활성화)
-    }
-
-    // 3. 다음 달 첫 주 렌더링 (남은 빈 칸 채우기)
-    if (remainingDaysInWeek < 7) {
-      for (let i = 1; i <= remainingDaysInWeek; i++) {
-        dates.push(createButton(i, true, 1)); // 다음 달 날짜 표시 (비활성화)
-      }
-    }
-
-    return dates;
-  };
-
-  // `createButton` 함수 수정
-  const createButton = (text, isDisabled = false, type = 0) => {
-    const currentDate = new Date();
-    const comparisonDate = new Date(year, month + type, text); // 날짜 비교
-    const isToday =
-      currentDate.getDate() === text &&
-      currentDate.getFullYear() === year &&
-      currentDate.getMonth() === month;
-
-    const selected = selectedDate.getTime() === comparisonDate.getTime();
-
-    return (
-      <button
-        key={`${type}-${text}`} // 고유한 키 부여
-        disabled={isDisabled} // 비활성화 여부 설정
-        className={`${isToday ? 'today' : ''} ${selected ? 'selected' : ''}`}
-        onClick={() => !isDisabled && handleDateClick(comparisonDate)}
-      >
-        {text}
-      </button>
-    );
-  };
-
-  useEffect(() => {
-    updateYearMonth();
-  }, [selectedDate]);
 
   useEffect(() => {
     setDatePickerVisibility(listItems);
@@ -158,109 +97,29 @@ export default function EtcListSection({
 
                           <button
                             className="iconBtn"
-                            onClick={() =>
-                              console.log(
-                                datePickerVisibility[itemIdx].inputs[idx],
-                              )
-                            }
+                            onClick={() => toggleDatePicker(item.id, idx)}
                           >
                             {input.icons}
                           </button>
 
                           {/* 각 ListItem 별로 개별 DatePicker 관리 */}
-                          {datePickerVisibility.length > 0 &&
-                            datePickerVisibility[itemIdx].inputs[idx]
-                              .showDatePicker && <h2>Hello</h2>}
-
-                          {/* {datePickerVisibility[itemIdx]?.showDatePicker && (
-                            <>
-                              <DatePicker show={true}>
-                                <DatePickerHeader>
-                                  <button
-                                    className="prevBtn"
-                                    onClick={() => {
-                                      if (month === 0) setYear(year - 1);
-                                      setMonth((month - 1 + 12) % 12);
-                                    }}
-                                  >
-                                    <AiOutlineLeft />
-                                  </button>
-
-                                  <input
-                                    type="number"
-                                    className="year-input"
-                                    value={year}
-                                    onChange={(event) =>
-                                      setYear(Number(event.target.value))
-                                    }
-                                  />
-
-                                  <div>
-                                    <select
-                                      value={month}
-                                      onChange={(event) =>
-                                        setMonth(Number(event.target.value))
-                                      }
-                                    >
-                                      {Array.from({ length: 12 }, (_, idx) => {
-                                        return (
-                                          <option key={idx} value={idx}>
-                                            {idx + 1}월
-                                          </option>
-                                        );
-                                      })}
-                                    </select>
-                                  </div>
-
-                                  <button
-                                    className="nextBtn"
-                                    onClick={() => {
-                                      if (month === 11) setYear(year + 1);
-                                      setMonth((month + 1) % 12);
-                                    }}
-                                  >
-                                    <AiOutlineRight />
-                                  </button>
-                                </DatePickerHeader>
-
-                                <div className="days">
-                                  {'일월화수목금토'
-                                    .split('')
-                                    .map((day, idx) => {
-                                      return <span key={idx}>{day}</span>;
-                                    })}
-                                </div>
-
-                                <div
-                                  className="dates"
-                                  onClick={(event) => {
-                                    handleInputChange(
-                                      item.id,
-                                      input.name,
-                                      `${year.toString().padStart(4, '0')}.${(
-                                        month + 1
-                                      )
-                                        .toString()
-                                        .padStart(
-                                          2,
-                                          '0',
-                                        )}.${event.target.textContent.padStart(
-                                        2,
-                                        '0',
-                                      )}`,
-                                    );
-                                  }}
-                                >
-                                  {displayDates()}
-                                </div>
-                              </DatePicker>
-
-                              <DatePickerContainer
-                                show={true}
-                                onClick={() => toggleDatePicker(item.id)}
-                              />
-                            </>
-                          )} */}
+                          {datePickerVisibility[itemIdx]?.inputs[idx]
+                            .showDatePicker && (
+                            <Calendar
+                              changeValue={[
+                                handleInputChange,
+                                item.id,
+                                input.name,
+                              ]}
+                              toggle={[toggleDatePicker, item.id, idx]}
+                              selectedDate={selectedDate}
+                              setSelectedDate={setSelectedDate}
+                              year={year}
+                              setYear={setYear}
+                              month={month}
+                              setMonth={setMonth}
+                            />
+                          )}
                         </>
                       ) : (
                         <input

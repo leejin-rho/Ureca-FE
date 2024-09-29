@@ -2,25 +2,16 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
-function Calendar() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [year, setYear] = useState(selectedDate.getFullYear());
-  const [month, setMonth] = useState(selectedDate.getMonth());
-
-  // 각 listItem에 대해 DatePicker 상태를 관리하는 배열로 상태를 만듦
-  const [datePickerVisibility, setDatePickerVisibility] = useState([]);
-
-  // DatePicker 토글 함수
-  const toggleDatePicker = (id) => {
-    setDatePickerVisibility((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id
-          ? { ...item, showDatePicker: !item.showDatePicker }
-          : item,
-      ),
-    );
-  };
-
+function Calendar({
+  changeValue,
+  toggle,
+  selectedDate,
+  setSelectedDate,
+  year,
+  setYear,
+  month,
+  setMonth,
+}) {
   const updateYearMonth = () => {
     setYear(selectedDate.getFullYear());
     setMonth(selectedDate.getMonth());
@@ -92,10 +83,6 @@ function Calendar() {
     updateYearMonth();
   }, [selectedDate]);
 
-  useEffect(() => {
-    setDatePickerVisibility(listItems);
-  }, [listItems]);
-
   return (
     <React.Fragment>
       <DatePicker>
@@ -159,9 +146,9 @@ function Calendar() {
         <div
           className="dates"
           onClick={(event) => {
-            handleInputChange(
-              item.id,
-              input.name,
+            changeValue[0](
+              changeValue[1],
+              changeValue[2],
               `${year.toString().padStart(4, '0')}.${(month + 1)
                 .toString()
                 .padStart(2, '0')}.${event.target.textContent.padStart(
@@ -175,17 +162,12 @@ function Calendar() {
         </div>
       </DatePicker>
 
-      <DatePickerContainer
-        show={true}
-        onClick={() => toggleDatePicker(item.id)}
-      />
+      <DatePickerContainer onClick={() => toggle[0](toggle[1], toggle[2])} />
     </React.Fragment>
   );
 }
 
 const DatePickerContainer = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -195,8 +177,6 @@ const DatePickerContainer = styled.div`
 `;
 
 const DatePicker = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-
   position: absolute;
   top: 100%;
   left: 50%;
