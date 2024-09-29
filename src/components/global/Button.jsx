@@ -11,7 +11,7 @@ export const Button = styled.div`
   height: ${({ height }) => (height ? height : 'fit-content')};
 
   border-radius: ${({ borderRadius }) =>
-    borderRadius ? borderRadius : '0.75rem'};
+    borderRadius ? borderRadius : '10px'};
   background-color: ${({ bg }) => (bg ? bg : colors.white)};
   background-image: ${({ bgi }) => (bgi ? bgi : 'none')};
   border: ${({ isBorder }) =>

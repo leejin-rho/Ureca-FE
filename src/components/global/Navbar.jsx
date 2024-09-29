@@ -91,6 +91,11 @@ const NavContainer = styled.div`
   bottom: 0;
 
   flex-shrink: 0;
+
+  @media (max-width: 1023px) {
+    height: 62px;
+    padding: 0 1.5rem;
+  }
 `;
 
 const NavBtn = styled.div`

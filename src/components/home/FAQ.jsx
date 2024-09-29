@@ -30,23 +30,28 @@ const FAQ = () => {
       subexpl="자주 묻는 질문은 아래의 글과 링크를 확인해주시고
 문의 사항이 있다면 카카오톡으로 문의해주세요."
     >
-      <FAQContainer direction="column">
+      <FAQContainer direction="column" mobileGap="0.75">
         {Information.FAQData.slice(0, 5).map((item) => (
           <QNABox direction="column" key={item.id}>
             <Question>
-              <Text color={colors.white} variant="h7">
+              <Text
+                color={colors.white}
+                variant="h7"
+                mobileTypo="h9"
+                textAlign="flex-start"
+              >
                 {item.q}
               </Text>
               <div onClick={() => handleOpen(item.id)}>
                 {isOpened[item.id] ? (
                   <CloseArrow
-                    height="3.5rem"
+                    height="2rem"
                     color={colors.white}
                     style={{ cursor: 'pointer' }}
                   />
                 ) : (
                   <OpenArrow
-                    height="3.5rem"
+                    height="2rem"
                     color={colors.white}
                     style={{ cursor: 'pointer' }}
                   />
@@ -62,6 +67,7 @@ const FAQ = () => {
                     color={colors.white}
                     variant="h8"
                     textAlign="flex-start"
+                    mobileTypo="h9"
                   >
                     {item.a}
                   </Text>
@@ -73,18 +79,18 @@ const FAQ = () => {
       </FAQContainer>
 
       <Button
-        width="25rem"
-        height="4.5rem"
+        width="18rem"
+        height="3.25rem"
         bgi={colors.glass}
         bg={colors.glass}
         hbgi={colors.glassHover}
         hoverBg={colors.glass}
-        borderRadius="1.5rem"
-        fontSize="18px"
+        borderRadius="2rem"
+        fontSize="1.125rem"
         fontColor={colors.white}
         onClick={onFAQBtn}
       >
-        자주 묻는 질문 {'>'}
+        더 많은 질문 보기 {'>'}
       </Button>
     </Section>
   );
@@ -97,16 +103,20 @@ const FAQContainer = styled(Flex)`
   height: fit-content;
   align-items: center;
   justify-content: center;
-  padding: 1rem 2rem;
-  gap: 1.75rem;
+  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
 `;
 
 const QNABox = styled(Flex)`
   width: 55vw;
-  border: 0.15rem solid ${colors.white};
-  border-radius: 2rem;
-  padding: 2rem 3rem;
+  border: 0.075rem solid ${colors.white};
+  border-radius: 1rem;
+  padding: 1.5rem 2.25rem;
   box-sizing: border-box;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 `;
 
 const Question = styled(Flex)`
@@ -115,7 +125,7 @@ const Question = styled(Flex)`
 
 const Answer = styled(Flex)`
   justify-content: flex-start;
-  padding: 0 0.5rem;
+  padding: 0 0.25rem;
 `;
 
 const SeperateLine = styled.div`

@@ -8,7 +8,6 @@ export const globalStyle = css`
   }
 
   html {
-    font-size: 10px;
     box-sizing: border-box;
     font-family: 'Pretendard', sans-serif;
   }
@@ -20,6 +19,7 @@ export const globalStyle = css`
     padding: 0;
     min-width: 320px;
     min-height: 100vh;
+    overflow-x: hidden;
 
     justify-content: flex-start;
     align-items: center;

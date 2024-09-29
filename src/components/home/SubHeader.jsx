@@ -9,12 +9,12 @@ const Subheader = () => {
   return (
     <BackImgDiv direction="column">
       <BackgroundImg src={Background} alt="ureca-background" />
-      <TopInfoDiv>
+      <TopInfoDiv mobileGap="3">
         <Flex direction="column" height="fit-content">
-          <Text color={colors.white} variant="h1">
+          <Text color={colors.white} variant="h1" mobileTypo="h3">
             LG U+ 유레카 아카데미 2기
           </Text>
-          <Text color={colors.white} variant="h3">
+          <Text color={colors.white} variant="h3" mobileTypo="h6">
             디지털 세상에서 일하는 방식을 체험하자
           </Text>
         </Flex>
@@ -26,8 +26,8 @@ const Subheader = () => {
           isBorder={true}
           fontSize="16px"
           fontColor={colors.white}
-          width="10rem"
-          height="3.6rem"
+          width="8rem"
+          height="2.5rem"
         >
           지원하기
         </Button>
@@ -43,6 +43,10 @@ const BackImgDiv = styled(Flex)`
   height: 470px;
   gap: 0.625rem;
   flex-shrink: 0;
+
+  @media (max-width: 1023px) {
+    height: 400px;
+  }
 `;
 
 const TopInfoDiv = styled(Flex)`

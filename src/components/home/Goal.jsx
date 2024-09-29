@@ -18,26 +18,40 @@ const Goal = () => {
 프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해 실무형 인재로 거듭날 수 있습니다."
     >
       <Wrapper direction="column">
-        <PNGImage src={UrecaImage} alt="ureca" height="36rem" />
+        <PNGImage
+          src={UrecaImage}
+          alt="ureca"
+          height="24rem"
+          widthMobile="100%"
+          heightMobile="fit-content"
+        />
         <GoalList>
           {Information.GoalData.map((item) => (
-            <GoalBox key={item.id} padding="2.5rem" width="30">
+            <GoalBox
+              key={item.id}
+              padding="1.25rem"
+              width="20"
+              mobileGap="0.25"
+            >
               <TextList>
                 <Text
                   color={item.id == 0 ? colors.primaryColor : colors.white}
                   variant="h7"
+                  mobileTypo="h9"
                 >
                   유
                 </Text>
                 <Text
                   color={item.id == 1 ? colors.primaryColor : colors.white}
                   variant="h7"
+                  mobileTypo="h9"
                 >
                   레
                 </Text>
                 <Text
                   color={item.id == 2 ? colors.primaryColor : colors.white}
                   variant="h7"
+                  mobileTypo="h9"
                 >
                   카
                 </Text>
@@ -50,6 +64,7 @@ const Goal = () => {
                       variant="h9"
                       textAlign="flex-start"
                       lineHeight="150%"
+                      mobileTypo="h10"
                     >
                       {e}
                     </Text>
@@ -72,7 +87,7 @@ const Wrapper = styled(Flex)`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 3rem;
+  margin-top: 1.75rem;
 `;
 
 const GoalList = styled.div`
@@ -81,13 +96,14 @@ const GoalList = styled.div`
   height: fit-content;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+  gap: 1.75rem;
   flex-wrap: wrap;
   grid-template-columns: repeat(3, 1fr);
   margin-top: 0;
 
   @media (max-width: 1023px) {
     grid-template-columns: repeat(1, 1fr);
+    gap: 0.75rem;
   }
 `;
 
@@ -99,11 +115,8 @@ const TextList = styled.div`
   display: flex;
   width: 100%;
   justify-content: flex-start;
-  gap: 0.1rem;
-
-  /* position: absolute;
-  top: 1rem;
-  left: 1.5rem; */
+  gap: 0.05rem;
+  margin-left: 0.125rem;
 `;
 
 const ExplList = styled.ul`

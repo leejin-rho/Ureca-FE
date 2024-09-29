@@ -22,7 +22,7 @@ const Wrapper = styled(Flex)`
 
 const KaKaoTalkButton = styled(SvgKakaoTalkButtonDefault)`
   position: fixed;
-  width: 7rem;
-  right: 3rem;
-  bottom: 3rem;
+  width: 72px;
+  right: 2rem;
+  bottom: 2rem;
 `;
