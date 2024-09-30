@@ -11,8 +11,8 @@ function App() {
   return (
     <Layout>
       <Global styles={globalStyle} />
-      {/* <Home /> */}
-      <FAQ />
+      <Home />
+      {/* <FAQ /> */}
     </Layout>
   );
 }

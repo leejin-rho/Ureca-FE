@@ -22,11 +22,21 @@ const Footer = () => {
           역량을 강화하고, 프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해
           실무형 인재로 거듭날 수 있습니다.
         </Text>
+      </Wrapper>
+      <Flex justify="space-between">
         <Flex justify="flex-start">
           <SupportImage1 height="1.75rem" />
           <SupportImage2 height="1.75rem" />
         </Flex>
-      </Wrapper>
+        <Text
+          color={colors.disabled}
+          textAlign="flex-end"
+          variant="h10"
+          mobileTypo="h11"
+        >
+          Copyright © LG UPLUS. 2024 All rights reserved.
+        </Text>
+      </Flex>
     </FooterContainer>
   );
 };
@@ -35,6 +45,7 @@ export default Footer;
 
 const FooterContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 4rem 5rem;
   align-items: flex-start;

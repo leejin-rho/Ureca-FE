@@ -63,7 +63,8 @@ const MainContainer = styled.div`
   height: 100%;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: linear-gradient(
       180deg,
       rgba(196, 126, 126, 0) 9.63%,
@@ -80,5 +81,6 @@ const MainContainer = styled.div`
 `;
 
 const SectionList = styled(Flex)`
+  width: 100%;
   margin-bottom: 8rem;
 `;

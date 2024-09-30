@@ -27,5 +27,11 @@ export const globalStyle = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Pretendard', sans-serif;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    .scroll::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;

@@ -69,7 +69,12 @@ const IntroPJT = () => {
           </ArrowDiv>
         </Grid>
         <Grid mobileGap="2.5" repeat="3">
-          <PJTImage src={FEPJT} alt="BEPJT" height="12rem" />
+          <PJTImage
+            src={FEPJT}
+            alt="BEPJT"
+            height="14rem"
+            heightMobile="12rem"
+          />
           <ArrowDiv margin="0 3.5rem 0 0">
             <ArrowBottom height="7rem" />
           </ArrowDiv>
