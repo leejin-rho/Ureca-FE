@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Router Import
 import Home from '@pages/home/Home';
-import Apply from './pages/Apply';
+import Apply from '@pages/Apply';
 import FrontendCur from '@pages/home/FrontendCur';
 import BackendCur from '@pages/home/BackendCur';
 import FAQ from '@pages/home/FAQ';
@@ -19,6 +19,9 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/frontend" element={<FrontendCur />} />
+          <Route path="/backend" element={<BackendCur />} />
+          <Route path="/FAQ" element={<FAQ />} />
           <Route path="/apply" element={<Apply />} />
         </Routes>
       </Layout>

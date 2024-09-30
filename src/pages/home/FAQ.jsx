@@ -2,10 +2,19 @@ import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import FAQList from '@components/home/FAQList';
 import { Flex, Text } from '@components/global';
+import { useEffect, useRef } from 'react';
 
 const FAQ = () => {
+  const wrapperRef = useRef(null);
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      wrapperRef.current.classList.add('visible');
+    }
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper ref={wrapperRef}>
       <Header>
         <Text variant="h1">자주 묻는 질문</Text>
         <Text variant="h5" textAlign="flex-start">
@@ -26,6 +35,15 @@ const Wrapper = styled(Flex)`
   overflow: auto;
   padding: 8rem;
   gap: 5rem;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 `;
 
 const Header = styled(Flex)`

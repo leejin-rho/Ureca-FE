@@ -70,15 +70,7 @@ const Navbar = ({ scrollToSection }) => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <Button>지원하기</Button>
-          <FindApplyBtn
-            // bg={colors.primaryColor}
-            // hoverBg={colors.white}
-            // fontColor={colors.white}
-            // hoverFontColor={colors.primaryColor}
-            isVisible={isHovered}
-          >
-            지원확인
-          </FindApplyBtn>
+          <FindApplyBtn isVisible={isHovered}>지원확인</FindApplyBtn>
         </ApplyBtnBox>
       </RowFlex>
     </NavContainer>

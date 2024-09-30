@@ -7,7 +7,7 @@ import FAQList from './FAQList';
 
 const FAQs = () => {
   const onFAQBtn = () => {
-    window.location.href = 'https://lgupluskdt.recruiter.co.kr/career/FAQ';
+    window.location.href = 'http://localhost:5173/FAQ';
   };
 
   return (
