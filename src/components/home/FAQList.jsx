@@ -20,7 +20,7 @@ const FAQList = ({ listNum, FAQColor }) => {
   return (
     <FAQContainer direction="column" mobileGap="0.75">
       {Information.FAQData.slice(0, listNum).map((item) => (
-        <QNABox direction="column" key={item.id} FAQColor={{ FAQColor }}>
+        <QNABox borderColor={FAQColor} direction="column" key={item.id}>
           <Question>
             <Text
               color={FAQColor}
@@ -71,17 +71,13 @@ const FAQList = ({ listNum, FAQColor }) => {
 export default FAQList;
 
 const FAQContainer = styled(Flex)`
-  width: 100%;
   height: fit-content;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem 1.25rem;
   gap: 0.75rem;
 `;
 
 const QNABox = styled(Flex)`
-  width: 55vw;
-  border: 0.075rem solid ${({ FAQColor }) => FAQColor || colors.white};
+  width: 100%;
+  border: 0.075rem solid ${({ borderColor }) => borderColor || colors.white};
   border-radius: 1rem;
   padding: 1.5rem 2.25rem;
   box-sizing: border-box;

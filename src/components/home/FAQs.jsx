@@ -14,8 +14,9 @@ const FAQs = () => {
     <Section
       title="자주 묻는 질문"
       expl="궁금한 점이 있으신가요?"
-      subexpl="자주 묻는 질문은 아래의 글과 링크를 확인해주시고
-문의 사항이 있다면 카카오톡으로 문의해주세요."
+      subexpl={
+        "자주 묻는 질문은 아래의 글과 링크를 확인해주시고{'\n'}문의 사항이 있다면 카카오톡으로 문의해주세요."
+      }
     >
       <FAQContainer direction="column" mobileGap="0.75">
         <FAQList listNum={5} FAQColor={colors.white} />
@@ -42,7 +43,7 @@ const FAQs = () => {
 export default FAQs;
 
 const FAQContainer = styled(Flex)`
-  width: 100%;
+  width: 55vw;
   height: fit-content;
   align-items: center;
   justify-content: center;
