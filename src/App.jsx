@@ -10,21 +10,24 @@ import Apply from './pages/Apply';
 import FrontendCur from '@pages/home/FrontendCur';
 import BackendCur from '@pages/home/BackendCur';
 import FAQ from '@pages/home/FAQ';
+import { ScrollProvider } from './assets/context/ScrollContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Global styles={globalStyle} />
+      <ScrollProvider>
+        <Layout>
+          <Global styles={globalStyle} />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/apply" element={<Apply />} />
-          <Route path="/frontend-curriculum" element={<FrontendCur />} />
-          <Route path="/backend-curriculum" element={<BackendCur />} />
-          <Route path="/faq" element={<FAQ />} />
-        </Routes>
-      </Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/apply" element={<Apply />} />
+            <Route path="/frontend-curriculum" element={<FrontendCur />} />
+            <Route path="/backend-curriculum" element={<BackendCur />} />
+            <Route path="/faq" element={<FAQ />} />
+          </Routes>
+        </Layout>
+      </ScrollProvider>
     </BrowserRouter>
   );
 }

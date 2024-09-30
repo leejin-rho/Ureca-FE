@@ -575,7 +575,7 @@ function Apply() {
   const applySubmitHandler = async () => {
     await axios
       .post(
-        'http://localhost:8080/apply/submit',
+        `${import.meta.env.VITE_SERVER_API}/apply/submit`,
         {
           // 인적사항
           name,

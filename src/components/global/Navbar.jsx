@@ -5,8 +5,10 @@ import LogoImage from '@assets/images/svgs/NavLogo';
 import { Text, Button } from '@components/global';
 import { useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useScroll } from '../../assets/context/ScrollContext';
 
-const Navbar = ({ scrollToSection }) => {
+const Navbar = () => {
+  const { scrollToSection } = useScroll();
   const [isTransparent, setIsTransparent] = useState(false);
 
   const navigate = useNavigate();
@@ -45,22 +47,12 @@ const Navbar = ({ scrollToSection }) => {
       <div style={{ width: 50 }}></div>
       <RowFlex>
         {/* scrollToTop */}
-        <NavBtn
-          onClick={() => {
-            if (pathname === '/') scrollToTop();
-            else navigate('/');
-          }}
-        >
+        <NavBtn onClick={() => scrollToTop()}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             HOME
           </Text>
         </NavBtn>
-        <NavBtn
-          onClick={() => {
-            if (pathname === '/') scrollToSection(1);
-            else navigate('/');
-          }}
-        >
+        <NavBtn onClick={() => scrollToSection(1)}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             {`WHY `}
           </Text>
