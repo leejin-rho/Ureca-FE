@@ -20,6 +20,7 @@ import { AiOutlineCalendar, AiOutlineSearch } from 'react-icons/ai';
 import { options } from '../assets/data/selectData';
 import EtcListSection from '../components/apply/Section/EtcListSection';
 import CareerListSection from '../components/apply/Section/CareerListSection';
+import Accordion from '../components/apply/ui/Accordion';
 
 // Apply Page
 function Apply() {
@@ -684,7 +685,7 @@ function Apply() {
               type="text"
               target="path"
               label={'지원 경로'}
-              placeholder="지원 경로를 입력해주세요."
+              placeholder="지원 경로를 입력해주세요. (예시. SNS(인스타그램, 페이스북))"
             />
           </InputGroup>
         </div>
@@ -739,6 +740,10 @@ function Apply() {
             />
             <DropdownField label={'졸업구분'} data={options.status} />
           </InputGroup>
+        </div>
+
+        <div>
+          <h2>Hello</h2>
         </div>
       </InputSection>
 
@@ -1020,6 +1025,11 @@ function Apply() {
             );
           })}
         </div>
+      </InputSection>
+
+      {/* 자격사항 Section */}
+      <InputSection title={'자격사항'}>
+        <Accordion />
       </InputSection>
 
       {/* Modal */}

@@ -147,7 +147,6 @@ function CareerListSection({
                   {item.inputs.slice(3, 5).map((input, idx) => {
                     return (
                       <React.Fragment key={idx}>
-                        {/* <TextFieldAndIcons icons={<AiOutlineCalendar />} /> */}
                         <CareerListtItme>
                           <input
                             className="text-input"
@@ -160,7 +159,7 @@ function CareerListSection({
 
                           <button
                             className="iconBtn"
-                            onClick={() => toggleDatePicker(item.id, idx)}
+                            onClick={() => toggleDatePicker(item.id, idx + 3)}
                           >
                             <AiOutlineCalendar />
                           </button>
