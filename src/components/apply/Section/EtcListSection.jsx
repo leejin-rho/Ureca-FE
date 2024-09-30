@@ -8,7 +8,6 @@ import {
   AiOutlinePlus,
 } from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
-import { TextField } from '../ui/InputFieldUi';
 import Calendar from '../ui/Calendar';
 
 export default function EtcListSection({
@@ -174,7 +173,7 @@ const EtcListHeader = styled.header`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -1.2rem;
+    bottom: -12px;
     display: block;
     height: 2px;
     background-color: #888;
@@ -190,7 +189,7 @@ const EtcListHeaderTitle = styled.h6`
 
 const EtcListHeaderAddBtn = styled.button`
   display: flex;
-  gap: 0.6rem;
+  gap: 6px;
   align-items: center;
   font-size: 16px;
   font-weight: 600;
@@ -208,17 +207,17 @@ const EtcListHeaderAddBtn = styled.button`
 `;
 
 const EtcListContent = styled.div`
-  margin-top: 3.6rem;
+  margin-top: 36px;
 `;
 
 const EtcListTitleContainer = styled.div`
   display: flex;
-  gap: 0.8rem;
+  gap: 8px;
 
   h2 {
-    width: 19.975rem;
+    width: 199.75px;
     color: #232527;
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
   }
@@ -228,7 +227,7 @@ const EtcListItemContainer = styled.div``;
 
 const EtcListItmes = styled.div`
   display: flex;
-  gap: 1rem;
+  gap: 10px;
 
   .deleteBtnIcon {
     background-color: transparent;
@@ -247,14 +246,14 @@ const EtcListItmes = styled.div`
 
 const EtcListItme = styled.div`
   position: relative;
-  width: 19.975rem;
+  width: 199.75px;
   background-color: #f4f6f9;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   border: 1px solid transparent;
   display: flex;
 
   .text-input {
-    padding: 0.8rem 1.6rem;
+    padding: 8px 16px;
     background-color: transparent;
     border: none;
     outline: none;
@@ -283,115 +282,5 @@ const EtcListBorderLine = styled.div`
   background-color: #e9ebef;
   width: 100%;
   border-radius: 1px;
-  margin: 2.4rem 0;
-`;
-
-const DatePickerContainer = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-`;
-
-const DatePicker = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1001;
-  margin-top: 2px;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-
-  button {
-    cursor: pointer;
-    border: none;
-    border-radius: 3px;
-    background-color: transparent;
-    font-size: 14px;
-    font-weight: 500;
-    text-transform: uppercase;
-    transition: 0.3s;
-  }
-
-  .days,
-  .dates {
-    display: grid;
-    grid-template-columns: repeat(7, 3.2rem);
-    gap: 0.3rem;
-    margin-block: 1rem;
-  }
-
-  .days span {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-  }
-
-  .dates button {
-    color: #708090;
-    aspect-ratio: 1;
-  }
-
-  .dates button:disabled {
-    color: rgba(112, 128, 144, 0.3);
-  }
-
-  .dates button:hover {
-    background-color: rgba(119, 136, 153, 0.1);
-  }
-
-  .dates button.today {
-    background-color: #e2007c26;
-    color: #e2007e;
-  }
-
-  .dates button.selected {
-    background-color: #e2007e;
-    color: #fff;
-  }
-`;
-
-const DatePickerHeader = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-  border-bottom: 0.1rem solid #eee;
-
-  select {
-    width: 10rem;
-  }
-
-  select,
-  .year-input {
-    font-size: 14px;
-    border: 1px solid #eee;
-  }
-
-  .year-input {
-    max-width: 6.4rem;
-  }
-
-  button {
-    color: #708090;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    font-weight: 600;
-  }
-
-  button:hover {
-    color: #e2007e;
-  }
+  margin: 24px 0;
 `;
