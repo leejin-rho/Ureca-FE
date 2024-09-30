@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Flex } from './Flex';
-import Navbar from './Navbar';
 import Footer from './Footer';
 import SvgKakaoTalkButtonDefault from '@assets/images/svgs/KakaoTalkButtonDefault';
 

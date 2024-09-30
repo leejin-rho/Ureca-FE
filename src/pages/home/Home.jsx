@@ -13,7 +13,7 @@ import Education from '@components/home/Education';
 import Benefit from '@components/home/Benefit';
 import IntroPJT from '@components/home/IntroPJT';
 import Order from '@components/home/Order';
-import FAQ from '@components/home/FAQ';
+import FAQs from '@components/home/FAQs';
 
 const Home = () => {
   const sectionRefs = useRef([]);
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
 
           <div ref={(el) => (sectionRefs.current[4] = el)}>
-            <FAQ />
+            <FAQs />
           </div>
         </SectionList>
       </MainContainer>
@@ -72,10 +72,10 @@ const MainContainer = styled.div`
     ),
     ${colors.background};
 
-  padding: 72px;
+  padding: 72px 0 0 0;
 
   @media (max-width: 1023px) {
-    padding: 62px;
+    padding: 62px 0 0 0;
   }
 `;
 

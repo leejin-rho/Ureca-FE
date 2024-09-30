@@ -29,7 +29,7 @@ const EducationBox = ({ title, explList, type }) => {
       </ExplBox>
       <a href={eduUrl}>
         <EduLink>
-          <Text color="#cecece" variant="h8">
+          <Text color="#cecece" variant="h8" mobileTypo="h9">
             커리큘럼 상세보기
           </Text>
           <SendIcon height="14px" />
