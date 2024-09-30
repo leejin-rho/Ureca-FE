@@ -559,19 +559,6 @@ function Apply() {
     setCareerListItem(updatedItems);
   };
 
-  const removeCircularReferences = (obj, seen = new WeakSet()) => {
-    if (obj && typeof obj === 'object') {
-      if (seen.has(obj)) {
-        return;
-      }
-      seen.add(obj);
-      for (const key in obj) {
-        obj[key] = removeCircularReferences(obj[key], seen);
-      }
-    }
-    return obj;
-  };
-
   const applySubmitHandler = async () => {
     await axios
       .post(
@@ -684,7 +671,7 @@ function Apply() {
       <Text
         color={colors.primaryColor}
         variant="h2"
-        margin="10rem 0 6.3rem 0"
+        margin="200px 0 63px"
         lineHeight="120%"
       >
         LG U+ URECA 지원
@@ -888,9 +875,9 @@ function Apply() {
           </InputGroup>
         </div>
 
-        <div>
+        {/* <div>
           <h2>Hello</h2>
-        </div>
+        </div> */}
       </InputSection>
 
       {/* 대학교 Input Section */}
@@ -1010,16 +997,6 @@ function Apply() {
               handleInputChange={handleCareerInputChange}
               deleteListItems={deleteCareerListItem}
             />
-
-            {/* 자격증 */}
-            {/* <EtcListSection
-              header="자격증"
-              listTitle={['자격증명', '자격등급', '취득일자', '인증기관']}
-              listItems={certificateListItems}
-              addListItem={addCertificateListItems}
-              handleInputChange={handleCertificateInputChange}
-              deleteListItems={deleteCertificateListItem}
-            /> */}
           </div>
 
           <CreerEtcContainer>
@@ -1033,7 +1010,7 @@ function Apply() {
                   message:
                     '질문) IT와 관련된 교육을 수강해 본 이력이 있다면 기술해주십시오.',
                   style: {
-                    width: 'calc(100% - 12rem)',
+                    width: 'calc(100% - 120px)',
                     wordBreak: 'keep-all',
                   },
                 },
@@ -1042,15 +1019,15 @@ function Apply() {
                     itLearning.length <= 200 ? itLearning.length : '200'
                   } / 200자`,
                   style: {
-                    width: '12rem',
+                    width: '120px',
                     color: '#888',
                     textAlign: 'end',
                   },
                 },
               ]}
-              margin={'3.6rem 0 0 0 '}
+              margin={'36px 0 0 0 '}
               maxWidth={'100%'}
-              areaHeight={'13rem'}
+              areaHeight={'130px'}
               placeholder={'IT 수강 경험을 기술해주십시오.'}
               name="it_learning"
               value={itLearning}
@@ -1067,7 +1044,7 @@ function Apply() {
 
       {/* 자기소개서 Input Section */}
       <InputSection title={'자기소개서'}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
           {[
             {
               elements: [
@@ -1075,7 +1052,7 @@ function Apply() {
                   message:
                     '1. LG 유플러스 유레카 SW교육에 지원하신 동기와 과정 수료 후, 이루고 싶은 취업 계획을 작성해 주십시오.',
                   style: {
-                    width: 'calc(100% - 12rem)',
+                    width: 'calc(100% - 120px)',
                     wordBreak: 'keep-all',
                   },
                 },
@@ -1084,7 +1061,7 @@ function Apply() {
                     selfIntroduce1.length <= 500 ? selfIntroduce1.length : '500'
                   } / 500자`,
                   style: {
-                    width: '12rem',
+                    width: '120px',
                     color: '#888',
                     textAlign: 'end',
                   },
@@ -1108,7 +1085,7 @@ function Apply() {
                   message:
                     '[비전공생] 2-1. SW에 관심을 가지게 된 계기 혹은 취업 준비를 하며 겪었던 경험에 대해 작성하고, LG 유플러스 유레카 SW교육 과정을 통해 향후 어떤 개발자로 성장하고 싶은지 작성해 주십시오.',
                   style: {
-                    width: 'calc(100% - 12rem)',
+                    width: 'calc(100% - 120px)',
                     wordBreak: 'keep-all',
                   },
                 },
@@ -1117,7 +1094,7 @@ function Apply() {
                     selfIntroduce2.length <= 500 ? selfIntroduce2.length : '500'
                   } / 500자`,
                   style: {
-                    width: '12rem',
+                    width: '120px',
                     color: '#888',
                     textAlign: 'end',
                   },
@@ -1140,7 +1117,7 @@ function Apply() {
                 {
                   message: `[전공생] 2-2. SW 관련 경험 중 어려웠던 과제와 해결 방안에 대해 작성하고, LG 유플러스 유레카 SW교육 과정을 통해 향후 어떤 개발자로 성장하고 싶은지 작성해 주십시오.(※SW 관련 경험 : SW 개발, SW 프로젝트 및 경진대회 경험, IT 관련 자격증 취득 등)`,
                   style: {
-                    width: 'calc(100% - 12rem)',
+                    width: 'calc(100% - 120px)',
                   },
                 },
                 {
@@ -1148,7 +1125,7 @@ function Apply() {
                     selfIntroduce3.length <= 500 ? selfIntroduce3.length : '500'
                   } / 500자`,
                   style: {
-                    width: '12rem',
+                    width: '120px',
                     color: '#888',
                     textAlign: 'end',
                   },
@@ -1166,7 +1143,7 @@ function Apply() {
                 }
               },
             },
-          ].map((element, idx) => {
+          ].map((element) => {
             return (
               <TextAreaField
                 key={element.name}
@@ -1206,7 +1183,7 @@ function Apply() {
               },
               text: '뒤로가기',
               style: {
-                fontSize: '1.4rem',
+                fontSize: '14px',
                 fontWeight: 600,
                 boxShadow: '1px 3px 4px rgba(0, 0, 0, 0.2)',
               },
@@ -1218,17 +1195,14 @@ function Apply() {
               style: {
                 backgroundColor: colors.primaryColor,
                 color: colors.white,
-                fontSize: '1.4rem',
+                fontSize: '14px',
                 fontWeight: 600,
                 boxShadow: '1px 3px 4px rgba(0, 0, 0, 0.2)',
               },
             },
           ]}
         />
-        {/* <div style={{backgroundColor:colors}}></div> */}
       </InputSection>
-
-      {/* <button onClick={applySubmitHandler}>제출</button> */}
 
       {/* Modal */}
       {highschoolModal && (

@@ -22,7 +22,7 @@ function Accordion({
     <AccordionItem>
       <AccordionItemTitle onClick={() => setShow(!show)}>
         <h2>추가질문</h2>
-        <span>{show ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}</span>
+        {show ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
       </AccordionItemTitle>
       <AccordionItemContent ref={contentRef} show={show} style={{ height }}>
         <AccordionItemTesst>
