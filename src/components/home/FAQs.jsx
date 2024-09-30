@@ -49,4 +49,8 @@ const FAQContainer = styled(Flex)`
   justify-content: center;
   padding: 0.75rem 1.25rem;
   gap: 0.75rem;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 `;

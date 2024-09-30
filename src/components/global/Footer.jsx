@@ -23,7 +23,7 @@ const Footer = () => {
           실무형 인재로 거듭날 수 있습니다.
         </Text>
       </Wrapper>
-      <Flex justify="space-between">
+      <LastLine justify="space-between">
         <Flex justify="flex-start">
           <SupportImage1 height="1.75rem" />
           <SupportImage2 height="1.75rem" />
@@ -36,7 +36,7 @@ const Footer = () => {
         >
           Copyright © LG UPLUS. 2024 All rights reserved.
         </Text>
-      </Flex>
+      </LastLine>
     </FooterContainer>
   );
 };
@@ -70,4 +70,8 @@ const Wrapper = styled.div`
   font-weight: 600;
   color: ${colors.white};
   line-height: 150%;
+`;
+
+const LastLine = styled(Flex)`
+  white-space: pre-wrap;
 `;
