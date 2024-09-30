@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { colors } from '@/styles/colors';
 import LogoImage from '@assets/images/svgs/NavLogo';
-import { Text } from '@components/global/Text';
-import { Button } from '@components/global/Button';
+import { Text, Button } from '@components/global';
 import { useEffect, useState } from 'react';
 
 const Navbar = ({ scrollToSection }) => {
@@ -28,6 +28,8 @@ const Navbar = ({ scrollToSection }) => {
       behavior: 'smooth',
     });
   };
+
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <NavContainer isTransparent={isTransparent}>
@@ -62,7 +64,22 @@ const Navbar = ({ scrollToSection }) => {
             FAQ
           </Text>
         </NavBtn>
-        <Button style={{ marginLeft: 15 }}>지원하기</Button>
+        <ApplyBtnBox
+          direction="column"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <Button>지원하기</Button>
+          <FindApplyBtn
+            // bg={colors.primaryColor}
+            // hoverBg={colors.white}
+            // fontColor={colors.white}
+            // hoverFontColor={colors.primaryColor}
+            isVisible={isHovered}
+          >
+            지원확인
+          </FindApplyBtn>
+        </ApplyBtnBox>
       </RowFlex>
     </NavContainer>
   );
@@ -119,4 +136,22 @@ const RowFlex = styled.div`
   @media (max-width: 1023px) {
     display: none;
   }
+`;
+
+const ApplyBtnBox = styled.div`
+  display: inline-block;
+  position: relative;
+  margin-left: 15px;
+`;
+
+const FindApplyBtn = styled(Button)`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 10px;
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
+  visibility: ${({ isVisible }) => (isVisible ? 'visible' : 'hidden')};
+  transform: ${({ isVisible }) =>
+    isVisible ? 'translateY(0)' : 'translateY(-10px)'};
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 `;
