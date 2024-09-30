@@ -28,6 +28,10 @@ import { useNavigate } from 'react-router-dom';
 function Apply() {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // 지원자 정보
   const [name, setName] = useState('');
 

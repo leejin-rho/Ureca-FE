@@ -3,9 +3,10 @@ import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
 import SendIcon from '@/assets/images/svgs/Send';
+import { useNavigate } from 'react-router-dom';
 
 const EducationBox = ({ title, explList, type }) => {
-  const eduUrl = 'https://lgupluskdt.recruiter.co.kr/career/' + type;
+  const navigate = useNavigate();
 
   return (
     <Wrapper>
@@ -27,14 +28,12 @@ const EducationBox = ({ title, explList, type }) => {
             </li>
           ))}
       </ExplBox>
-      <a href={eduUrl}>
-        <EduLink>
-          <Text color="#cecece" variant="h8" mobileTypo="h9">
-            커리큘럼 상세보기
-          </Text>
-          <SendIcon height="14px" />
-        </EduLink>
-      </a>
+      <EduLink onClick={() => navigate(`/${type}`)}>
+        <Text color="#cecece" variant="h8" mobileTypo="h9">
+          커리큘럼 상세보기
+        </Text>
+        <SendIcon height="14px" />
+      </EduLink>
     </Wrapper>
   );
 };
@@ -101,4 +100,6 @@ const EduLink = styled.div`
   gap: 0.25rem;
   right: 2.25rem;
   bottom: 1.875rem;
+
+  cursor: pointer;
 `;

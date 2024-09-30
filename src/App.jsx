@@ -20,6 +20,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/apply" element={<Apply />} />
+          <Route path="/frontend-curriculum" element={<FrontendCur />} />
+          <Route path="/backend-curriculum" element={<BackendCur />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -2,8 +2,13 @@ import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import FAQList from '@components/home/FAQList';
 import { Flex, Text } from '@components/global';
+import { useEffect } from 'react';
 
 const FAQ = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Wrapper>
       <Header>
