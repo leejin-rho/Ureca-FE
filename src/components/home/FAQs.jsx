@@ -15,7 +15,7 @@ const FAQs = () => {
       title="자주 묻는 질문"
       expl="궁금한 점이 있으신가요?"
       subexpl={
-        "자주 묻는 질문은 아래의 글과 링크를 확인해주시고{'\n'}문의 사항이 있다면 카카오톡으로 문의해주세요."
+        '자주 묻는 질문은 아래의 글과 링크를 확인해주시고\n문의 사항이 있다면 카카오톡으로 문의해주세요.'
       }
     >
       <FAQContainer direction="column" mobileGap="0.75">
@@ -49,4 +49,8 @@ const FAQContainer = styled(Flex)`
   justify-content: center;
   padding: 0.75rem 1.25rem;
   gap: 0.75rem;
+
+  @media (max-width: 1023px) {
+    width: 100%;
+  }
 `;

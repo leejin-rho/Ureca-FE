@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import { colors } from '@/styles/colors';
 
 const headingStyles = {
-  // 1rem = 16px
   h1: css`
     font-family: 'Pretendard';
     font-size: 2.815rem;
@@ -72,6 +71,7 @@ export const Text = styled.div`
   white-space: pre-wrap;
   word-break: break-all;
   width: fit-content;
+  flex-shrink: 0;
 
   @media (max-width: 1023px) {
     ${({ mobileTypo, variant }) =>

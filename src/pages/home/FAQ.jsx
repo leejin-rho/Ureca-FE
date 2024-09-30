@@ -25,7 +25,7 @@ const Wrapper = styled(Flex)`
   flex-direction: column;
   overflow: auto;
   padding: 8rem;
-  gap: 3rem;
+  gap: 5rem;
 `;
 
 const Header = styled(Flex)`

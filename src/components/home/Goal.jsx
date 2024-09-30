@@ -104,6 +104,7 @@ const GoalList = styled.div`
 
 const GoalBox = styled(GlassBox)`
   position: relative;
+  justify-content: flex-start;
 `;
 
 const TextList = styled.div`
@@ -118,6 +119,8 @@ const ExplList = styled.ul`
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex: 1;
+  justify-content: center;
 
   color: ${colors.white};
   list-style-type: disc;

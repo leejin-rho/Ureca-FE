@@ -17,16 +17,26 @@ const Footer = () => {
           variant="h9"
           mobileTypo="h11"
         >
-          유레카는 고용노동부와 지원하며 LG유플러스가 운영지원하는
+          유레카는 고용노동부가 지원하며 LG유플러스가 운영지원하는
           프로그램입니다. 현업 수요에 따른 커리큘럼과, 융합 프로젝트를 통한
           역량을 강화하고, 프로젝트 중심 교육과 LG유플러스 현업 멘토링을 통해
           실무형 인재로 거듭날 수 있습니다.
         </Text>
+      </Wrapper>
+      <LastLine justify="space-between" align="end">
         <Flex justify="flex-start">
           <SupportImage1 height="1.75rem" />
           <SupportImage2 height="1.75rem" />
         </Flex>
-      </Wrapper>
+        <Text
+          color={colors.disabled}
+          textAlign="flex-end"
+          variant="h10"
+          mobileTypo="h11"
+        >
+          Copyright © LG UPLUS. 2024 All rights reserved.
+        </Text>
+      </LastLine>
     </FooterContainer>
   );
 };
@@ -35,6 +45,7 @@ export default Footer;
 
 const FooterContainer = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 4rem 5rem;
   align-items: flex-start;
@@ -59,4 +70,11 @@ const Wrapper = styled.div`
   font-weight: 600;
   color: ${colors.white};
   line-height: 150%;
+`;
+
+const LastLine = styled(Flex)`
+  @media (max-width: 1023px) {
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
 `;
