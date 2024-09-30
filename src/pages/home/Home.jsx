@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
@@ -21,6 +21,12 @@ const Home = () => {
   const scrollToSection = (index) => {
     sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <>

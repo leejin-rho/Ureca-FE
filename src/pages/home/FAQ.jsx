@@ -1,13 +1,16 @@
+import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import FAQList from '@components/home/FAQList';
 import { Flex, Text } from '@components/global';
-import { useEffect, useRef } from 'react';
 
 const FAQ = () => {
   const wrapperRef = useRef(null);
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
     if (wrapperRef.current) {
       wrapperRef.current.classList.add('visible');
     }

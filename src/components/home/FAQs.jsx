@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import Section from '@components/home/Section';
@@ -6,8 +7,10 @@ import { Button } from '@components/global/Button';
 import FAQList from './FAQList';
 
 const FAQs = () => {
-  const onFAQBtn = () => {
-    window.location.href = 'http://localhost:5173/FAQ';
+  const navigate = useNavigate();
+
+  const handleFAQBtnClick = () => {
+    navigate('/FAQ');
   };
 
   return (
@@ -32,7 +35,7 @@ const FAQs = () => {
         borderRadius="2rem"
         fontSize="1.125rem"
         fontColor={colors.white}
-        onClick={onFAQBtn}
+        onClick={handleFAQBtnClick}
       >
         더 많은 질문 보기 {'>'}
       </Button>
