@@ -27,12 +27,7 @@ const Goal = () => {
         />
         <GoalList>
           {Information.GoalData.map((item) => (
-            <GoalBox
-              key={item.id}
-              padding="1.25rem"
-              width="20"
-              mobileGap="0.25"
-            >
+            <GoalBox key={item.id} padding="1.5rem" width="20" mobileGap="0.25">
               <TextList>
                 <Text
                   color={item.id == 0 ? colors.primaryColor : colors.white}
