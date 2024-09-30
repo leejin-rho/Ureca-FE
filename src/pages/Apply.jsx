@@ -1287,7 +1287,7 @@ const CareerEtcHeader = styled.div`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -1.2rem;
+    bottom: -12px;
     display: block;
     height: 2px;
     background-color: #888;

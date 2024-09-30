@@ -4,15 +4,14 @@ import { colors } from '@/styles/colors';
 import LogoImage from '@assets/images/svgs/NavLogo';
 import { Text, Button } from '@components/global';
 import { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
 import { useScroll } from '../../assets/context/ScrollContext';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const { scrollToSection } = useScroll();
   const [isTransparent, setIsTransparent] = useState(false);
 
   const navigate = useNavigate();
-  const { pathname } = useLocation();
 
   const handleScroll = () => {
     if (window.scrollY > 449) {

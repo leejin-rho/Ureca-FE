@@ -14,7 +14,6 @@ import Benefit from '@components/home/Benefit';
 import IntroPJT from '@components/home/IntroPJT';
 import Order from '@components/home/Order';
 import FAQs from '@components/home/FAQs';
-import { useEffect } from 'react';
 
 const Home = () => {
   const { sectionRefs } = useScroll();
