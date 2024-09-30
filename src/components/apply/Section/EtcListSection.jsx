@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 
 // React Icons
-import { AiOutlineDelete, AiOutlinePlus } from 'react-icons/ai';
+import {
+  AiOutlineCalendar,
+  AiOutlineDelete,
+  AiOutlinePlus,
+} from 'react-icons/ai';
 import { colors } from '../../../styles/colors';
 import { TextField } from '../ui/InputFieldUi';
 import Calendar from '../ui/Calendar';
@@ -93,7 +97,7 @@ export default function EtcListSection({
                             className="iconBtn"
                             onClick={() => toggleDatePicker(item.id, idx)}
                           >
-                            {input.icons}
+                            <AiOutlineCalendar />
                           </button>
 
                           {/* 각 ListItem 별로 개별 DatePicker 관리 */}

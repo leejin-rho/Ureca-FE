@@ -13,6 +13,7 @@ import {
   TextFieldAndIcons,
   CombInputField,
   TextAreaField,
+  Submit,
 } from '../components/apply/ui/InputFieldUi';
 import { InputGroup } from '../components/apply/Groups';
 import Modal from '../components/apply/ui/Modal';
@@ -21,13 +22,16 @@ import { options } from '../assets/data/selectData';
 import EtcListSection from '../components/apply/Section/EtcListSection';
 import CareerListSection from '../components/apply/Section/CareerListSection';
 import Accordion from '../components/apply/ui/Accordion';
+import { useNavigate } from 'react-router-dom';
 
 // Apply Page
 function Apply() {
+  const navigate = useNavigate();
+
   // 지원자 정보
   const [name, setName] = useState('');
 
-  const [gender, setGender] = useState(false);
+  const [gender, setGender] = useState('');
   const [genderActiveBtn, setGenderActiveBtn] = useState(null);
 
   const [birth, setBirth] = useState('');
@@ -40,16 +44,32 @@ function Apply() {
     setEmergencyPhoneNumberRelationship,
   ] = useState('');
 
+  // 지원 분야
+  const [supportField, setSupportField] = useState('');
+  const [supportFieldActiveBtn, setSupportFieldActiveBtn] = useState(null);
+  const [teachingStyle, setTeachingStyle] = useState('');
+  const [teachingStyleActiveBtn, setTeachingStyleActiveBtn] = useState(null);
+  const [majorField, setMajorField] = useState('');
+  const [majorFieldActiveBtn, setMajorFieldActiveBtn] = useState(null);
+  const [supportPath, setSupportPath] = useState('');
+
+  // 인적사항
+  const [adress, setAdress] = useState('');
+
   // 고등학교 정보
   const [highSchool, setHighSchool] = useState('');
   const [highSchoolLocation, setHighSchoolLocation] = useState('');
   const [highSchoolType, setHighSchoolType] = useState('');
+  const [highSchoolStatus, setHighSchoolStatus] = useState('');
 
   // 대학교 정보
   const [university, setUniversity] = useState('');
   const [universityLocation, setUniversityLocation] = useState('');
   const [universityeDpartment, setUniversityeDpartment] = useState('');
   const [universityMajor, setUniversityMajor] = useState('');
+  const [universityeScore, setUniversityeScore] = useState('');
+  const [universityeScoreList, setUniversityeScoreList] = useState('');
+  const [universityStatus, setUniversityStatus] = useState('');
 
   // 선택한 전공 계열에 속한 학과 목록
   const [majorDataList, setMajorDataList] = useState({});
@@ -77,7 +97,6 @@ function Apply() {
           value: '',
           name: 'certificateDateAcquired',
           disabled: true,
-          icons: <AiOutlineCalendar />,
           showDatePicker: false,
         },
         {
@@ -113,7 +132,6 @@ function Apply() {
           value: '',
           name: 'awardDate',
           disabled: true,
-          icons: <AiOutlineCalendar />,
         },
         {
           type: 'text',
@@ -148,7 +166,6 @@ function Apply() {
           value: '',
           name: 'activityStartDate',
           disabled: true,
-          icons: <AiOutlineCalendar />,
         },
         {
           type: 'text',
@@ -156,7 +173,6 @@ function Apply() {
           value: '',
           name: 'activityEndDate',
           disabled: true,
-          icons: <AiOutlineCalendar />,
         },
       ],
     },
@@ -193,7 +209,6 @@ function Apply() {
           value: '',
           name: 'careerStartDate',
           disabled: true,
-          icons: <AiOutlineCalendar />,
           showDatePicker: false,
         },
         {
@@ -202,7 +217,6 @@ function Apply() {
           value: '',
           name: 'careerEndDate',
           disabled: true,
-          icons: <AiOutlineCalendar />,
           showDatePicker: false,
         },
         {
@@ -223,16 +237,45 @@ function Apply() {
   const [selfIntroduce2, setSelfIntroduce2] = useState('');
   const [selfIntroduce3, setSelfIntroduce3] = useState('');
 
+  // 자격사항
+  const [questions, setQuestions] = useState({
+    question1: '',
+    question2: '',
+    question3: '',
+    question4: '',
+    question5: '',
+    question6: '',
+    question7: '',
+  });
+
+  const setQuestionState = (questionKey, value) => {
+    setQuestions((prev) => ({
+      ...prev,
+      [questionKey]: value,
+    }));
+  };
+
+  const [questionsActiveBtn, setQuestionsActiveBtn] = useState({
+    question1ActiveBtn: null,
+    question2ActiveBtn: null,
+    question3ActiveBtn: null,
+    question4ActiveBtn: null,
+    question5ActiveBtn: null,
+    question6ActiveBtn: null,
+    question7ActiveBtn: null,
+  });
+
+  const setQuestionActiveBtn = (questionKey, value) => {
+    setQuestionsActiveBtn((prev) => ({
+      ...prev,
+      [questionKey]: value,
+    }));
+  };
+
   // 모달창 오픈 state 변수
   const [highschoolModal, setHighschoolModal] = useState(false);
   const [universityModal, setUniversityModal] = useState(false);
   const [universityMajorModal, setUniversityMajorModal] = useState(false);
-
-  // Btn Active 효과 적용 Function
-  const handleClick = (event, id) => {
-    setGenderActiveBtn(id);
-    setGender(JSON.parse(event.target.value));
-  };
 
   // 어학 / 자격 / 기타 추가 버튼 클릭 이벤트 핸들러
   const addCertificateListItems = () => {
@@ -265,7 +308,6 @@ function Apply() {
             value: '',
             name: 'certificateDateAcquired',
             disabled: true,
-            icons: <AiOutlineCalendar />,
             showDatePicker: false,
           },
           {
@@ -309,7 +351,6 @@ function Apply() {
             value: '',
             name: 'awardDate',
             disabled: true,
-            icons: <AiOutlineCalendar />,
           },
           {
             type: 'text',
@@ -352,7 +393,6 @@ function Apply() {
             value: '',
             name: 'activityStartDate',
             disabled: true,
-            icons: <AiOutlineCalendar />,
           },
           {
             type: 'text',
@@ -360,7 +400,6 @@ function Apply() {
             value: '',
             name: 'activityEndDate',
             disabled: true,
-            icons: <AiOutlineCalendar />,
           },
         ],
       },
@@ -473,7 +512,6 @@ function Apply() {
             value: '',
             name: 'careerStartDate',
             disabled: true,
-            icons: <AiOutlineCalendar />,
           },
           {
             type: 'calendar',
@@ -481,7 +519,6 @@ function Apply() {
             value: '',
             name: 'careerEndDate',
             disabled: true,
-            icons: <AiOutlineCalendar />,
           },
           {
             type: 'textarea',
@@ -516,6 +553,94 @@ function Apply() {
   const deleteCareerListItem = (itemId) => {
     const updatedItems = careerListItem.filter((item) => item.id !== itemId);
     setCareerListItem(updatedItems);
+  };
+
+  const removeCircularReferences = (obj, seen = new WeakSet()) => {
+    if (obj && typeof obj === 'object') {
+      if (seen.has(obj)) {
+        return;
+      }
+      seen.add(obj);
+      for (const key in obj) {
+        obj[key] = removeCircularReferences(obj[key], seen);
+      }
+    }
+    return obj;
+  };
+
+  const applySubmitHandler = async () => {
+    await axios
+      .post(
+        'http://localhost:8080/apply/submit',
+        {
+          // 인적사항
+          name,
+          gender,
+          birth: new Date(birth),
+          email,
+          phone_number: phoneNumber,
+          country,
+          emergency_phone_number: emergencyPhoneNumber,
+          emergency_phone_number_relationship: emergencyPhoneNumberRelationship,
+
+          // 기본 정보
+          support_field: supportField,
+          major_field: majorField,
+          support_path: supportPath,
+          teaching_style: teachingStyle,
+
+          // 지원자 주소
+          address: adress,
+
+          // 고등학교 정보
+          high_school: highSchool,
+          high_school_location: highSchoolLocation,
+          high_school_type: highSchoolType,
+          high_school_status: highSchoolStatus,
+
+          // 대학교 정보
+          university: university,
+          university_location: universityLocation,
+          universitye_major: universityMajor,
+          universitye_dpartment: universityeDpartment,
+          universitye_score: universityeScore,
+          universitye_score_list: universityeScoreList,
+          universitye_status: universityStatus,
+
+          // 어학, 자격, 기타
+          certificate: JSON.stringify(certificateListItems),
+          awards: JSON.stringify(awardListItems),
+          activity: JSON.stringify(activityListItem),
+
+          // 경력 사항
+          career: JSON.stringify(careerListItem),
+          it_learing: itLearning,
+
+          // 자기소개서
+          selfIntroduce1,
+          selfIntroduce2,
+          selfIntroduce3,
+
+          //   // 자격사항
+          questions: JSON.stringify(Object.values(questions)),
+        },
+        {
+          'Content-Type': 'application/json',
+        },
+      )
+      .then((res) => {
+        if (res.data.status === 201) {
+          alert('지원서가 제출되었습니다.');
+          navigate('/');
+        } else {
+          if (res.data.message === 'DUPLICATE_EMAIL')
+            alert('입력하신 이메일은 중복된 이메일입니다.');
+          else alert('지원자님은 이미 지원서를 제출하셨습니다.');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // OpenAPI 전국 대학교 학과 데이터 가져오는 로직
@@ -580,7 +705,8 @@ function Apply() {
                 { id: 'male', value: true, text: '남성' },
                 { id: 'female', value: false, text: '여성' },
               ]}
-              onClickFunc={handleClick}
+              setActiveBtn={setGenderActiveBtn}
+              setState={setGender}
               activeButton={genderActiveBtn}
             />
           </InputGroup>
@@ -659,26 +785,35 @@ function Apply() {
                 { id: 'front', value: 'true', text: '프론트엔드' },
                 { id: 'back', value: 'false', text: '백엔드' },
               ]}
+              setState={setSupportField}
+              setActiveBtn={setSupportFieldActiveBtn}
+              activeButton={supportFieldActiveBtn}
             />
 
             <Button
               title="교육 방식"
-              type="supportField"
+              type="teachingStyle"
               buttons={[
                 { id: 'visited', value: 'true', text: '대면' },
                 { id: 'nonVisited', value: 'false', text: '비대면' },
               ]}
+              setState={setTeachingStyle}
+              setActiveBtn={setTeachingStyleActiveBtn}
+              activeButton={teachingStyleActiveBtn}
             />
           </InputGroup>
 
           <InputGroup>
             <Button
               title="전공 여부"
-              type="supportField"
+              type="majorField"
               buttons={[
                 { id: 'major', value: 'true', text: '전공자' },
                 { id: 'non-major', value: 'false', text: '비전공자' },
               ]}
+              setState={setMajorField}
+              setActiveBtn={setMajorFieldActiveBtn}
+              activeButton={majorFieldActiveBtn}
             />
 
             <TextField
@@ -686,6 +821,7 @@ function Apply() {
               target="path"
               label={'지원 경로'}
               placeholder="지원 경로를 입력해주세요. (예시. SNS(인스타그램, 페이스북))"
+              changeEventFunc={(event) => setSupportPath(event.target.value)}
             />
           </InputGroup>
         </div>
@@ -701,6 +837,8 @@ function Apply() {
               label="주소"
               maxWidth={'100%'}
               placeholder="현재 거주하고 계시는 주소를 입력해주세요."
+              value={adress}
+              changeEventFunc={(event) => setAdress(event.target.value)}
             />
           </InputGroup>
         </div>
@@ -738,7 +876,11 @@ function Apply() {
               value={highSchoolType}
               disabled={true}
             />
-            <DropdownField label={'졸업구분'} data={options.status} />
+            <DropdownField
+              label={'졸업구분'}
+              data={options.status}
+              setSelectValue={setHighSchoolStatus}
+            />
           </InputGroup>
         </div>
 
@@ -797,8 +939,17 @@ function Apply() {
           </InputGroup>
 
           <InputGroup>
-            <CombInputField label={'전체평점'} />
-            <DropdownField label={'졸업구분'} data={options.status} />
+            <CombInputField
+              label={'전체평점'}
+              scoreValue={universityeScore}
+              setScoreValue={setUniversityeScore}
+              selectScoreItem={setUniversityeScoreList}
+            />
+            <DropdownField
+              label={'졸업구분'}
+              data={options.status}
+              setSelectValue={setUniversityStatus}
+            />
           </InputGroup>
         </div>
       </InputSection>
@@ -1029,8 +1180,51 @@ function Apply() {
 
       {/* 자격사항 Section */}
       <InputSection title={'자격사항'}>
-        <Accordion />
+        <Accordion
+          questions={questions}
+          setQuestions={setQuestions}
+          questionsActiveBtn={questionsActiveBtn}
+          setQuestionsActiveBtn={setQuestionsActiveBtn}
+          setQuestionState={setQuestionState}
+          setQuestionActiveBtn={setQuestionActiveBtn}
+        />
       </InputSection>
+
+      <InputSection>
+        <Submit
+          buttons={[
+            {
+              id: 'applyCancelBtn',
+              onSubmitHandler() {
+                alert(
+                  '작성하신 지원서는 저장이 되지 않습니다. 정말로 메인 페이지로 돌아가시겠습니까?',
+                );
+              },
+              text: '뒤로가기',
+              style: {
+                fontSize: '1.4rem',
+                fontWeight: 600,
+                boxShadow: '1px 3px 4px rgba(0, 0, 0, 0.2)',
+              },
+            },
+            {
+              id: 'applySubmitBtn',
+              onSubmitHandler: applySubmitHandler,
+              text: '지원하기',
+              style: {
+                backgroundColor: colors.primaryColor,
+                color: colors.white,
+                fontSize: '1.4rem',
+                fontWeight: 600,
+                boxShadow: '1px 3px 4px rgba(0, 0, 0, 0.2)',
+              },
+            },
+          ]}
+        />
+        {/* <div style={{backgroundColor:colors}}></div> */}
+      </InputSection>
+
+      {/* <button onClick={applySubmitHandler}>제출</button> */}
 
       {/* Modal */}
       {highschoolModal && (
@@ -1065,8 +1259,6 @@ function Apply() {
           placeholder={'학과를 입력해 주세요.'}
         />
       )}
-
-      <button onClick={() => console.log(certificateListItems)}>제출</button>
     </>
   );
 }

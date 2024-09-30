@@ -69,24 +69,62 @@ export function TextFieldAndIcons({
 }
 
 // 일반 Button
-export function Button({ title, type, buttons, onClickFunc, activeButton }) {
+export function Button({
+  title,
+  type,
+  buttons,
+  setActiveBtn,
+  setState,
+  activeButton,
+}) {
   return (
     <InputContainer>
       <InputLabelElement htmlFor={type}>{title}</InputLabelElement>
       <ButtonGroups>
-        {buttons.length > 0 &&
+        {buttons && buttons.length > 0 ? (
           buttons.map((element) => (
             <ButtonElement
               key={element.id}
               value={element.value}
               id={type}
-              onClick={(event) => onClickFunc(event, element.id)}
+              onClick={(event) => {
+                setActiveBtn(element.id);
+                setState(event.target.value);
+              }}
               className={activeButton === element.id ? 'active' : ''}
             >
               {element.text}
             </ButtonElement>
-          ))}
+          ))
+        ) : (
+          <ButtonElement>지원하기</ButtonElement>
+        )}
       </ButtonGroups>
+    </InputContainer>
+  );
+}
+
+export function Submit({ buttons, onSubmitHandler, text }) {
+  return (
+    <InputContainer maxWidth={'100%'}>
+      {buttons && buttons.length > 0 ? (
+        <ButtonGroups>
+          {buttons.map((element) => {
+            return (
+              <ButtonElement
+                key={element.id}
+                onClick={element.onSubmitHandler}
+                className="submit"
+                style={element.style}
+              >
+                {element.text}
+              </ButtonElement>
+            );
+          })}
+        </ButtonGroups>
+      ) : (
+        <ButtonElement onClick={onSubmitHandler}>{text}</ButtonElement>
+      )}
     </InputContainer>
   );
 }
@@ -155,18 +193,28 @@ export function DropdownField({
 }
 
 // 조합 index Field
-export function CombInputField({ label }) {
+export function CombInputField({
+  label,
+  scoreValue,
+  setScoreValue,
+  selectScoreItem,
+}) {
   return (
     <InputContainer>
       <InputLabelElement>{label}</InputLabelElement>
 
       <InputGroup>
-        <TextField group={true} />
+        <TextField
+          group={true}
+          value={scoreValue}
+          changeEventFunc={(event) => setScoreValue(event.target.value)}
+        />
         <span style={{ fontSize: 14 }}>/</span>
         <DropdownField
           target={'scroeList'}
           group={true}
           data={options.scroeList}
+          setSelectValue={selectScoreItem}
         />
       </InputGroup>
     </InputContainer>
@@ -287,6 +335,11 @@ const ButtonElement = styled.button`
   :hover {
     border: 1px solid ${colors.primaryColor};
     background-color: rgba(241, 134, 181, 0.1);
+  }
+
+  &.submit:hover {
+    border: 1px solid transparent;
+    background-color: #f4f6f9;
   }
 
   &.active {
