@@ -72,7 +72,7 @@ export const Text = styled.div`
   white-space: pre-wrap;
   word-break: break-all;
   width: fit-content;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 
   @media (max-width: 1023px) {
     ${({ mobileTypo, variant }) =>
