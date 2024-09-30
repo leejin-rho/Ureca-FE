@@ -5,6 +5,7 @@ export const colors = {
   primaryColor: '#E2007E',
   pink50: '#FFE3F3',
   pink100: '#DB95AC',
+  pink150: '#F186B5',
   mint: '#5BBAB5',
   gray100: '#787878',
   disabled: '#9EA1B0',
