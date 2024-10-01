@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 
 import { AiOutlineCalendar, AiOutlinePlus } from 'react-icons/ai';
-import { colors } from '../../../styles/colors';
+import { colors } from '@/styles/colors';
 import { TextAreaField, TextField, DropdownField } from '../ui/InputFieldUi';
-import { options } from '../../../assets/data/selectData';
+import { options } from '@assets/data/selectData';
 import Calendar from '../ui/Calendar';
 
 function CareerListSection({

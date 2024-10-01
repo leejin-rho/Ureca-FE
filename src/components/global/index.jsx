@@ -3,3 +3,4 @@ export { Text } from './Text';
 export { Grid } from './Grid';
 export { GlassBox } from './GlassBox';
 export { Button } from './Button';
+export { TextInput } from './TextInput';
