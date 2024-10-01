@@ -1,12 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
 import SendIcon from '@/assets/images/svgs/Send';
-import { useNavigate } from 'react-router-dom';
 
 const EducationBox = ({ title, explList, type }) => {
   const navigate = useNavigate();
+
+  const handleCuriBtn = () => {
+    navigate(`/${type}`);
+  };
 
   return (
     <Wrapper>
@@ -28,7 +32,8 @@ const EducationBox = ({ title, explList, type }) => {
             </li>
           ))}
       </ExplBox>
-      <EduLink onClick={() => navigate(`/${type}`)}>
+
+      <EduLink onClick={handleCuriBtn}>
         <Text color="#cecece" variant="h8" mobileTypo="h9">
           커리큘럼 상세보기
         </Text>
@@ -101,5 +106,7 @@ const EduLink = styled.div`
   right: 2.25rem;
   bottom: 1.875rem;
 
-  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
 `;

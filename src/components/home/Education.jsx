@@ -30,12 +30,12 @@ const Education = () => {
         <EducationBox
           title="프론트엔드 개발자"
           explList={FrontExpl}
-          type="frontend-curriculum"
+          type="frontend"
         />
         <EducationBox
           title="백엔드 개발자"
           explList={BackExpl}
-          type="backend-curriculum"
+          type="backend"
         />
       </Wrapper>
     </Section>

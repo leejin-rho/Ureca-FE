@@ -1,11 +1,11 @@
+import { useEffect, useRef } from 'react';
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import Subheader from '@components/home/SubHeader';
 import InfoList from '@components/home/InfoList';
-
-import { useScroll } from '../../assets/context/ScrollContext';
+import { useScroll } from '@assets/context/ScrollContext';
 
 //section 목록
 import Goal from '@components/home/Goal';
@@ -17,6 +17,12 @@ import FAQs from '@components/home/FAQs';
 
 const Home = () => {
   const { sectionRefs } = useScroll();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, []);
 
   return (
     <>

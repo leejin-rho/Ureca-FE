@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 // Router Import
 import Home from '@pages/home/Home';
-import Apply from './pages/Apply';
+import Apply from '@pages/Apply';
 import FrontendCur from '@pages/home/FrontendCur';
 import BackendCur from '@pages/home/BackendCur';
 import FAQ from '@pages/home/FAQ';
@@ -18,13 +18,12 @@ function App() {
       <ScrollProvider>
         <Layout>
           <Global styles={globalStyle} />
-
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/frontend" element={<FrontendCur />} />
+            <Route path="/backend" element={<BackendCur />} />
+            <Route path="/FAQ" element={<FAQ />} />
             <Route path="/apply" element={<Apply />} />
-            <Route path="/frontend-curriculum" element={<FrontendCur />} />
-            <Route path="/backend-curriculum" element={<BackendCur />} />
-            <Route path="/faq" element={<FAQ />} />
           </Routes>
         </Layout>
       </ScrollProvider>

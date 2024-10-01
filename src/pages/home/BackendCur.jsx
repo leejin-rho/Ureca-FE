@@ -1,13 +1,26 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Curriculum from '@components/home/Curriculum';
 import Curriculums from '@assets/data/Curriculums.json';
+import { CurriculumTrans } from './FrontendCur';
 
 const BackendCurriculum = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const wrapperRef = useRef(null);
 
-  return <Curriculum title={'백엔드'} data={Curriculums.BackData} />;
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+    if (wrapperRef.current) {
+      wrapperRef.current.classList.add('visible');
+    }
+  }, []);
+  return (
+    <CurriculumTrans
+      ref={wrapperRef}
+      title={'백엔드'}
+      data={Curriculums.BackData}
+    />
+  );
 };
 
 export default BackendCurriculum;

@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
-import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
-import Curriculums from '@assets/data/Curriculums.json';
 
 const Curriculum = ({ title, data }) => {
   const groupByMonth = (data) => {
