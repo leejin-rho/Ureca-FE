@@ -217,7 +217,7 @@ const StyledCloseIcon = styled(AiOutlineClose)`
 // 모달 콘텐츠 영역
 const ModalContent = styled.div`
   padding: 10px 30px 40px;
-  max-height: calc(93vh - 170px);
+  max-height: calc(93vh - 360px);
   overflow-x: hidden;
   overflow-y: auto;
 `;

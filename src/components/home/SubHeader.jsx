@@ -9,6 +9,11 @@ import { useNavigate } from 'react-router-dom';
 const Subheader = () => {
   const navigate = useNavigate();
 
+  //지원하기로 이동
+  const handleApplyBtnClick = () => {
+    navigate('/apply');
+  };
+
   return (
     <BackImgDiv direction="column">
       <BackgroundImg src={Background} alt="ureca-background" />
@@ -31,7 +36,7 @@ const Subheader = () => {
           fontColor={colors.white}
           width="8rem"
           height="2.5rem"
-          onClick={() => navigate('/apply')}
+          onClick={handleApplyBtnClick}
         >
           지원하기
         </Button>
@@ -56,7 +61,7 @@ const BackImgDiv = styled(Flex)`
 const TopInfoDiv = styled(Flex)`
   flex-direction: column;
   z-index: 1;
-  gap: 1.8rem;
+  gap: 3rem;
 `;
 
 const BackgroundImg = styled.img`

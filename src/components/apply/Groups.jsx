@@ -5,8 +5,10 @@ export function InputGroup({ children }) {
   return <InputGroupContainer>{children}</InputGroupContainer>;
 }
 
-export function ButtonGroups({ children }) {
-  return <ButtonGroupContainer>{children}</ButtonGroupContainer>;
+export function ButtonGroups({ center, children }) {
+  return (
+    <ButtonGroupContainer center={center}>{children}</ButtonGroupContainer>
+  );
 }
 
 const InputGroupContainer = styled.div`
@@ -19,4 +21,5 @@ const ButtonGroupContainer = styled.div`
   flex-grow: 1;
   display: flex;
   gap: 12px;
+  justify-content: ${({ center }) => (center ? 'center' : '')};
 `;

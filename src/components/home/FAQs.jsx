@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import Section from '@components/home/Section';
-import { Flex } from '@components/global/Flex';
+import { Flex, Text } from '@components/global';
 import { Button } from '@components/global/Button';
 import FAQList from './FAQList';
 
@@ -33,11 +33,11 @@ const FAQs = () => {
         hbgi={colors.glassHover}
         hoverBg={colors.glass}
         borderRadius="2rem"
-        fontSize="1.125rem"
-        fontColor={colors.white}
         onClick={handleFAQBtnClick}
       >
-        더 많은 질문 보기 {'>'}
+        <Text color={colors.white} variant="h4" mobileTypo="h6">
+          더 많은 질문 보기 {'>'}
+        </Text>
       </Button>
     </Section>
   );

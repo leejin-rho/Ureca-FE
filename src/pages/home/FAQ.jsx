@@ -17,10 +17,12 @@ const FAQ = () => {
   });
 
   return (
-    <Wrapper ref={wrapperRef}>
-      <Header>
-        <Text variant="h1">자주 묻는 질문</Text>
-        <Text variant="h5" textAlign="flex-start">
+    <Wrapper ref={wrapperRef} mobileGap="3">
+      <Header mobileGap="1">
+        <Text variant="h1" mobileTypo="h2">
+          자주 묻는 질문
+        </Text>
+        <Text variant="h5" mobileTypo="h8" textAlign="flex-start">
           채용사이트를 통해 가장 많이 물어보는 질문들이에요.{'\n'}
           원하시는 답변이 없으실 경우, 1:1 문의하기를 이용해주세요.
         </Text>
@@ -46,6 +48,10 @@ const Wrapper = styled(Flex)`
   &.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (max-width: 1023px) {
+    padding: 8rem 3rem;
   }
 `;
 
