@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import FAQList from '@components/home/FAQList';
 import { Flex, Text } from '@components/global';
-import { useEffect } from 'react';
 
 const FAQ = () => {
   const wrapperRef = useRef(null);
@@ -15,6 +14,7 @@ const FAQ = () => {
     if (wrapperRef.current) {
       wrapperRef.current.classList.add('visible');
     }
+  });
 
   return (
     <Wrapper ref={wrapperRef}>
