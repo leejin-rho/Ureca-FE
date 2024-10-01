@@ -14,7 +14,6 @@ import axios from 'axios';
 function Modal({
   title,
   info,
-  open,
   setOpen,
   gubun,
   setName,
@@ -180,8 +179,8 @@ const ModalContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 1rem;
-  width: 46rem;
+  border-radius: 10px;
+  width: 460px;
   overflow: hidden;
   z-index: 1000;
 `;
@@ -190,11 +189,11 @@ const Explanation = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 1rem 0;
+  margin: 10px 0;
 
   p {
     line-height: normal;
-    font-size: 1.4rem;
+    font-size: 14px;
     color: #6b6b6b;
     display: flex;
     gap: 5px;
@@ -204,7 +203,7 @@ const Explanation = styled.div`
 
 // 모달 헤더 영역
 const ModalHeader = styled.div`
-  padding: 2.5rem 3rem 2rem;
+  padding: 25px 30px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -217,27 +216,27 @@ const StyledCloseIcon = styled(AiOutlineClose)`
 
 // 모달 콘텐츠 영역
 const ModalContent = styled.div`
-  padding: 1rem 3rem 4rem;
-  max-height: calc(93vh - 17rem);
+  padding: 10px 30px 40px;
+  max-height: calc(93vh - 170px);
   overflow-x: hidden;
   overflow-y: auto;
 `;
 
 // 모달 하단 영역
 const ModalFooter = styled.div`
-  height: 4rem;
+  height: 40px;
   font-size: 16px;
   background-color: #000;
   color: #fff;
-  line-height: 4rem;
+  line-height: 40px;
   text-align: center;
   font-weight: 500;
   cursor: pointer;
 `;
 
 const DataItem = styled.div`
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.8rem;
+  padding: 8px 16px;
+  border-radius: 8px;
   border: 1px solid transparent;
   display: flex;
   cursor: pointer;

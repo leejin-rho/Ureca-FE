@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import Curriculum from '@components/home/Curriculum';
 import Curriculums from '@assets/data/Curriculums.json';
 import { CurriculumTrans } from './FrontendCur';
 

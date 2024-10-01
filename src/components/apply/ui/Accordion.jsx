@@ -6,10 +6,7 @@ import { options } from '../../../assets/data/selectData';
 import { Button } from './InputFieldUi';
 
 function Accordion({
-  questions,
-  setQuestions,
   questionsActiveBtn,
-  setQuestionsActiveBtn,
   setQuestionState,
   setQuestionActiveBtn,
 }) {
@@ -25,7 +22,7 @@ function Accordion({
     <AccordionItem>
       <AccordionItemTitle onClick={() => setShow(!show)}>
         <h2>추가질문</h2>
-        <span>{show ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}</span>
+        {show ? <AiOutlineCaretUp /> : <AiOutlineCaretDown />}
       </AccordionItemTitle>
       <AccordionItemContent ref={contentRef} show={show} style={{ height }}>
         <AccordionItemTesst>
@@ -60,16 +57,16 @@ const AccordionItem = styled.div`
   display: flex;
   flex-direction: column;
   border: 1px solid #f4f6f9;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   overflow: hidden;
 `;
 
 const AccordionItemTitle = styled.div`
-  padding: 1.2rem 1.8rem;
+  padding: 12px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: 600;
   line-height: 150%;
   color: #232527;
@@ -87,10 +84,10 @@ const AccordionItemContent = styled.div`
 const AccordionItemTesst = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 50px;
 
-  padding: 1.2rem 1.8rem;
-  margin-top: 0.8rem;
+  padding: 12px 18px;
+  margin-top: 8px;
 `;
 
 const AccordionQuestionContent = styled.div`
@@ -98,7 +95,7 @@ const AccordionQuestionContent = styled.div`
   flex-direction: column;
 
   & > * {
-    font-size: 1.4rem;
+    font-size: 14px;
     font-weight: 600;
     word-break: keep-all;
   }
@@ -107,7 +104,7 @@ const AccordionQuestionContent = styled.div`
 const AccordionQuestionBtnGroup = styled.div`
   display: flex;
   justify-content: flex-start;
-  margin-top: 2rem;
+  margin-top: 20px;
 `;
 
 export default Accordion;

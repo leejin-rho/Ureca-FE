@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import styled from '@emotion/styled';
 import Curriculum from '@components/home/Curriculum';
 import Curriculums from '@assets/data/Curriculums.json';
+import { useEffect } from 'react';
 
 const FrontendCurriculum = () => {
   const wrapperRef = useRef(null);

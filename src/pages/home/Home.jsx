@@ -3,9 +3,9 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
-import Navbar from '@components/global/Navbar';
 import Subheader from '@components/home/SubHeader';
 import InfoList from '@components/home/InfoList';
+import { useScroll } from '@assets/context/ScrollContext';
 
 //section 목록
 import Goal from '@components/home/Goal';
@@ -16,11 +16,7 @@ import Order from '@components/home/Order';
 import FAQs from '@components/home/FAQs';
 
 const Home = () => {
-  const sectionRefs = useRef([]);
-
-  const scrollToSection = (index) => {
-    sectionRefs.current[index]?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { sectionRefs } = useScroll();
 
   useEffect(() => {
     window.scrollTo({
@@ -30,7 +26,6 @@ const Home = () => {
 
   return (
     <>
-      <Navbar scrollToSection={scrollToSection} />
       <MainContainer>
         <Subheader />
         <InfoList />

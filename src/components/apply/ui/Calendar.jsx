@@ -184,10 +184,10 @@ const DatePicker = styled.div`
   z-index: 1001;
   margin-top: 2px;
   background-color: #fff;
-  padding: 1rem;
-  border-radius: 0.5rem;
+  padding: 10px;
+  border-radius: 5px;
   box-sizing: border-box;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 
   button {
     cursor: pointer;
@@ -203,9 +203,9 @@ const DatePicker = styled.div`
   .days,
   .dates {
     display: grid;
-    grid-template-columns: repeat(7, 3.2rem);
-    gap: 0.3rem;
-    margin-block: 1rem;
+    grid-template-columns: repeat(7, 32px);
+    gap: 3px;
+    margin-block: 10px;
   }
 
   .days span {
@@ -243,11 +243,11 @@ const DatePickerHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 1rem;
-  border-bottom: 0.1rem solid #eee;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
 
   select {
-    width: 10rem;
+    width: 100px;
   }
 
   select,
@@ -257,7 +257,7 @@ const DatePickerHeader = styled.div`
   }
 
   .year-input {
-    max-width: 6.4rem;
+    max-width: 64px;
   }
 
   button {

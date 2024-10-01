@@ -4,6 +4,7 @@ import { colors } from '@/styles/colors';
 import { Flex } from '@components/global/Flex';
 import { Text } from '@components/global/Text';
 import SendIcon from '@/assets/images/svgs/Send';
+import { useNavigate } from 'react-router-dom';
 
 const EducationBox = ({ title, explList, type }) => {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ const EducationBox = ({ title, explList, type }) => {
   const handleCuriBtn = () => {
     navigate(`/${type}`);
   };
+
 
   return (
     <Wrapper>

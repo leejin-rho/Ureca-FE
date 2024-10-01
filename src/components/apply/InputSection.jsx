@@ -22,8 +22,8 @@ function InputSection({ title, children }) {
 }
 
 const SectionContainer = styled.section`
-  width: 85.6rem;
-  margin-bottom: 10rem;
+  width: 856px;
+  margin-bottom: 100px;
 `;
 
 export default InputSection;

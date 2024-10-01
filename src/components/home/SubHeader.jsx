@@ -4,8 +4,11 @@ import { Text } from '@components/global/Text';
 import { colors } from '@/styles/colors';
 import Background from '@/assets/images/pngs/home-background.png';
 import { Button } from '@components/global/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Subheader = () => {
+  const navigate = useNavigate();
+
   return (
     <BackImgDiv direction="column">
       <BackgroundImg src={Background} alt="ureca-background" />
@@ -28,6 +31,7 @@ const Subheader = () => {
           fontColor={colors.white}
           width="8rem"
           height="2.5rem"
+          onClick={() => navigate('/apply')}
         >
           지원하기
         </Button>
