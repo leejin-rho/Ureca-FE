@@ -1027,7 +1027,7 @@ function Apply() {
               ]}
               margin={'36px 0 0 0 '}
               maxWidth={'100%'}
-              areaHeight={'130px'}
+              areaHeight={'100px'}
               placeholder={'IT 수강 경험을 기술해주십시오.'}
               name="it_learning"
               value={itLearning}
@@ -1173,19 +1173,23 @@ function Apply() {
 
       <InputSection>
         <Submit
+          center={true}
           buttons={[
             {
               id: 'applyCancelBtn',
               onSubmitHandler() {
-                alert(
-                  '작성하신 지원서는 저장이 되지 않습니다. 정말로 메인 페이지로 돌아가시겠습니까?',
-                );
+                const message =
+                  '작성하신 지원서는 저장이 되지 않습니다. 정말로 메인 페이지로 돌아가시겠습니까?';
+
+                if (confirm(message)) {
+                  navigate('/');
+                }
               },
               text: '뒤로가기',
               style: {
                 fontSize: '14px',
                 fontWeight: 600,
-                boxShadow: '1px 3px 4px rgba(0, 0, 0, 0.2)',
+                width: '300px',
               },
             },
             {
@@ -1197,7 +1201,7 @@ function Apply() {
                 color: colors.white,
                 fontSize: '14px',
                 fontWeight: 600,
-                boxShadow: '1px 3px 4px rgba(0, 0, 0, 0.2)',
+                width: '300px',
               },
             },
           ]}

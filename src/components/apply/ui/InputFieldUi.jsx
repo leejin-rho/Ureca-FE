@@ -104,11 +104,11 @@ export function Button({
   );
 }
 
-export function Submit({ buttons, onSubmitHandler, text }) {
+export function Submit({ center, buttons, onSubmitHandler, text }) {
   return (
     <InputContainer maxWidth={'100%'}>
       {buttons && buttons.length > 0 ? (
-        <ButtonGroups>
+        <ButtonGroups center={center}>
           {buttons.map((element) => {
             return (
               <ButtonElement
@@ -450,7 +450,7 @@ const DropdownMenuItem = styled.li`
 
 const TextArea = styled.textarea`
   padding: 12px 18px;
-  height: ${({ areaHeight }) => areaHeight || '240px'};
+  height: ${({ areaHeight }) => areaHeight || '140px'};
   resize: none;
   background-color: #f4f6f9;
   border: 1px solid transparent;
