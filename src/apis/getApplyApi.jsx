@@ -9,7 +9,7 @@ export const getApplyInfo = async ({ name, email, number }) => {
       params: {
         name: name,
         email: email,
-        number: number,
+        phoneNumber: number,
       },
     });
     console.log('applyInfo', response.data);

@@ -12,6 +12,7 @@ import FrontendCur from '@pages/home/FrontendCur';
 import BackendCur from '@pages/home/BackendCur';
 import FAQ from '@pages/home/FAQ';
 import FindApply from '@pages/FindApply';
+import MyApply from '@pages/MyApply';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/apply" element={<Apply />} />
             <Route path="/find-apply" element={<FindApply />} />
+            <Route path="/my-apply" element={<MyApply />} />
           </Routes>
         </Layout>
       </ScrollProvider>

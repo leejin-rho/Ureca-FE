@@ -7,6 +7,7 @@ import { getApplyInfo } from '@/apis/getApplyApi';
 const MyApply = ({ name, email, number }) => {
   const [applyInfo, setApplyInfo] = useState(null);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const fetchApplyInfo = async () => {
       setLoading(true);
@@ -24,10 +25,6 @@ const MyApply = ({ name, email, number }) => {
 
     fetchApplyInfo();
   }, []);
-
-  if (loading) {
-    return <p>로딩 중...</p>;
-  }
 
   return (
     <MainContainer>
