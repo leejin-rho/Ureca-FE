@@ -3,6 +3,7 @@ import { globalStyle } from '@/styles/globals';
 import { Global, ThemeProvider } from '@emotion/react';
 import { Layout } from '@components/global/Layout';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ScrollProvider } from '@assets/context/ScrollContext';
 
 // Router Import
 import Home from '@pages/home/Home';
@@ -10,7 +11,7 @@ import Apply from '@pages/Apply';
 import FrontendCur from '@pages/home/FrontendCur';
 import BackendCur from '@pages/home/BackendCur';
 import FAQ from '@pages/home/FAQ';
-import { ScrollProvider } from './assets/context/ScrollContext';
+import FindApply from '@pages/FindApply';
 
 function App() {
   return (
@@ -24,21 +25,12 @@ function App() {
             <Route path="/backend" element={<BackendCur />} />
             <Route path="/FAQ" element={<FAQ />} />
             <Route path="/apply" element={<Apply />} />
+            <Route path="/find-apply" element={<FindApply />} />
           </Routes>
         </Layout>
       </ScrollProvider>
     </BrowserRouter>
   );
 }
-
-// function App() {
-//   return (
-//     <Layout>
-//       <Global styles={globalStyle} />
-//       <Home />
-//       {/* <FAQ /> */}
-//     </Layout>
-//   );
-// }
 
 export default App;

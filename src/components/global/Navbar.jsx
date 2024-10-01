@@ -33,12 +33,19 @@ const Navbar = () => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
+  //홈으로 이동
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
+  //지원하기로 이동
   const handleApplyBtnClick = () => {
     navigate('/apply');
   };
 
-  const handleLogoClick = () => {
-    navigate('/');
+  //지원확인으로 이동
+  const handleFindApplyBtnClick = () => {
+    navigate('/find-apply');
   };
 
   return (
@@ -81,7 +88,9 @@ const Navbar = () => {
           onMouseLeave={() => setIsHovered(false)}
         >
           <Button onClick={handleApplyBtnClick}>지원하기</Button>
-          <FindApplyBtn isVisible={isHovered}>지원확인</FindApplyBtn>
+          <FindApplyBtn onClick={handleFindApplyBtnClick} isVisible={isHovered}>
+            지원확인
+          </FindApplyBtn>
         </ApplyBtnBox>
       </RowFlex>
     </NavContainer>

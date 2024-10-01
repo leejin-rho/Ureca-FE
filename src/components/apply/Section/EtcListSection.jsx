@@ -7,7 +7,7 @@ import {
   AiOutlineDelete,
   AiOutlinePlus,
 } from 'react-icons/ai';
-import { colors } from '../../../styles/colors';
+import { colors } from '@/styles/colors';
 import Calendar from '../ui/Calendar';
 
 export default function EtcListSection({

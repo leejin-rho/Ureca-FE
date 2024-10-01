@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-
 import axios from 'axios';
 
 import { colors } from '@/styles/colors';
-import { Text } from '../components/global/Text';
-import InputSection from '../components/apply/InputSection';
+import { Text } from '@components/global/Text';
+import InputSection from '@components/apply/InputSection';
 import {
   TextField,
   Button,
@@ -14,14 +13,14 @@ import {
   CombInputField,
   TextAreaField,
   Submit,
-} from '../components/apply/ui/InputFieldUi';
-import { InputGroup } from '../components/apply/Groups';
-import Modal from '../components/apply/ui/Modal';
+} from '@components/apply/ui/InputFieldUi';
+import { InputGroup } from '@components/apply/Groups';
+import Modal from '@components/apply/ui/Modal';
 import { AiOutlineCalendar, AiOutlineSearch } from 'react-icons/ai';
-import { options } from '../assets/data/selectData';
-import EtcListSection from '../components/apply/Section/EtcListSection';
-import CareerListSection from '../components/apply/Section/CareerListSection';
-import Accordion from '../components/apply/ui/Accordion';
+import { options } from '@assets/data/selectData';
+import EtcListSection from '@components/apply/Section/EtcListSection';
+import CareerListSection from '@components/apply/Section/CareerListSection';
+import Accordion from '@components/apply/ui/Accordion';
 import { useNavigate } from 'react-router-dom';
 
 // Apply Page
