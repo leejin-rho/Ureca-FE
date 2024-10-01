@@ -30,17 +30,29 @@ const FindApply = () => {
       <InputList direction="column" webGap="1.2">
         <InputLine>
           <InputType variant="h6">성명</InputType>
-          <TextInput value={nameInput} setValue={setNameInput} />
+          <TextInput
+            value={nameInput}
+            setValue={setNameInput}
+            placeholder={'김유플'}
+          />
         </InputLine>
         <SeperateInput />
         <InputLine>
           <InputType variant="h6">이메일</InputType>
-          <TextInput value={emailInput} setValue={setEmailInput} />
+          <TextInput
+            value={emailInput}
+            setValue={setEmailInput}
+            placeholder={'ureca@uplus.com'}
+          />
         </InputLine>
         <SeperateInput />
         <InputLine>
-          <InputType variant="h6">비밀번호</InputType>
-          <TextInput value={numInput} setValue={setNumInput} />
+          <InputType variant="h6">전화번호</InputType>
+          <TextInput
+            value={numInput}
+            setValue={setNumInput}
+            placeholder={'010-1234-5678'}
+          />
         </InputLine>
       </InputList>
       <SeperateLine />
@@ -53,7 +65,7 @@ const FindApply = () => {
         height="2.8rem"
         onClick={handleLogin}
       >
-        로그인
+        확인하기
       </Button>
     </MainContainer>
   );
