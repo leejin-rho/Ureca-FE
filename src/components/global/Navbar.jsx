@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
 import { colors } from '@/styles/colors';
 import LogoImage from '@assets/images/svgs/NavLogo';
 import { Text, Button } from '@components/global';
+import { useScroll } from '@assets/context/ScrollContext';
 
 const Navbar = () => {
   const { scrollToSection } = useScroll();
   const [isTransparent, setIsTransparent] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleScroll = () => {
     if (window.scrollY > 449) {
@@ -25,11 +23,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  //스크롤을 맨 위로
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -44,12 +37,16 @@ const Navbar = () => {
     navigate('/apply');
   };
 
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
   return (
     <NavContainer isTransparent={isTransparent}>
-      <LogoImage height={30} style={{ flexShrink: 0 }} />
-      <div style={{ width: 50 }}></div>
+      <LogoDiv onClick={handleLogoClick}>
+        <LogoImage height={30} style={{ flexShrink: 0 }} />
+      </LogoDiv>
       <RowFlex>
-        {/* scrollToTop */}
         <NavBtn onClick={() => scrollToTop()}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             HOME
@@ -119,6 +116,10 @@ const NavContainer = styled.div`
     height: 62px;
     padding: 0 1.5rem;
   }
+`;
+
+const LogoDiv = styled.div`
+  cursor: pointer;
 `;
 
 const NavBtn = styled.div`

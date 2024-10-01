@@ -18,15 +18,15 @@ function App() {
       <ScrollProvider>
         <Layout>
           <Global styles={globalStyle} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/frontend" element={<FrontendCur />} />
-          <Route path="/backend" element={<BackendCur />} />
-          <Route path="/FAQ" element={<FAQ />} />
-          <Route path="/apply" element={<Apply />} />
-        </Routes>
-      </Layout>
-
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/frontend" element={<FrontendCur />} />
+            <Route path="/backend" element={<BackendCur />} />
+            <Route path="/FAQ" element={<FAQ />} />
+            <Route path="/apply" element={<Apply />} />
+          </Routes>
+        </Layout>
+      </ScrollProvider>
     </BrowserRouter>
   );
 }

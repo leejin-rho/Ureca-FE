@@ -36,7 +36,7 @@ const Wrapper = styled(Flex)`
   height: 100%;
   flex-direction: column;
   overflow: auto;
-  padding: 8rem;
+  padding: 12rem 8rem;
   gap: 5rem;
 
   opacity: 0;
