@@ -1,11 +1,10 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { colors } from '@/styles/colors';
 import LogoImage from '@assets/images/svgs/NavLogo';
 import { Text, Button } from '@components/global';
-import { useEffect, useState } from 'react';
-import { useScroll } from '../../assets/context/ScrollContext';
-import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const { scrollToSection } = useScroll();
@@ -39,6 +38,11 @@ const Navbar = () => {
   };
 
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const handleApplyBtnClick = () => {
+    navigate('/apply');
+  };
 
   return (
     <NavContainer isTransparent={isTransparent}>
@@ -79,16 +83,8 @@ const Navbar = () => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <Button onClick={() => navigate('/apply')}>지원하기</Button>
-          <FindApplyBtn
-            // bg={colors.primaryColor}
-            // hoverBg={colors.white}
-            // fontColor={colors.white}
-            // hoverFontColor={colors.primaryColor}
-            isVisible={isHovered}
-          >
-            지원확인
-          </FindApplyBtn>
+          <Button onClick={handleApplyBtnClick}>지원하기</Button>
+          <FindApplyBtn isVisible={isHovered}>지원확인</FindApplyBtn>
         </ApplyBtnBox>
       </RowFlex>
     </NavContainer>
