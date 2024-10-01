@@ -25,21 +25,21 @@ const FindApply = () => {
 
   return (
     <MainContainer>
-      <Title variant="h1">지원 확인하기</Title>
+      <Title variant="h2">지원 확인하기</Title>
       <SeperateLine />
       <InputList direction="column" webGap="1.2">
         <InputLine>
-          <InputType>성명</InputType>
+          <InputType variant="h6">성명</InputType>
           <TextInput value={nameInput} setValue={setNameInput} />
         </InputLine>
         <SeperateInput />
         <InputLine>
-          <InputType>이메일</InputType>
+          <InputType variant="h6">이메일</InputType>
           <TextInput value={emailInput} setValue={setEmailInput} />
         </InputLine>
         <SeperateInput />
         <InputLine>
-          <InputType>비밀번호</InputType>
+          <InputType variant="h6">비밀번호</InputType>
           <TextInput value={numInput} setValue={setNumInput} />
         </InputLine>
       </InputList>
