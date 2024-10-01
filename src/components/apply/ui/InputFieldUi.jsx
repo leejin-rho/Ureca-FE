@@ -258,8 +258,8 @@ const InputContainer = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '41.6rem')};
-  gap: ${({ group }) => (group ? 0 : '0.8rem')};
+  max-width: ${({ maxWidth }) => (maxWidth ? maxWidth : '416px')};
+  gap: ${({ group }) => (group ? 0 : '8px')};
   margin: ${({ margin }) => (margin ? margin : '0')};
 `;
 
@@ -268,7 +268,7 @@ const InputLabelElement = styled.label`
   display: ${({ flex }) => (flex ? 'flex' : 'block')};
   justify-content: ${({ flex }) => (flex ? 'space-between' : '')};
   align-items: ${({ flex }) => (flex ? 'end' : '')};
-  font-size: 1.4rem;
+  font-size: 14px;
   font-weight: 600;
   line-height: 150%;
   color: #232527;
@@ -276,14 +276,12 @@ const InputLabelElement = styled.label`
 
 // input, icons 그룹
 const InputIconElement = styled.div`
-  /* padding: 0.8rem 1.6rem; */
   display: flex;
   align-items: center;
   background-color: #f4f6f9;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   border: 1px solid transparent;
   overflow: hidden;
-  /* cursor: pointer; */
 
   input {
     flex-grow: 1;
@@ -310,8 +308,8 @@ const InputIconElement = styled.div`
 
 // Input 타입이 Button이 아닐 경우
 const InputElement = styled.input`
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.8rem;
+  padding: 8px 16px;
+  border-radius: 8px;
   background-color: #f4f6f9;
   transition: 0.4s;
   border: 1px solid transparent;
@@ -325,8 +323,8 @@ const InputElement = styled.input`
 // 버튼일 경우
 const ButtonElement = styled.button`
   width: 100%;
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.8rem;
+  padding: 8px 16px;
+  border-radius: 8px;
   background-color: #f4f6f9;
   transition: 0.4s;
   border: 1px solid transparent;
@@ -359,8 +357,8 @@ const SelectElement = styled.div`
   align-items: center;
   border: 1px solid
     ${({ show }) => (show ? colors.primaryColor : 'transparent')};
-  border-radius: 0.8rem;
-  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  padding: 8px 16px;
   cursor: pointer;
 
   font-size: 13.3333px;
@@ -378,7 +376,7 @@ const CaretIcon = styled.div`
 
 // Dropdown Menu
 const DropdownElement = styled.div`
-  min-width: 15em;
+  min-width: 150px;
   position: relative;
 
   & > * {
@@ -388,22 +386,22 @@ const DropdownElement = styled.div`
 
 const DropdownMenu = styled.ul`
   list-style: none;
-  padding: 0.2em 0.5em;
+  padding: 2px 5px;
   /* background-color: #f4f6f9; */
   background-color: #fff;
   border: 1px solid transparent;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-  border-radius: 0.5em;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
   color: #000;
   position: absolute;
-  top: 4rem;
+  top: 40px;
   left: 0;
   right: 0;
   opacity: ${({ open }) => (open ? 1 : 0)};
   display: ${({ open }) => (open ? 'block' : 'none')};
   transition: 0.2s;
   z-index: 1001;
-  max-height: 13em;
+  max-height: 130px;
   overflow-y: scroll;
 
   ::-webkit-scrollbar {
@@ -436,9 +434,9 @@ const DropdownMenuOuter = styled.div`
 `;
 
 const DropdownMenuItem = styled.li`
-  padding: 0.8rem 0.5rem;
-  margin: 0.3em 0;
-  border-radius: 0.5em;
+  padding: 8px 5px;
+  margin: 3px 0;
+  border-radius: 5px;
   cursor: pointer;
   text-align: left;
 
@@ -451,13 +449,13 @@ const DropdownMenuItem = styled.li`
 `;
 
 const TextArea = styled.textarea`
-  padding: 1.2rem 1.8rem;
-  height: ${({ areaHeight }) => areaHeight || '24rem'};
+  padding: 12px 18px;
+  height: ${({ areaHeight }) => areaHeight || '240px'};
   resize: none;
   background-color: #f4f6f9;
   border: 1px solid transparent;
   outline: none;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   transition: 0.4s;
 
   :focus {

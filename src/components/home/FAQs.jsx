@@ -4,11 +4,10 @@ import Section from '@components/home/Section';
 import { Flex } from '@components/global/Flex';
 import { Button } from '@components/global/Button';
 import FAQList from './FAQList';
+import { useNavigate } from 'react-router-dom';
 
 const FAQs = () => {
-  const onFAQBtn = () => {
-    window.location.href = 'https://lgupluskdt.recruiter.co.kr/career/FAQ';
-  };
+  const navigate = useNavigate();
 
   return (
     <Section
@@ -32,7 +31,7 @@ const FAQs = () => {
         borderRadius="2rem"
         fontSize="1.125rem"
         fontColor={colors.white}
-        onClick={onFAQBtn}
+        onClick={() => navigate('/faq')}
       >
         더 많은 질문 보기 {'>'}
       </Button>

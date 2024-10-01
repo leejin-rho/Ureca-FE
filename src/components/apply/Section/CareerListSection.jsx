@@ -70,9 +70,7 @@ function CareerListSection({
               </CareerListItemDeleteBtnContainer>
             )}
 
-            <div
-              style={{ display: 'flex', gap: '2.6rem', marginBottom: '3.6rem' }}
-            >
+            <div style={{ display: 'flex', gap: '26px', marginBottom: '36px' }}>
               {item.inputs.slice(0, 2).map((input, idx) => {
                 return (
                   <div key={idx} style={{ width: '100%' }}>
@@ -104,9 +102,7 @@ function CareerListSection({
               })}
             </div>
 
-            <div
-              style={{ display: 'flex', gap: '2.6rem', marginBottom: '3.6rem' }}
-            >
+            <div style={{ display: 'flex', gap: '26px', marginBottom: '36px' }}>
               <div style={{ width: '100%' }}>
                 <TextField
                   label={item.inputs[2].label}
@@ -126,15 +122,15 @@ function CareerListSection({
               <div
                 style={{
                   width: '100%',
-                  maxWidth: '41.6rem',
+                  maxWidth: '416px',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '0.8rem',
+                  gap: '8px',
                 }}
               >
                 <label
                   style={{
-                    fontSize: '1.4rem',
+                    fontSize: '14px',
                     fontWeight: 600,
                     lineHeight: '150%',
                     color: '#232527',
@@ -183,7 +179,7 @@ function CareerListSection({
                           )}
                         </CareerListtItme>
                         {idx === 0 && (
-                          <span style={{ margin: '0 0.9rem', fontSize: 14 }}>
+                          <span style={{ margin: '0 9px', fontSize: 14 }}>
                             ~
                           </span>
                         )}
@@ -201,7 +197,7 @@ function CareerListSection({
                   {
                     message: '담당업무',
                     style: {
-                      width: 'calc(100% - 12rem)',
+                      width: 'calc(100% - 120px)',
                       wordBreak: 'keep-all',
                     },
                   },
@@ -212,7 +208,7 @@ function CareerListSection({
                         : '500'
                     } / 500자`,
                     style: {
-                      width: '12rem',
+                      width: '120px',
                       color: '#888',
                       textAlign: 'end',
                     },
@@ -269,7 +265,7 @@ const CareerListHeader = styled.header`
     content: '';
     position: absolute;
     left: 0;
-    bottom: -1.2rem;
+    bottom: -12px;
     display: block;
     height: 2px;
     background-color: #888;
@@ -285,7 +281,7 @@ const CareerListHeaderTitle = styled.h6`
 
 const CareerListHeaderAddBtn = styled.button`
   display: flex;
-  gap: 0.6rem;
+  gap: 6px;
   align-items: center;
   font-size: 16px;
   font-weight: 600;
@@ -303,7 +299,7 @@ const CareerListHeaderAddBtn = styled.button`
 `;
 
 const CareerListContent = styled.div`
-  margin-top: 3.6rem;
+  margin-top: 36px;
 `;
 
 const CareerListItemContainer = styled.div`
@@ -312,15 +308,15 @@ const CareerListItemContainer = styled.div`
 `;
 
 const CareerListBorderLine = styled.div`
-  height: 0.2rem;
+  height: 2px;
   background-color: #e9ebef;
   width: 100%;
-  border-radius: 0.1rem;
-  margin: 2.4rem 0;
+  border-radius: 1px;
+  margin: 24px 0;
 `;
 
 const CareerListItemDeleteBtnContainer = styled.div`
-  margin-bottom: 1.8rem;
+  margin-bottom: 18px;
   display: flex;
   justify-content: end;
 
@@ -328,9 +324,9 @@ const CareerListItemDeleteBtnContainer = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 0.3rem;
+    width: 22px;
+    height: 22px;
+    border-radius: 3px;
     border: 1px solid #aeaeae;
     cursor: pointer;
     background-color: transparent;
@@ -339,14 +335,14 @@ const CareerListItemDeleteBtnContainer = styled.div`
 
 const CareerListtItme = styled.div`
   position: relative;
-  width: 19.975rem;
+  width: 199.75px;
   background-color: #f4f6f9;
-  border-radius: 0.8rem;
+  border-radius: 8px;
   border: 1px solid transparent;
   display: flex;
 
   .text-input {
-    padding: 0.8rem 1.6rem;
+    padding: 8px 16px;
     background-color: transparent;
     border: none;
     outline: none;

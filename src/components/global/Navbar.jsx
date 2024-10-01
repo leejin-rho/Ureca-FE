@@ -4,9 +4,14 @@ import { colors } from '@/styles/colors';
 import LogoImage from '@assets/images/svgs/NavLogo';
 import { Text, Button } from '@components/global';
 import { useEffect, useState } from 'react';
+import { useScroll } from '../../assets/context/ScrollContext';
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ scrollToSection }) => {
+const Navbar = () => {
+  const { scrollToSection } = useScroll();
   const [isTransparent, setIsTransparent] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleScroll = () => {
     if (window.scrollY > 449) {
@@ -19,6 +24,10 @@ const Navbar = ({ scrollToSection }) => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
 
   //스크롤을 맨 위로
@@ -36,7 +45,8 @@ const Navbar = ({ scrollToSection }) => {
       <LogoImage height={30} style={{ flexShrink: 0 }} />
       <div style={{ width: 50 }}></div>
       <RowFlex>
-        <NavBtn onClick={scrollToTop}>
+        {/* scrollToTop */}
+        <NavBtn onClick={() => scrollToTop()}>
           <Text color={colors.white} variant="h8" lineHeight="130%">
             HOME
           </Text>
@@ -69,7 +79,7 @@ const Navbar = ({ scrollToSection }) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <Button>지원하기</Button>
+          <Button onClick={() => navigate('/apply')}>지원하기</Button>
           <FindApplyBtn
             // bg={colors.primaryColor}
             // hoverBg={colors.white}
