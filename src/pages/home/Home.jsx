@@ -48,8 +48,6 @@ const Home = () => {
       { threshold: 0.5 },
     );
 
-    console.log('sectionRefs:', sectionRefs.current);
-
     sectionRefs.current.forEach((section) => {
       if (section) {
         observer.observe(section);
