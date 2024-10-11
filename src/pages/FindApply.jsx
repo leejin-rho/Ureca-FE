@@ -25,7 +25,9 @@ const FindApply = () => {
 
   return (
     <MainContainer>
-      <Title variant="h2">지원 확인하기</Title>
+      <Title color={colors.primaryColor} variant="h2" lineHeight="120%">
+        지원 확인하기
+      </Title>
       <SeperateLine />
       <InputList direction="column" webGap="1.2">
         <InputLine>
@@ -79,7 +81,7 @@ const MainContainer = styled(Flex)`
   overflow-y: auto;
   overflow-x: hidden;
 
-  padding: 120px 90px;
+  padding: 150px 100px;
 
   @media (max-width: 1023px) {
     padding: 62px 0 0 0;
@@ -91,9 +93,7 @@ const InputList = styled(Flex)`
   width: 700px;
 `;
 
-const Title = styled(Text)`
-  font-weight: 500;
-`;
+const Title = styled(Text)``;
 
 const InputType = styled(Text)`
   width: 100px;
