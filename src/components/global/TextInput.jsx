@@ -39,7 +39,7 @@ const InputContainer = styled.div`
   border: ${({ isError }) =>
     isError
       ? `1px solid ${colors.primaryColor}`
-      : `1px solid ${colors.gray100}`};
+      : `1px solid ${colors.disabled}`};
   background-color: ${colors.white};
   border-radius: 0.5rem;
   padding: 0.6rem;
